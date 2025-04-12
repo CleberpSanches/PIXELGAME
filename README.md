@@ -1,6 +1,5 @@
 ## Collect & Connect
 **Gênero**: Aventura | Pixel Art | Exploratório  
-**Plataformas**: PC (Windows, Linux, Mac) | Console
 
 **Sinopse**  
 Em *Colect & Conect*, você embarca em uma jornada com "Catuno" um gato mago de computadores, por diferentes mapas e ambientes, explorando locais diversos para coletar peças e componentes de computador espalhados pelo mundo. Cada região oferece desafios únicos e personagens únicos, enquanto você busca montar o computador dos seus sonhos.
