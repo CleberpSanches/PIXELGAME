@@ -11,3 +11,12 @@ A cada novo mapa, você encontra novos itens, e precisa usar sua inteligência p
 - **Quebra-cabeças desafiadores**: Use as peças coletadas para montar e reparar seu computador, desbloqueando novas funcionalidades.
 - **Estilo retrô em Pixel Art**: Visual único e encantador, com gráficos em pixel art, evocando a nostalgia dos jogos clássicos.
 - **Progressão e aventura**: A cada item coletado, você desbloqueia novos mapas, tornando a jornada cada vez mais interessante.
+
+**Paleta de Cores**
+
+  **Catuno**:
+  - #7D6597
+  - #EBBDEC
+  - #461149
+  - #D77BBA
+  - #3A1040
