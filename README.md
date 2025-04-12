@@ -3,7 +3,7 @@
 **Plataformas**: PC (Windows, Linux, Mac) | Console
 
 **Sinopse**  
-Em *Coletar e Conectar*, você embarca em uma jornada com "Catuno" um gato mago de computadores, por diferentes mapas e ambientes, explorando locais diversos para coletar peças e componentes de computador espalhados pelo mundo. Cada região oferece desafios únicos e personagens únicos, enquanto você busca montar o computador dos seus sonhos.
+Em *Colect & Conect*, você embarca em uma jornada com "Catuno" um gato mago de computadores, por diferentes mapas e ambientes, explorando locais diversos para coletar peças e componentes de computador espalhados pelo mundo. Cada região oferece desafios únicos e personagens únicos, enquanto você busca montar o computador dos seus sonhos.
 
 A cada novo mapa, você encontra novos itens, e precisa usar sua inteligência para conectar as partes e avançar na jornada. 
 
