@@ -64,20 +64,41 @@ public class Player extends Entity {
         if (this.keyH.upPressed ==true|| this.keyH.downPressed ==true|| this.keyH.leftPressed ==true|| this.keyH.rightPressed==true) {
             if (this.keyH.upPressed) {
                 this.direction = "up";
-                this.worldY -= this.speed;
+
             } else if (this.keyH.downPressed) {
                 this.direction = "down";
-                this.worldY += this.speed;
+
             } else if (this.keyH.leftPressed) {
                 this.direction = "left";
-                this.worldX -= this.speed;
+
             } else if (this.keyH.rightPressed) {
                 this.direction = "right";
-                this.worldX += this.speed;
             }
-
+            //collision state
             collisionOn = false;
             gp.cChecker.checkTile(this);
+
+            // if collisionOn is false means he can move
+            if (collisionOn == false)
+            {
+                switch (direction){
+                    case "up":
+                        this.worldY -= this.speed;
+                        break;
+                    case "down":
+                        this.worldY += this.speed;
+                        break;
+                    case "left":
+                        this.worldX -= this.speed;
+                        break;
+                    case "right":
+                        this.worldX += this.speed;
+                        break;
+
+                }
+
+
+            }
 
             ++this.spriteCounter;
             if (this.spriteCounter > 10) {
