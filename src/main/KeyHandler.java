@@ -8,6 +8,8 @@ public class KeyHandler implements KeyListener {
     public boolean downPressed;
     public boolean leftPressed;
     public boolean rightPressed;
+    public boolean shiftPressed;
+
 
     public KeyHandler() {
     }
@@ -33,6 +35,11 @@ public class KeyHandler implements KeyListener {
             this.rightPressed = true;
         }
 
+        if (code == KeyEvent.VK_SHIFT) {
+            this.shiftPressed = true;
+        }
+
+
     }
 
     public void keyReleased(KeyEvent e) {
@@ -53,5 +60,8 @@ public class KeyHandler implements KeyListener {
             this.rightPressed = false;
         }
 
+        if (code == KeyEvent.VK_SHIFT) {
+            this.shiftPressed = false;
+        }
     }
 }

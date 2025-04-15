@@ -7,13 +7,15 @@ package entity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
+
 import java.io.IOException;
+import java.util.List;
 import javax.imageio.ImageIO;
 
+import Interface.Command;
 import Interface.PlayerInput;
 import main.GamePanel;
-import main.KeyHandler;
+import Adapter.KeyHandlerAdapter;
 
 public class Player extends Entity {
     GamePanel gp;
@@ -75,29 +77,18 @@ public class Player extends Entity {
             } else if (input.rightButtonPressed()) {
                 this.direction = "right";
             }
+            List<Command> commands = input.getCommands(this);
             //collision state
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
             // if collisionOn is false means he can move
-            if (collisionOn == false)
-            {
-                switch (direction){
-                    case "up":
-                        this.worldY -= this.speed;
-                        break;
-                    case "down":
-                        this.worldY += this.speed;
-                        break;
-                    case "left":
-                        this.worldX -= this.speed;
-                        break;
-                    case "right":
-                        this.worldX += this.speed;
-                        break;
 
+            if (collisionOn == false) {
+
+                for (Command command : commands) {
+                    command.execute(this);
                 }
-
 
             }
 
