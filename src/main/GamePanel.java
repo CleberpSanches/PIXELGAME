@@ -1,7 +1,9 @@
 
 package main;
 
-import Entity.Player;
+import Adapter.KeyHandlerAdapter;
+import Interface.PlayerInput;
+import entity.Player;
 import tile.TileManager;
 
 import java.awt.Color;
@@ -28,12 +30,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
+    PlayerInput input = new KeyHandlerAdapter(this.keyH);
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public Player player;
 
     public GamePanel() {
-        this.player = new Player(this, this.keyH);
+        this.player = new Player(this, input);
         this.setPreferredSize(new Dimension(1024, 768));
         this.setBackground(Color.gray);
         this.setDoubleBuffered(true);

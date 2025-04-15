@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package Entity;
+package entity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

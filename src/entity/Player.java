@@ -3,33 +3,34 @@
 // (powered by FernFlower decompiler)
 //
 
-package Entity;
+package entity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
-import java.util.Objects;
 import javax.imageio.ImageIO;
+
+import Interface.PlayerInput;
 import main.GamePanel;
 import main.KeyHandler;
 
 public class Player extends Entity {
     GamePanel gp;
-    KeyHandler keyH;
+    PlayerInput input;
 
     public final int screenX;
     public final int screenY;
 
 
-    public Player(GamePanel gp, KeyHandler keyH) {
+    public Player(GamePanel gp, PlayerInput input) {
         this.gp = gp;
-        this.keyH = keyH;
+        this.input = input;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
-        solidArea = new Rectangle(12, 28,40,36);
+        solidArea = new Rectangle(8, 55,40,20);
 
         this.setDefaultValues();
         this.getPlayerImage();
@@ -61,17 +62,17 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (this.keyH.upPressed ==true|| this.keyH.downPressed ==true|| this.keyH.leftPressed ==true|| this.keyH.rightPressed==true) {
-            if (this.keyH.upPressed) {
+        if (input.upButtonPressed()|| input.downButtonPressed()|| input.leftButtonPressed()|| input.rightButtonPressed()) {
+            if (input.upButtonPressed()) {
                 this.direction = "up";
 
-            } else if (this.keyH.downPressed) {
+            } else if (input.downButtonPressed()) {
                 this.direction = "down";
 
-            } else if (this.keyH.leftPressed) {
+            } else if (input.leftButtonPressed()) {
                 this.direction = "left";
 
-            } else if (this.keyH.rightPressed) {
+            } else if (input.rightButtonPressed()) {
                 this.direction = "right";
             }
             //collision state
@@ -146,6 +147,6 @@ public class Player extends Entity {
                 }
         }
 
-        g2.drawImage(image, screenX, screenY, 64, 64, (ImageObserver)null);
+        g2.drawImage(image, screenX, screenY, 64, 64, null);
     }
 }
