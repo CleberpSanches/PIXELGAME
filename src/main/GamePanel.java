@@ -3,6 +3,7 @@ package main;
 
 import Adapter.KeyHandlerAdapter;
 import Interface.PlayerInput;
+import Objects.SuperObject;
 import entity.Player;
 import tile.TileManager;
 
@@ -21,8 +22,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenWidth = 1024;
     public final int screenHeight = 768;
 
-    public final int maxWorldCol = 16;
-    public final int maxWorldRow = 12;
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
@@ -33,7 +34,9 @@ public class GamePanel extends JPanel implements Runnable {
     PlayerInput input = new KeyHandlerAdapter(this.keyH);
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
+    public AssetSetter asetter = new AssetSetter(this);
     public Player player;
+    public SuperObject obj[] = new SuperObject[14];
 
     public GamePanel() {
         this.player = new Player(this, input);
@@ -42,6 +45,10 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(this.keyH);
         this.setFocusable(true);
+    }
+
+    public void setupGame(){
+        asetter.setObject();
     }
 
     public void startGameThread() {
@@ -86,8 +93,18 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
+
         tileM.draw(g2);
-        this.player.draw(g2);
+
+        for (int i = 0; i < obj.length; i++)
+        {
+            if (obj[i] !=null)
+            {
+                obj[i].draw(g2,this);
+            }
+        }
+
+        player.draw(g2);
 
         g2.dispose();
     }
