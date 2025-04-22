@@ -12,7 +12,7 @@ public class Main {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(3);
         window.setResizable(false);
-        window.setTitle("Little Adventure");
+        window.setTitle("Collect&Conect");
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
         window.pack();
