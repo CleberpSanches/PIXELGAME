@@ -11,7 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 32;
@@ -39,7 +39,6 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player;
     public SuperObject obj[] = new SuperObject[14];
     Thread gameThread;
-
 
 
     public GamePanel() {
@@ -118,6 +117,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void playMusic(int i){
 
         sound.setFile(i);
+        sound.setVolume(-10.0f);
+        sound.loop();
         sound.play();
 
     }
