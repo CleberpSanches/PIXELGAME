@@ -39,14 +39,15 @@ public class UI {
     }
 
     public void drawPauseScreen(){
+        g2.setColor(new Color(0, 0, 0, 150));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
         String text = "PAUSADO";
         int x = getXforCenterText(text);
         int y = gp.screenHeight/2;
 
-
-        g2.setColor(new Color(0, 0, 0, 150)); // RGB com alpha (transparência)
-        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.setFont(arial_40);         // fonte grande e visível
+        g2.setColor(Color.WHITE);
         g2.drawString(text, x, y);
     }
 

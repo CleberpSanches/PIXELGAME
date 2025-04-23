@@ -10,6 +10,7 @@ public class Sound {
 
     Clip clip;
     URL soundURL[] = new URL[30];
+    private boolean isPlaying = false;
 
     public Sound(){
         soundURL[0] = getClass().getResource("/sound/fase1.wav");
@@ -24,24 +25,37 @@ public class Sound {
             clip.open(ais);
         }
         catch (Exception e){
-
+            e.printStackTrace();//depuração
         }
     }
 
     public void play (){
-        clip.start();
+        if(clip != null) {
+            clip.start();
+            isPlaying = true;
+        }
     }
 
     public void loop(){
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        if (clip != null) {
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            isPlaying = true;
+        }
     }
 
     public void stop(){
-    clip.stop();
+        if (clip != null && isPlaying) {
+            clip.stop();
+            isPlaying = false; // Marca como não tocando
+        }
     }
 
     public void setVolume(float value){
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(value);
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
     }
 }
