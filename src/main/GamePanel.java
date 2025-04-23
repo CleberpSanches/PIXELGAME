@@ -38,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
     public AssetSetter asetter = new AssetSetter(this);
     public Player player;
     public SuperObject obj[] = new SuperObject[14];
+    public UI ui = new UI(this);
     Thread gameThread;
 
     //GAME STATE
@@ -123,6 +124,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         player.draw(g2);
+        ui.draw(g2);
 
         g2.dispose();
     }
