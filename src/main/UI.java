@@ -18,7 +18,10 @@ public class UI {
         arial_80B = new Font("Arial", Font.BOLD, 80);
     }
 
-
+    public void showMessage(String text){
+        message = text;
+        messageOn = true;
+    }
 
     public void draw(Graphics2D g2){
         this.g2 = g2;
@@ -32,11 +35,6 @@ public class UI {
         if(gp.gameState == gp.pauseState){
             drawPauseScreen();
         }
-    }
-
-    public void showMessage(String text){
-        message = text;
-        messageOn = true;
     }
 
     public void drawPauseScreen(){
