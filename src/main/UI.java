@@ -33,6 +33,7 @@ public class UI {
 
         }
         if(gp.gameState == gp.pauseState){
+
             drawPauseScreen();
         }
     }
@@ -43,6 +44,9 @@ public class UI {
         int x = getXforCenterText(text);
         int y = gp.screenHeight/2;
 
+
+        g2.setColor(new Color(0, 0, 0, 150)); // RGB com alpha (transparência)
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
         g2.drawString(text, x, y);
     }
 

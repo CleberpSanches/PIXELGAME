@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         asetter.setObject();
         playMusic(0);
-        stopMusic();
+
         gameState = playState;
 
     }
@@ -105,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if(gameState == pauseState){
             //nada aqui! normal
+            stopMusic();
         }
     }
 
