@@ -1,4 +1,4 @@
-## Catuno: Em Busca de Catita
+## Aniventures
 
 ### Lore Geral do Jogo
 
