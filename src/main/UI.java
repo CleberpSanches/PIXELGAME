@@ -64,7 +64,7 @@ public class UI {
 
         try {
             menuarrow = ImageIO.read(getClass().getResourceAsStream("/buttons/menuarrow.png"));
-            bg = ImageIO.read(getClass().getResourceAsStream("/buttons/bg.png"));
+            bg = ImageIO.read(getClass().getResourceAsStream("/buttons/bg1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,39 +74,24 @@ public class UI {
             g2.drawImage(bg, 0, 0, gp.screenWidth, gp.screenHeight, null);
         }
 
-        String text = "";
-        int x = getXforCenterText(text);
-        int y = gp.tileSize * 3;
-
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
-
-        g2.setColor(Color.WHITE);
-        g2.drawString(text, x, y);
-
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 24F));
 
-        // Itens do menu
         String[] menuOptions = {"NOVO JOGO", "OPÇÕES", "SAIR"};
 
-        // Posição inicial do menu
-        int menuX;
-        int menuY = gp.screenHeight / 2; // meio da tela + descido um pouco
+        int menuY = (int) (gp.screenHeight / 1.5); // meio da tela + descido um pouco
 
         for (int i = 0; i < menuOptions.length; i++) {
-            String text1 = menuOptions[i];
-            menuX = getXforCenterText(text1);
+            String option = menuOptions[i];
+            int optionX = getXforCenterText(option); // calcula X certinho baseado na largura do texto
 
-            g2.drawString(text1, menuX, menuY);
+            g2.drawString(option, optionX, menuY);
 
-            // SE o commandNum for igual ao índice atual, desenha a seta
-            if (commandNum == i) {
-                g2.drawImage(menuarrow, menuX - gp.tileSize, menuY - 24, null);
+            if (commandNum == i && menuarrow != null) {
+                g2.drawImage(menuarrow, optionX - gp.tileSize, menuY - 24, null);
             }
 
-            // Avança para o próximo item
-            menuY += gp.tileSize + 10; // espaço entre opções
+            menuY += gp.tileSize; // espaço entre opções
         }
-
     }
 
 
