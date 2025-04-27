@@ -9,6 +9,7 @@ public class KeyHandler implements KeyListener {
     public boolean leftPressed;
     public boolean rightPressed;
     public boolean shiftPressed;
+    boolean checkDrawTime;
     GamePanel gp;
 
     public KeyHandler(GamePanel gp){
@@ -48,6 +49,9 @@ public class KeyHandler implements KeyListener {
                 }
             }
         }
+
+
+
         //PLAY STATE
         if (code == KeyEvent.VK_W) {
             this.upPressed = true;
@@ -77,7 +81,15 @@ public class KeyHandler implements KeyListener {
             }
         }
 
-
+        if (code == KeyEvent.VK_T) {
+            if(checkDrawTime == false){
+                checkDrawTime = true;
+            }
+            else if(checkDrawTime == true)
+            {
+                checkDrawTime = false;
+            }
+        }
     }
 
     public void keyReleased(KeyEvent e) {
