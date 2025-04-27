@@ -1,6 +1,7 @@
 package Objects;
 
 import main.GamePanel;
+import main.ToolBox;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,6 +11,7 @@ public class SuperObject {
     public String name;
     public boolean collision = false;
     public int worldX, worldY;
+    ToolBox tBox = new ToolBox();
 
     public Rectangle solidArea = new Rectangle(0, 0, 48,48);
     public int solidAreaDefaultX = 0;

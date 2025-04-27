@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import Interface.Command;
 import Interface.PlayerInput;
 import main.GamePanel;
+import Adapter.KeyHandlerAdapter;
 
 public class Player extends Entity {
     GamePanel gp;
