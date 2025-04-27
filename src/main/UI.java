@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
 
 public class UI {
 
@@ -58,53 +57,58 @@ public class UI {
         }
     }
 
-    public void drawTitleScreen(){
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
-        String text = "Jogo";
-        int x = getXforCenterText(text);
-        int y = gp.tileSize * 3;
-
-        g2.setColor(Color.WHITE);
-        g2.drawString(text, x, y);
-
-        //LOAD IMAGES
+    public void drawTitleScreen() {
+        // LOAD IMAGES
         BufferedImage menuarrow = null;
         BufferedImage bg = null;
 
         try {
             menuarrow = ImageIO.read(getClass().getResourceAsStream("/buttons/menuarrow.png"));
+            bg = ImageIO.read(getClass().getResourceAsStream("/buttons/bg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // MENU
+        // DESENHAR BACKGROUND PRIMEIRO
+        if (bg != null) {
+            g2.drawImage(bg, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        }
+
+        String text = "";
+        int x = getXforCenterText(text);
+        int y = gp.tileSize * 3;
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
+
+        g2.setColor(Color.WHITE);
+        g2.drawString(text, x, y);
+
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 24F));
 
-        text = "Novo Jogo";
-        x = getXforCenterText(text);
-        y += gp.tileSize;
-        g2.drawString(text, x, y);
-//      //
-        if (commandNum == 0) {
-            g2.drawImage(menuarrow, x-gp.tileSize, y, null);
+        // Itens do menu
+        String[] menuOptions = {"NOVO JOGO", "OPÇÕES", "SAIR"};
+
+        // Posição inicial do menu
+        int menuX;
+        int menuY = gp.screenHeight / 2; // meio da tela + descido um pouco
+
+        for (int i = 0; i < menuOptions.length; i++) {
+            String text1 = menuOptions[i];
+            menuX = getXforCenterText(text1);
+
+            g2.drawString(text1, menuX, menuY);
+
+            // SE o commandNum for igual ao índice atual, desenha a seta
+            if (commandNum == i) {
+                g2.drawImage(menuarrow, menuX - gp.tileSize, menuY - 24, null);
+            }
+
+            // Avança para o próximo item
+            menuY += gp.tileSize + 10; // espaço entre opções
         }
 
-        text = "Opções";
-        x = getXforCenterText(text);
-        y += gp.tileSize;
-        g2.drawString(text, x, y);
-        if (commandNum == 1) {
-            g2.drawImage(menuarrow, x-gp.tileSize, y, null);
-        }
-
-        text = "Sair";
-        x = getXforCenterText(text);
-        y += gp.tileSize;
-        g2.drawString(text, x, y);
-        if (commandNum == 2) {
-            g2.drawImage(menuarrow, x-gp.tileSize, y, null);
-        }
     }
+
 
     public void drawPauseScreen(){
         g2.setColor(new Color(0, 0, 0, 150));
