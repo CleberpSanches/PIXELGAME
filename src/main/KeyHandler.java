@@ -15,9 +15,6 @@ public class KeyHandler implements KeyListener {
         this.gp = gp;
     }
 
-    public KeyHandler() {
-    }
-
     public void keyTyped(KeyEvent e) {
     }
 
@@ -42,10 +39,9 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER){
                 if(gp.ui.commandNum == 0){
                     gp.gameState = gp.playState;
-                    gp.playMusic(0);
                 }
                 if (gp.ui.commandNum == 1){
-                    //
+                    //permanência de dados
                 }
                 if (gp.ui.commandNum == 2){
                     System.exit(0);
@@ -54,7 +50,7 @@ public class KeyHandler implements KeyListener {
         }
         //PLAY STATE
         if (code == KeyEvent.VK_W) {
-
+            this.upPressed = true;
         }
 
         if (code == KeyEvent.VK_S) {

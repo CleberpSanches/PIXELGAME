@@ -58,7 +58,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame(){
         asetter.setObject();
-
         gameState = titleState;
 
     }
@@ -98,7 +97,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         if (gameState == titleState){
-            playMusic(0);
 
         }
 
@@ -129,6 +127,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         //TITLE SCREEN
         if(gameState == titleState){
+
             ui.draw(g2);
         }//OTHERS
         else{
@@ -144,7 +143,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         sound.setFile(i);
         sound.setVolume(-20.0f);
-        sound.loop();
+        //sound.loop();
         sound.play();
 
     }

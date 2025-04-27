@@ -69,6 +69,7 @@ public class UI {
 
         //LOAD IMAGES
         BufferedImage menuarrow = null;
+        BufferedImage bg = null;
 
         try {
             menuarrow = ImageIO.read(getClass().getResourceAsStream("/buttons/menuarrow.png"));
@@ -109,11 +110,11 @@ public class UI {
         g2.setColor(new Color(0, 0, 0, 150));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
-        String text = "PAUSADO";
+        String text = "PAUSE";
         int x = getXforCenterText(text);
         int y = gp.screenHeight/2;
 
-        g2.setFont(arial_40);         // fonte grande e visível
+        g2.setFont(dotGothic16);
         g2.setColor(Color.WHITE);
         g2.drawString(text, x, y);
     }
