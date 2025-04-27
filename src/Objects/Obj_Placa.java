@@ -8,7 +8,7 @@ public class Obj_Placa extends SuperObject{
     GamePanel gp;
     public Obj_Placa(GamePanel gp)
     {
-        this.gp =gp;
+        this.gp = gp;
         name = "placa";
         try
         {
