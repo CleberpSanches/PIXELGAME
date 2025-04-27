@@ -47,11 +47,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public final int titleState = 0;
 
-
     public GamePanel() {
         this.player = new Player(this, input);
         this.setPreferredSize(new Dimension(1024, 768));
-        this.setBackground(Color.gray);
+        this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(this.keyH);
         this.setFocusable(true);
@@ -59,9 +58,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame(){
         asetter.setObject();
-        playMusic(0);
 
-        gameState = playState;
+        gameState = titleState;
 
     }
 
@@ -117,8 +115,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D)g;
 
-        tileM.draw(g2);
-
         for (int i = 0; i < obj.length; i++)
         {
             if (obj[i] !=null)
@@ -127,8 +123,15 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
 
-        player.draw(g2);
-        ui.draw(g2);
+        //TITLE SCREEN
+        if(gameState == titleState){
+            ui.draw(g2);
+        }//OTHERS
+        else{
+            tileM.draw(g2);
+            player.draw(g2);
+            ui.draw(g2);
+        }
 
         g2.dispose();
     }
