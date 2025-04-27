@@ -97,11 +97,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
+        if (gameState == titleState){
+            playMusic(0);
+
+        }
 
         if(gameState == playState){
             player.update();
             if (!sound.isPlaying()) {
-                playMusic(0);
+                playMusic(1);
             }
         }
         if(gameState == pauseState){
@@ -139,7 +143,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void playMusic(int i){
 
         sound.setFile(i);
-        sound.setVolume(-10.0f);
+        sound.setVolume(-20.0f);
         sound.loop();
         sound.play();
 

@@ -13,19 +13,18 @@ public class Sound {
     private boolean isPlaying = false;
 
     public Sound(){
-        soundURL[0] = getClass().getResource("/sound/fase1.wav");
-
+        soundURL[0] = getClass().getResource("/sound/teste.wav");
+        soundURL[1] = getClass().getResource("/sound/fase1.wav");
     }
 
     public void setFile( int i){
-
         try{
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
         }
         catch (Exception e){
-            e.printStackTrace();//depuração
+            e.printStackTrace();
         }
     }
 
