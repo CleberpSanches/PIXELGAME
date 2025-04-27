@@ -5,7 +5,7 @@ import javax.imageio.ImageIO;
 public class Obj_Placa extends SuperObject{
     public Obj_Placa()
     {
-        name = "key";
+        name = "placa";
         try
         {
             image = ImageIO.read(getClass().getResourceAsStream("/objects/placa.png"));

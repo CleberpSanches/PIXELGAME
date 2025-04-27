@@ -24,6 +24,16 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
+    int hasCooler = 0;
+    int hasCpu = 0;;
+    int hasHd= 0;
+    int hasMouse= 0;
+    int hasMonitor= 0;
+    int hasPlacamae= 0;
+    int hasPlaca= 0;
+    int hasPvideo= 0;
+    int hasRam= 0;
+
 
     public Player(GamePanel gp, PlayerInput input) {
         this.gp = gp;
@@ -33,7 +43,8 @@ public class Player extends Entity {
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
         solidArea = new Rectangle(8, 55,40,20);
-
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         this.setDefaultValues();
         this.getPlayerImage();
 
@@ -82,6 +93,9 @@ public class Player extends Entity {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
+            // obj collision state
+            int objIndex = gp.cChecker.checkObject(this, true);
+            pickUpObject(objIndex);
             // if collisionOn is false means he can move
 
             if (collisionOn == false) {
@@ -104,6 +118,44 @@ public class Player extends Entity {
             }
         }
 
+    }
+
+    public void pickUpObject(int index){
+      if (index != 999)
+        {
+            String objectName = gp.obj[index].name;
+
+            switch (objectName)
+            {
+                case "placa":
+                    hasPlaca++;
+                    break;
+                case "cooler":
+                    hasCooler++;
+                    break;
+                case "cpu":
+                    hasCpu++;
+                    break;
+                case "hd":
+                    hasHd++;
+                    break;
+                case "monitor":
+                    hasMonitor++;
+                    break;
+                case "mouse":
+                    hasMouse++;
+                    break;
+                case "placamae":
+                    hasPlacamae++;
+                    break;
+                case "pvideo":
+                    hasPvideo++;
+                    break;
+                case "ram":
+                    hasRam++; 
+                    break;
+            }
+        }
     }
 
     public void draw(Graphics2D g2) {

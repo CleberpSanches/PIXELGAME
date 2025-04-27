@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter asetter = new AssetSetter(this);
     public Player player;
-    public SuperObject obj[] = new SuperObject[14];
+    public SuperObject obj[] = new SuperObject[9];
     public UI ui = new UI(this);
     Thread gameThread;
 
