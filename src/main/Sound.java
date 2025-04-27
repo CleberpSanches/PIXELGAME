@@ -13,6 +13,7 @@ public class Sound {
     private boolean isPlaying = false;
 
     public Sound(){
+        soundURL[0] = getClass().getResource("/sound/menusong.wav");
         soundURL[1] = getClass().getResource("/sound/fase1.wav");
         soundURL[2] = getClass().getResource("/sound/lavastage.wav");
     }
@@ -31,6 +32,7 @@ public class Sound {
     public void play (){
         if(clip != null) {
             clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
             isPlaying = true;
         }
     }

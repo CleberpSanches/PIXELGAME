@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //GAME STATE
     public int gameState;
+    int previousState;
     public final int playState = 1;
     public final int pauseState = 2;
     public final int titleState = 0;
@@ -59,6 +60,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         asetter.setObject();
         gameState = titleState;
+        previousState = titleState;
+        playMusic(0);
 
     }
 
@@ -96,19 +99,24 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        if (gameState == titleState){
 
-        }
 
-        if(gameState == playState){
-            player.update();
-            if (!sound.isPlaying()) {
-                playMusic(1);
-            }
-        }
-        if(gameState == pauseState){
-            //nada aqui! normal
+        if (gameState != previousState) {
             stopMusic();
+
+            if (gameState == titleState) {
+                playMusic(0);
+            } else if (gameState == playState) {
+                playMusic(1);
+            } else if (gameState == pauseState) {
+
+            }
+
+            previousState = gameState;
+        }
+
+        if (gameState == playState) {
+            player.update();
         }
     }
 
@@ -127,7 +135,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         //TITLE SCREEN
         if(gameState == titleState){
-
             ui.draw(g2);
         }//OTHERS
         else{
@@ -141,11 +148,12 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void playMusic(int i){
 
-        sound.setFile(i);
-        sound.setVolume(-20.0f);
-        //sound.loop();
-        sound.play();
+        if (sound.clip != null) {
+            sound.stop();  // para o que tá tocando antes
+        }
 
+        sound.setFile(i);
+        sound.play();
     }
 
     public void stopMusic(){
