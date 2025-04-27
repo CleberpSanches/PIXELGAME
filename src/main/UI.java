@@ -48,7 +48,7 @@ public class UI {
 
         //PLAY STATE
         if(gp.gameState == gp.playState){
-
+            drawPlayScreen();
         }
 
         //PAUSE STATE
@@ -78,11 +78,11 @@ public class UI {
 
         String[] menuOptions = {"NOVO JOGO", "OPÇÕES", "SAIR"};
 
-        int menuY = (int) (gp.screenHeight / 1.5); // meio da tela + descido um pouco
+        int menuY = (int) (gp.screenHeight / 1.5);
 
         for (int i = 0; i < menuOptions.length; i++) {
             String option = menuOptions[i];
-            int optionX = getXforCenterText(option); // calcula X certinho baseado na largura do texto
+            int optionX = getXforCenterText(option);
 
             g2.drawString(option, optionX, menuY);
 
@@ -90,22 +90,25 @@ public class UI {
                 g2.drawImage(menuarrow, optionX - gp.tileSize, menuY - 24, null);
             }
 
-            menuY += gp.tileSize; // espaço entre opções
+            menuY += gp.tileSize;
         }
     }
-
 
     public void drawPauseScreen(){
         g2.setColor(new Color(0, 0, 0, 150));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.setFont(dotGothic16);
+        g2.setColor(Color.WHITE);
 
         String text = "PAUSE";
         int x = getXforCenterText(text);
         int y = gp.screenHeight/2;
 
-        g2.setFont(dotGothic16);
-        g2.setColor(Color.WHITE);
         g2.drawString(text, x, y);
+    }
+
+    public void drawPlayScreen(){
+
     }
 
     public int getXforCenterText(String text){
@@ -113,4 +116,6 @@ public class UI {
         int x = gp.screenWidth/2 - length/2;
         return x;
     }
+
+
 }

@@ -16,7 +16,6 @@ import Interface.Command;
 import Interface.PlayerInput;
 import main.GamePanel;
 import Adapter.KeyHandlerAdapter;
-import main.ToolBox;
 
 public class Player extends Entity {
     GamePanel gp;
@@ -43,7 +42,7 @@ public class Player extends Entity {
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
-        solidArea = new Rectangle(16, 40,40,20);
+        solidArea = new Rectangle(8, 55,40,20);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         this.setDefaultValues();
@@ -72,29 +71,7 @@ public class Player extends Entity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        up1 = setup("gatuno_costas_1");
-        up2 = setup("gatuno_costas_2");
-        down1 = setup("gatuno_frente_1");
-        down2 = setup("gatuno_frente_2");
-        left1 = setup("gatuno_esquerda_1");
-        left2 = setup("gatuno_esquerda_2");
-        right1 = setup("gatuno_direita_1");
-        right2 = setup("gatuno_direita_2");
 
-    }
-
-    public BufferedImage setup(String imageName)
-    {
-        ToolBox tBox = new ToolBox();
-        BufferedImage image = null;
-
-        try{
-            image = ImageIO.read(this.getClass().getResourceAsStream("/player/" + imageName +".png"));
-            image = tBox.scaleImage(image, gp.tileSize, gp.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
     }
 
     public void update() {
@@ -140,12 +117,9 @@ public class Player extends Entity {
                 this.spriteCounter = 0;
             }
         }
-        else {
-            spriteNum = 1;
-        }
 
     }
-    //what is going to happen when we pick the item
+
     public void pickUpObject(int index){
       if (index != 999)
         {
@@ -217,6 +191,5 @@ public class Player extends Entity {
         }
 
         g2.drawImage(image, screenX, screenY, 64, 64, null);
-
     }
 }
