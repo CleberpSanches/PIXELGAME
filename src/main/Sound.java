@@ -13,8 +13,8 @@ public class Sound {
     private boolean isPlaying = false;
 
     public Sound(){
-        soundURL[0] = getClass().getResource("/sound/menusong.wav");
-        soundURL[1] = getClass().getResource("/sound/fase1.wav");
+        soundURL[0] = getClass().getResource("/sound/menusong1.wav");
+        soundURL[1] = getClass().getResource("/sound/lavastage.wav");
         soundURL[2] = getClass().getResource("/sound/lavastage.wav");
     }
 
