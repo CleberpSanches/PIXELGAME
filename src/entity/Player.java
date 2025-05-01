@@ -16,9 +16,9 @@ import Interface.Command;
 import Interface.PlayerInput;
 import main.GamePanel;
 import Adapter.KeyHandlerAdapter;
+import main.ToolBox;
 
 public class Player extends Entity {
-    GamePanel gp;
     PlayerInput input;
 
     public final int screenX;
@@ -36,7 +36,8 @@ public class Player extends Entity {
 
 
     public Player(GamePanel gp, PlayerInput input) {
-        this.gp = gp;
+        super(gp);
+
         this.input = input;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
@@ -59,20 +60,17 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
-        try {
-            this.up1 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_costas_1.png"));
-            this.up2 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_costas_2.png"));
-            this.down1 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_frente_1.png"));
-            this.down2 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_frente_2.png"));
-            this.left1 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_esquerda_1.png"));
-            this.left2 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_esquerda_2.png"));
-            this.right1 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_direita_1.png"));
-            this.right2 = ImageIO.read(this.getClass().getResourceAsStream("/player/gatuno_direita_2.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+            up1 = setup("/player/gatuno_costas_1");
+            up2 = setup("/player/gatuno_costas_2");
+            down1 = setup("/player/gatuno_frente_1");
+            down2 = setup("/player/gatuno_frente_2");
+            left1 = setup("/player/gatuno_esquerda_1");
+            left2 = setup("/player/gatuno_esquerda_2");
+            right1 = setup("/player/gatuno_direita_1");
+            right2 = setup("/player/gatuno_direita_2");
     }
+
+
 
     public void update() {
         if (input.upButtonPressed()|| input.downButtonPressed()|| input.leftButtonPressed()|| input.rightButtonPressed()) {
@@ -98,6 +96,11 @@ public class Player extends Entity {
             pickUpObject(objIndex);
             // if collisionOn is false means he can move
 
+            //npc collision
+            int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
+            interactNPC(npcIndex);
+
+            //without collision the command movement runs
             if (collisionOn == false) {
 
                 for (Command command : commands) {
@@ -105,7 +108,6 @@ public class Player extends Entity {
                 }
 
             }
-
             ++this.spriteCounter;
             if (this.spriteCounter > 10) {
                 if (this.spriteNum == 1) {
@@ -158,35 +160,42 @@ public class Player extends Entity {
         }
     }
 
+
+    public void interactNPC(int i) {
+        if (i != 999) {
+            System.out.println("aeee");
+        }
+    }
+
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
         switch (this.direction) {
             case "up":
                 if (this.spriteNum == 1) {
-                    image = this.up1;
+                    image = up1;
                 } else if (this.spriteNum == 2) {
-                    image = this.up2;
+                    image = up2;
                 }
                 break;
             case "down":
                 if (this.spriteNum == 1) {
-                    image = this.down1;
+                    image = down1;
                 } else if (this.spriteNum == 2) {
-                    image = this.down2;
+                    image = down2;
                 }
                 break;
             case "left":
                 if (this.spriteNum == 1) {
-                    image = this.left1;
+                    image = left1;
                 } else if (this.spriteNum == 2) {
-                    image = this.left2;
+                    image = left2;
                 }
                 break;
             case "right":
                 if (this.spriteNum == 1) {
-                    image = this.right1;
+                    image = right1;
                 } else if (this.spriteNum == 2) {
-                    image = this.right2;
+                    image = right2;
                 }
         }
 

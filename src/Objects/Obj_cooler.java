@@ -12,5 +12,6 @@ public class Obj_cooler extends SuperObject{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        collision = true;
     }
 }

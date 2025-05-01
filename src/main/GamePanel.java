@@ -4,6 +4,7 @@ package main;
 import Adapter.KeyHandlerAdapter;
 import Interface.PlayerInput;
 import Objects.SuperObject;
+import entity.Entity;
 import entity.Player;
 import tile.TileManager;
 
@@ -23,8 +24,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = 768;
 
     //WORLD SETTINGS
-    public final int maxWorldCol = 50;
-    public final int maxWorldRow = 50;
+    public  int maxWorldCol;
+    public  int maxWorldRow;
+    public final int maxMap = 10;
+    public int currentMap = 0;
 
     int FPS = 60;
 
@@ -40,6 +43,8 @@ public class GamePanel extends JPanel implements Runnable {
     public SuperObject obj[] = new SuperObject[9];
     public UI ui = new UI(this);
     Thread gameThread;
+    public Entity npc[] = new Entity[5];
+
 
     //GAME STATE
     public int gameState;
@@ -59,6 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame(){
         asetter.setObject();
+        asetter.setNPC();
         gameState = titleState;
         previousState = titleState;
         playMusic(0);
@@ -117,6 +123,12 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (gameState == playState) {
             player.update();
+
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
+                    npc[i].update();
+                }
+            }
         }
     }
 
@@ -145,6 +157,13 @@ public class GamePanel extends JPanel implements Runnable {
                 if (obj[i] !=null)
                 {
                     obj[i].draw(g2,this);
+                }
+            }
+            for (int i = 0; i < npc.length; i++)
+            {
+                if (npc[i] !=null)
+                {
+                    npc[i].draw(g2);
                 }
             }
             player.draw(g2);

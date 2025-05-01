@@ -1,6 +1,8 @@
 package main;
 
 import Objects.*;
+import entity.NPC_Morceguita;
+import entity.NPC_Sapita;
 
 public class AssetSetter {
     GamePanel gp;
@@ -47,6 +49,16 @@ public class AssetSetter {
         gp.obj[8].worldX = 3 * gp.tileSize;
         gp.obj[8].worldY = 32 * gp.tileSize;
 
+    }
+
+    public void setNPC(){
+        gp.npc[0] = new NPC_Sapita(gp);
+        gp.npc[0].worldX = 3 * gp.tileSize;
+        gp.npc[0].worldY = 33 * gp.tileSize;
+
+        gp.npc[1] = new NPC_Morceguita(gp);
+        gp.npc[1].worldX = 4 * gp.tileSize;
+        gp.npc[1].worldY = 33 * gp.tileSize;
     }
 }
 
