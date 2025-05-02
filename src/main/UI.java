@@ -8,13 +8,16 @@ import java.io.InputStream;
 
 public class UI {
 
+
     GamePanel gp;
     Font arial_40, arial_80B;
     Graphics2D g2;
     Font dotGothic16;
     public String message = "";
     public boolean messageOn = false;
+    public String currentDialogue;
     public boolean gameFinished = false;
+
     public int commandNum = 0;
 
     public UI(GamePanel gp){
@@ -55,6 +58,35 @@ public class UI {
         if(gp.gameState == gp.pauseState){
             drawPauseScreen();
         }
+        //PAUSE STATE
+        if(gp.gameState == gp.dialogueState){
+            drawDialogueScreen();
+        }
+    }
+
+    private void drawDialogueScreen() {
+        int x = gp.tileSize*2;
+        int y = gp.tileSize/2;
+        int width = gp.screenWidth - (gp.tileSize*4);
+        int height = (gp.tileSize*3);
+        drawSubWindow(x,y,width,height);
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32));
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString(currentDialogue, x, y);
+
+    }
+
+    public void drawSubWindow(int x, int y, int width, int height){
+        Color c = new Color(0, 0, 0, 175);
+        g2.setColor(c);
+        g2.fillRoundRect(x, y, width, height, 35, 35);
+
+        c = new Color(255,255,255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x+5, y+5 , width-10, height-10, 25, 25);
     }
 
     public void drawTitleScreen() {

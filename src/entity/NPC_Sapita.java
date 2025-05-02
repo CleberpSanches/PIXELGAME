@@ -14,6 +14,7 @@ public class NPC_Sapita extends Entity{
         direction = "down1";
         speed = 0;
         getImage();
+        setDialogue();
     }
 
     public void getImage() {
@@ -24,9 +25,13 @@ public class NPC_Sapita extends Entity{
 
     }
 
+    public void setDialogue(){
+        dialogues[0] = "Hello";
+    }
+
     public void setAction(){
         actionLookCounter ++;
-        if (actionLookCounter == 50) {
+        if (actionLookCounter == 30) {
             if (direction.equals("down1")){
                 direction = "down2";
             } else if (direction.equals("down2")){
@@ -44,6 +49,15 @@ public class NPC_Sapita extends Entity{
 
         }
 
+    }
+
+    public void speak(){
+        if(dialogues[dialogueIndex] == null)
+        {
+            dialogueIndex=0;
+        }
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
     }
 
 }

@@ -50,46 +50,59 @@ public class KeyHandler implements KeyListener {
             }
         }
 
+        if(gp.gameState == gp.playState){
+            //PLAY STATE
+            if (code == KeyEvent.VK_W) {
+                this.upPressed = true;
+            }
 
+            if (code == KeyEvent.VK_S) {
+                this.downPressed = true;
+            }
 
-        //PLAY STATE
-        if (code == KeyEvent.VK_W) {
-            this.upPressed = true;
+            if (code == KeyEvent.VK_A) {
+                this.leftPressed = true;
+            }
+
+            if (code == KeyEvent.VK_D) {
+                this.rightPressed = true;
+            }
+
+            if (code == KeyEvent.VK_SHIFT) {
+                this.shiftPressed = true;
+            }
+
+            if (code == KeyEvent.VK_P) {
+                    gp.gameState = gp.pauseState;
+            }
+
+            if (code == KeyEvent.VK_T) {
+                if(checkDrawTime == false){
+                    checkDrawTime = true;
+                }
+                else if(checkDrawTime == true)
+                {
+                    checkDrawTime = false;
+                }
+            }
         }
 
-        if (code == KeyEvent.VK_S) {
-            this.downPressed = true;
-        }
-
-        if (code == KeyEvent.VK_A) {
-            this.leftPressed = true;
-        }
-
-        if (code == KeyEvent.VK_D) {
-            this.rightPressed = true;
-        }
-
-        if (code == KeyEvent.VK_SHIFT) {
-            this.shiftPressed = true;
-        }
-
-        if (code == KeyEvent.VK_P) {
-            if(gp.gameState == gp.playState){
-                gp.gameState = gp.pauseState;
-            } else if (gp.gameState == gp.pauseState) {
+        else if (gp.gameState == gp.pauseState)
+        {
+            if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
             }
         }
 
-        if (code == KeyEvent.VK_T) {
-            if(checkDrawTime == false){
-                checkDrawTime = true;
-            }
-            else if(checkDrawTime == true)
+        else if (gp.gameState == gp.dialogueState)
+        {
+            if (code == KeyEvent.VK_ENTER)
             {
-                checkDrawTime = false;
+                gp.gameState = gp.playState;
             }
         }
+
+
     }
 
     public void keyReleased(KeyEvent e) {

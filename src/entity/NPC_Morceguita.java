@@ -8,6 +8,7 @@ public class NPC_Morceguita extends Entity{
         direction = "down1";
         speed = 0;
         getImage();
+        setDialogue();
     }
 
     public void getImage() {
@@ -18,9 +19,13 @@ public class NPC_Morceguita extends Entity{
 
     }
 
+    public void setDialogue(){
+        dialogues[1] = "OIIIIIIIII";
+    }
+
     public void setAction(){
         actionLookCounter ++;
-        if (actionLookCounter == 50) {
+        if (actionLookCounter == 30) {
             if (direction.equals("down1")){
                 direction = "down2";
             } else if (direction.equals("down2")){
@@ -38,6 +43,9 @@ public class NPC_Morceguita extends Entity{
 
         }
 
+    }
+    public void speak(){
+        gp.ui.currentDialogue = dialogues[1];
     }
 
 }

@@ -35,6 +35,8 @@ public abstract class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn=false;
     public int actionLookCounter = 0;
+    String dialogues[] = new String[20];
+    int dialogueIndex;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -42,6 +44,10 @@ public abstract class Entity {
 
     public void setAction()
     {
+
+    }
+
+    public void speak(){
 
     }
 
