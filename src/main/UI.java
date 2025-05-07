@@ -18,6 +18,9 @@ public class UI {
     public String currentDialogue;
     public boolean gameFinished = false;
 
+    int slotCol = 0;
+    int slotRow = 0;
+
     public int commandNum = 0;
 
     public UI(GamePanel gp){
@@ -62,7 +65,15 @@ public class UI {
         if(gp.gameState == gp.dialogueState){
             drawDialogueScreen();
         }
+
+        //CHARACTER STATE
+        if(gp.gameState == gp.characterState){
+            drawCharacterScreen();
+            drawInventory();
+        }
     }
+
+
 
     private void drawDialogueScreen() {
         int x = gp.tileSize*2;
@@ -74,7 +85,11 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32));
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.drawString(currentDialogue, x, y);
+
+        for(String line : currentDialogue.split("/n")) {
+            g2.drawString(line, x, y);
+            y+=40;
+        }
 
     }
 
@@ -143,6 +158,37 @@ public class UI {
 
     }
 
+    private void drawCharacterScreen() {
+        final int frameX;
+        final int frameY;
+        final int frameWidth;
+        final int frameHeight;
+    }
+    private void drawInventory() {
+        final int frameX= (int) (gp.tileSize *8.5);
+        final int frameY= (int) (gp.tileSize *8.5);
+        final int frameWidth= (int) (gp.tileSize *7.5);
+        final int frameHeight= (int) (gp.tileSize *2.5);
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        //SLOTS
+        final int slotXstart = frameX +20;
+        final int slotYstart = frameY + 20;
+
+        int slotX = slotXstart;
+        int slotY = slotYstart;
+
+        //selector
+        int cursorX = slotXstart + (gp.tileSize * slotCol);
+        int cursorY = slotYstart + (gp.tileSize * slotRow);
+        int cursorWidth = gp.tileSize;
+        int cursorHeight = gp.tileSize;
+        //cursor
+        g2.setColor(Color.white);
+        g2.setStroke(new BasicStroke(2));
+        g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10 , 10);
+
+    }
     public int getXforCenterText(String text){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2 - length/2;

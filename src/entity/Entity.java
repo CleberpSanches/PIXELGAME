@@ -28,7 +28,7 @@ public abstract class Entity {
     public BufferedImage right2;
     public BufferedImage left1;
     public BufferedImage left2;
-    public String direction;
+    public String direction = "down1";
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public Rectangle solidArea = new Rectangle(0, 0, 64, 64);
@@ -37,6 +37,9 @@ public abstract class Entity {
     public int actionLookCounter = 0;
     String dialogues[] = new String[20];
     int dialogueIndex;
+    public BufferedImage image;
+    public String name;
+    public boolean collision = false;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -48,7 +51,12 @@ public abstract class Entity {
     }
 
     public void speak(){
-
+        if(dialogues[dialogueIndex] == null)
+        {
+            dialogueIndex=0;
+        }
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
     }
 
     public void update(){

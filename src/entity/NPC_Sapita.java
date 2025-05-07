@@ -27,6 +27,7 @@ public class NPC_Sapita extends Entity{
 
     public void setDialogue(){
         dialogues[0] = "Hello";
+        dialogues[1] = "Hellooooooooooooooooooooooooooooooooooooo/noooooooooooooooooooooooooooo";
     }
 
     public void setAction(){
@@ -52,12 +53,7 @@ public class NPC_Sapita extends Entity{
     }
 
     public void speak(){
-        if(dialogues[dialogueIndex] == null)
-        {
-            dialogueIndex=0;
-        }
-        gp.ui.currentDialogue = dialogues[dialogueIndex];
-        dialogueIndex++;
+        super.speak();
     }
 
 }
