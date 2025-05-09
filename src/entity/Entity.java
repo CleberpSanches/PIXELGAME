@@ -41,6 +41,10 @@ public abstract class Entity {
     public String name;
     public boolean collision = false;
 
+
+    //item
+    public String description = "";
+
     public Entity(GamePanel gp) {
         this.gp = gp;
     }

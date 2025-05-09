@@ -9,11 +9,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.imageio.ImageIO;
 
 import Interface.Command;
 import Interface.PlayerInput;
+import Objects.Obj_CaliceVento;
+import Objects.Obj_ChaveCipestre;
 import main.GamePanel;
 import Adapter.KeyHandlerAdapter;
 import main.ToolBox;
@@ -23,16 +27,11 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
+    public ArrayList<Entity> Inventory = new ArrayList<>();
+    public final int maxInventorySize = 15;
 
-    int hasCooler = 0;
-    int hasCpu = 0;;
-    int hasHd= 0;
-    int hasMouse= 0;
-    int hasMonitor= 0;
-    int hasPlacamae= 0;
-    int hasPlaca= 0;
-    int hasPvideo= 0;
-    int hasRam= 0;
+    int hasCalice= 0;
+
 
 
     public Player(GamePanel gp, PlayerInput input) {
@@ -48,7 +47,7 @@ public class Player extends Entity {
         solidAreaDefaultY = solidArea.y;
         this.setDefaultValues();
         this.getPlayerImage();
-
+        setItems();
 
     }
 
@@ -57,6 +56,12 @@ public class Player extends Entity {
         this.worldY = (int) (gp.tileSize * 23.5);
         this.speed = 4;
         this.direction = "left";
+    }
+
+
+    public void setItems() {
+        //Inventory.add(new Obj_CaliceVento(gp));
+
     }
 
     public void getPlayerImage() {
@@ -127,41 +132,32 @@ public class Player extends Entity {
     public void pickUpObject(int index){
       if (index != 999)
         {
-            String objectName = gp.obj[index].name;
-
-            switch (objectName)
+            if (Inventory.size() != maxInventorySize)
             {
-                case "placa":
-                    hasPlaca++;
-                    break;
-                case "cooler":
-                    hasCooler++;
-                    break;
-                case "cpu":
-                    hasCpu++;
-                    break;
-                case "hd":
-                    hasHd++;
-                    break;
-                case "monitor":
-                    hasMonitor++;
-                    break;
-                case "mouse":
-                    hasMouse++;
-                    break;
-                case "placamae":
-                    hasPlacamae++;
-                    break;
-                case "pvideo":
-                    hasPvideo++;
-                    break;
-                case "ram":
-                    hasRam++; 
-                    break;
+                Inventory.add(gp.obj[index]);
             }
+            gp.obj[index] = null;
+            transformItem();
         }
+
     }
 
+    public void transformItem(){
+        Set<String> requiredItems = Set.of("amuletoluaverde", "amuletonevoa", "amuletoseiva");
+        List<Entity> itemsToRemove = new ArrayList<>();
+
+        for (Entity obj : Inventory) {
+            if (requiredItems.contains(obj.name)) {
+                itemsToRemove.add(obj);
+            }
+        }
+
+        if (itemsToRemove.size() == 3) {
+            Inventory.removeAll(itemsToRemove);
+
+            Inventory.add(new Obj_ChaveCipestre(gp));
+        }
+    }
 
     public void interactNPC(int i) {
         if (i != 999) {
