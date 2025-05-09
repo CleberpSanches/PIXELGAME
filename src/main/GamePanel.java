@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //MAP
     public String[][][] mapTileName = new String[maxMap][maxWorldCol][maxWorldRow];
-
+    public TileManager tileManager;
 
     //SYSTEM
     public TileManager tileM = new TileManager(this);
@@ -64,11 +64,37 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
         this.player = new Player(this, input);
+        tileManager = new TileManager(this);
         this.setPreferredSize(new Dimension(1024, 768));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(this.keyH);
         this.setFocusable(true);
+
+        setPlayerSpawn();
+    }
+
+    public void teleportPlayer(int targetMap) {
+        currentMap = targetMap;
+        setPlayerSpawn();
+    }
+
+    public void checkTeleport() {
+        int playerTileX = player.worldX / tileSize;
+        int playerTileY = player.worldY / tileSize;
+
+        System.out.println("Player tile: " + playerTileX + ", " + playerTileY);
+
+        if (playerTileX == 24 && playerTileY == 27) {
+            teleportPlayer(1);
+        }
+    }
+
+    public void setPlayerSpawn() {
+        int spawnX = tileManager.spawnPoints[currentMap][0];
+        int spawnY = tileManager.spawnPoints[currentMap][1];
+
+        player.setPosition(spawnX * tileSize, spawnY * tileSize); // Multiplicamos pelo tamanho do tile
     }
 
     public void setupGame(){
@@ -114,8 +140,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-
-
         if (gameState != previousState) {
             stopMusic();
 
@@ -133,6 +157,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == playState) {
             player.update();
 
+            checkTeleport();
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
                     npc[i].update();
