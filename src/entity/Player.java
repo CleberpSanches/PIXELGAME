@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package entity;
 
 import java.awt.*;
@@ -11,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 import Interface.Command;
 import Interface.PlayerInput;
@@ -53,8 +49,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        this.worldX = gp.tileSize * 47;
-        this.worldY = (int) (gp.tileSize * 23.5);
+        this.worldX = gp.tileSize * 24;
+        this.worldY = gp.tileSize * 24;
         this.speed = 4;
         this.direction = "left";
     }

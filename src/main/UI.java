@@ -177,7 +177,7 @@ public class UI {
 
         int slotX = slotXstart;
         int slotY = slotYstart;
-
+        
         //selector
         int cursorX = slotXstart + (gp.tileSize * slotCol);
         int cursorY = slotYstart + (gp.tileSize * slotRow);
@@ -188,6 +188,23 @@ public class UI {
         g2.setStroke(new BasicStroke(2));
         g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10 , 10);
 
+        //description screen
+        int dframeX = frameX;
+        int dframeY = frameY - frameHeight;
+        int dframeWidth = frameWidth;
+        int dframeHeight = gp.tileSize*2;
+
+        //desc text
+        int textX = dframeX + 20;
+        int textY = dframeY + gp.tileSize;
+        g2.setFont(g2.getFont().deriveFont(28F ));
+
+        int itemIndex = getItemIndexOnSlot();
+
+    }
+    public  int getItemIndexOnSlot(){
+        int itemIndex = slotCol + (slotRow * 7);
+        return itemIndex;
     }
     public int getXforCenterText(String text){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();

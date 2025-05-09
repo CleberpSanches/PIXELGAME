@@ -24,7 +24,22 @@ public class EventHandler {
         if(hit(2, 24, "left") == true){
             teleport();
         }
+        if (gp.currentMap == 0) {
+            int tileX = gp.player.worldX / gp.tileSize;
+            int tileY = gp.player.worldY / gp.tileSize;
+
+            if (tileX == 24 && tileY == 28) {
+                teleportPlayer(1, 26, 28); // Teleporta para mapa 1, posição (5,5)
+            }
+        }
     }
+
+    public void teleportPlayer(int targetMap, int tileX, int tileY) {
+        gp.currentMap = targetMap;
+        gp.player.worldX = tileX * gp.tileSize;
+        gp.player.worldY = tileY * gp.tileSize;
+    }
+
 
     private boolean hit(int eventCol, int eventRow, String reqDirection) {
         boolean hit = false;
