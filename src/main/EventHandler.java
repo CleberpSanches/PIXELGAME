@@ -41,6 +41,8 @@ public class EventHandler {
                 teleportPlayer(2, 38, 25);
             }
         }
+
+        //vou fazer uma lista com os lugares dos spawn point amanhã <3
 //
 //        if (gp.currentMap == 2) {
 //            int tileX = gp.player.worldX / gp.tileSize;

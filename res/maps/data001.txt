@@ -89,7 +89,7 @@ false
 44.png
 true
 45.png
-true
+false
 46.png
 false
 47.png
@@ -397,6 +397,4 @@ false
 198.png
 false
 199.png
-false
-200.png
 false
