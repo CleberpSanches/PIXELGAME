@@ -25,7 +25,6 @@ public class Player extends Entity {
     public final int screenY;
     public ArrayList<Entity> Inventory = new ArrayList<>();
     public final int maxInventorySize = 15;
-
     int hasCalice= 0;
 
 

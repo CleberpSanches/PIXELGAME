@@ -28,10 +28,46 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 24 && tileY == 28) {
-                teleportPlayer(1, 26, 28); // Teleporta para mapa 1, posição (5,5)
+            if (tileX == 24 && tileY == 29) {
+                teleportPlayer(1, 26, 28);
             }
         }
+
+        if (gp.currentMap == 1) {
+            int tileX = gp.player.worldX / gp.tileSize;
+            int tileY = gp.player.worldY / gp.tileSize;
+
+            if (tileX == 23 && tileY == 22) {
+                teleportPlayer(2, 38, 25);
+            }
+        }
+//
+//        if (gp.currentMap == 2) {
+//            int tileX = gp.player.worldX / gp.tileSize;
+//            int tileY = gp.player.worldY / gp.tileSize;
+//
+//            if (tileX == 12 && tileY == 24) {
+//                teleportPlayer(3, 25, 36);
+//            }
+//        }
+//
+//        if (gp.currentMap == 3) {
+//            int tileX = gp.player.worldX / gp.tileSize;
+//            int tileY = gp.player.worldY / gp.tileSize;
+//
+//            if (tileX == 24 && tileY == 17) {
+//                teleportPlayer(4, 10, 41);
+//            }
+//        }
+//
+//        if (gp.currentMap == 4) {
+//            int tileX = gp.player.worldX / gp.tileSize;
+//            int tileY = gp.player.worldY / gp.tileSize;
+//
+//            if (tileX == 16 && tileY == 27) {
+//                teleportPlayer(5, 7, 44);
+//            }
+//        }
     }
 
     public void teleportPlayer(int targetMap, int tileX, int tileY) {
