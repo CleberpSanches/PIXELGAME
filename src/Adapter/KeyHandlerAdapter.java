@@ -41,6 +41,16 @@ public class KeyHandlerAdapter implements PlayerInput {
     }
 
     @Override
+    public boolean enterButtonPressed() {
+        return keyHandler.enterPressed;
+    }
+
+    @Override
+    public boolean qButtonPressed() {
+        return keyHandler.qPressed;
+    }
+
+    @Override
     public List<Command> getActiveCommands(Player player) {
         return List.of();
     }

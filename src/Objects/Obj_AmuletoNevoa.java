@@ -11,6 +11,6 @@ public class Obj_AmuletoNevoa extends Entity {
     {
         super(gp);
         name = "amuletonevoa";
-        down1 = setup("/objects/amuletonevoa");
+        down1 = setup("/objects/amuletonevoa", gp.tileSize, gp.tileSize);
     }
 }

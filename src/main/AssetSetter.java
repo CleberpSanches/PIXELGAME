@@ -1,6 +1,7 @@
 package main;
 
 import Objects.*;
+import Tile_Items.TI_PLua;
 import entity.NPC_Morceguita;
 import entity.NPC_Sapita;
 
@@ -51,12 +52,20 @@ public class AssetSetter {
 
     public void setNPC(){
         gp.npc[0] = new NPC_Sapita(gp);
-        gp.npc[0].worldX = 3 * gp.tileSize;
-        gp.npc[0].worldY = 33 * gp.tileSize;
+        gp.npc[0].worldX = 15 * gp.tileSize;
+        gp.npc[0].worldY = 27 * gp.tileSize;
 
         gp.npc[1] = new NPC_Morceguita(gp);
-        gp.npc[1].worldX = 4 * gp.tileSize;
-        gp.npc[1].worldY = 33 * gp.tileSize;
+        gp.npc[1].worldX = 17 * gp.tileSize;
+        gp.npc[1].worldY = 29 * gp.tileSize;
+    }
+
+    public void setTItens(){
+        int i = 0;
+        gp.tItens[i] = new TI_PLua(gp);
+        gp.tItens[i].worldX = 16 * gp.tileSize;
+        gp.tItens[i].worldY = 26 * gp.tileSize;
+
     }
 }
 
