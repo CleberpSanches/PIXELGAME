@@ -60,7 +60,7 @@ public class Player extends Entity {
 
 
     public void setItems() {
-        //Inventory.add(new Obj_CaliceVento(gp));
+        Inventory.add(new Obj_CaliceVento(gp));
 
     }
 
