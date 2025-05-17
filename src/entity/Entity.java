@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public abstract class Entity {
+    public Entity currentMagicatk;
+    public Entity currentMagicBreak;
     GamePanel gp;
     public int worldX;
     public int worldY;
@@ -52,6 +54,14 @@ public abstract class Entity {
     public BufferedImage image;
     public String name;
     public boolean collision = false;
+
+    //types
+    public int type;
+    static final int type_player = 0;
+    static final int type_npc = 1;
+    static final int type_monster = 2;
+    public static final int type_magicAtk = 3;
+    public static final int type_magicBreak = 4;
 
     //item
     public String description = "";

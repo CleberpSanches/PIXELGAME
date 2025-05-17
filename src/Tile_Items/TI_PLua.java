@@ -8,13 +8,15 @@ public class TI_PLua extends TileItems{
     public TI_PLua(GamePanel gp) {
         super(gp);
         this.gp = gp;
-
+        name = "plua";
         down1 = setup("/tile_items/plua", gp.tileSize, gp.tileSize);
         destructible = true;
     }
-    public boolean isCorrectMagic(Entity entity){
-        boolean correctMagic = false;
 
-        return correctMagic;
+    public boolean isCorrectMagic(Entity entity){
+        return entity.currentMagicatk.type == Entity.type_magicBreak;
     }
+
+
 }
+

@@ -13,9 +13,9 @@ public class TileItems extends Entity {
     }
 
     public boolean isCorrectMagic(Entity entity){
-        boolean correctMagic = false;
-        return correctMagic;
+        return entity.currentMagicatk.type == Entity.type_magicBreak;
     }
+
 
     public void update() {
 

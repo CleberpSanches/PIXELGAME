@@ -218,6 +218,12 @@ public class UI {
         int slotY = slotYstart;
 
         for (int i = 0; i < gp.player.Inventory.size(); i++) {
+
+            if(gp.player.Inventory.get(i) == gp.player.currentMagicatk){
+                g2.setColor(new Color(178, 159, 255));
+                g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
+            }
+
             g2.drawImage(gp.player.Inventory.get(i).down1, slotX, slotY, null);
             slotX +=gp.tileSize;
 
@@ -265,7 +271,6 @@ public class UI {
         int itemIndex = slotCol + (slotRow * 7);
         return itemIndex;
     }
-
 
     public int getXforCenterText(String text){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();

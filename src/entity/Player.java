@@ -12,8 +12,7 @@ import javax.swing.*;
 
 import Interface.Command;
 import Interface.PlayerInput;
-import Objects.Obj_CaliceVento;
-import Objects.Obj_ChaveCipestre;
+import Objects.*;
 import main.GamePanel;
 import Adapter.KeyHandlerAdapter;
 import main.ToolBox;
@@ -43,7 +42,6 @@ public class Player extends Entity {
         attackArea.width = 68;
         attackArea.height = 68;
 
-
         this.setDefaultValues();
         this.getPlayerImage();
         getAttackImage();
@@ -56,12 +54,15 @@ public class Player extends Entity {
         this.worldY = gp.tileSize * 24;
         this.speed = 4;
         this.direction = "left";
+
+        currentMagicatk = new Obj_AtkToxina(gp);
     }
 
 
     public void setItems() {
-        Inventory.add(new Obj_CaliceVento(gp));
+        Inventory.add(currentMagicatk);
 
+        Inventory.add(new Obj_AtkToxina2(gp));
     }
 
     public void getPlayerImage() {
@@ -76,14 +77,27 @@ public class Player extends Entity {
     }
 
     public void getAttackImage() {
-        upattack1 = setup("/player/gatuno_costasatk_1", gp.tileSize, gp.tileSize * 2);
-        upattack2 = setup("/player/gatuno_costasatk_2", gp.tileSize, gp.tileSize * 2);
-        downattack1 = setup("/player/gatuno_frenteatk_1", gp.tileSize, gp.tileSize * 2);
-        downattack2 = setup("/player/gatuno_frenteatk_2", gp.tileSize, gp.tileSize * 2);
-        leftattack1 = setup("/player/gatuno_esquerdaatk_1", gp.tileSize *2, gp.tileSize);
-        leftattack2 = setup("/player/gatuno_esquerdaatk_2", gp.tileSize*2, gp.tileSize);
-        rightattack1 = setup("/player/gatuno_direitaatk_1", gp.tileSize*2, gp.tileSize);
-        rightattack2 = setup("/player/gatuno_direitaatk_2", gp.tileSize*2, gp.tileSize);
+        if (currentMagicatk.type == Entity.type_magicAtk){
+            upattack1 = setup("/player/gatuno_costasatk_1", gp.tileSize, gp.tileSize * 2);
+            upattack2 = setup("/player/gatuno_costasatk_2", gp.tileSize, gp.tileSize * 2);
+            downattack1 = setup("/player/gatuno_frenteatk_1", gp.tileSize, gp.tileSize * 2);
+            downattack2 = setup("/player/gatuno_frenteatk_2", gp.tileSize, gp.tileSize * 2);
+            leftattack1 = setup("/player/gatuno_esquerdaatk_1", gp.tileSize *2, gp.tileSize);
+            leftattack2 = setup("/player/gatuno_esquerdaatk_2", gp.tileSize*2, gp.tileSize);
+            rightattack1 = setup("/player/gatuno_direitaatk_1", gp.tileSize*2, gp.tileSize);
+            rightattack2 = setup("/player/gatuno_direitaatk_2", gp.tileSize*2, gp.tileSize);
+        }
+        if (currentMagicatk.type == Entity.type_magicBreak){
+            upattack1 = setup("/player/gatuno_costasb_2", gp.tileSize, gp.tileSize * 2);
+            upattack2 = setup("/player/gatuno_costasb_3", gp.tileSize, gp.tileSize * 2);
+            downattack1 = setup("/player/gatuno_frenteb_2", gp.tileSize, gp.tileSize * 2);
+            downattack2 = setup("/player/gatuno_frenteb_3", gp.tileSize, gp.tileSize * 2);
+            leftattack1 = setup("/player/gatuno_esquerdab_2", gp.tileSize *2, gp.tileSize);
+            leftattack2 = setup("/player/gatuno_esquerdab_3", gp.tileSize*2, gp.tileSize);
+            rightattack1 = setup("/player/gatuno_direitab_2", gp.tileSize*2, gp.tileSize);
+            rightattack2 = setup("/player/gatuno_direitab_3", gp.tileSize*2, gp.tileSize);
+        }
+
     }
 
     public void setPosition(int x, int y) {
@@ -156,7 +170,7 @@ public class Player extends Entity {
         if (spriteCounter<=5){
             spriteNum =1;
         }
-        if (spriteCounter>5 && spriteCounter<=25){
+        if (spriteCounter>10 && spriteCounter<=35){
             spriteNum =2;
             int currentWorldX = worldX;
             int currentWorldY = worldY;
@@ -191,7 +205,7 @@ public class Player extends Entity {
             solidArea.width = solidAreaWidth;
             solidArea.height = solidAreaHeight;
         }
-        if (spriteCounter>25){
+        if (spriteCounter>35){
             spriteNum =1;
             spriteCounter = 0;
         }
@@ -239,8 +253,24 @@ public class Player extends Entity {
     }
 
     public void damagetItems(int index) {
-        if (index != 999 && gp.tItens[index].destructible == true){
+        if (index != 999 && gp.tItens[index].destructible && gp.tItens[index].isCorrectMagic(this)){
+            if (gp.tItens[index].name == "plua"){
+                Inventory.add(new Obj_AmuletoLua(gp));
+            }
+
             gp.tItens[index] = null;
+        }
+
+    }
+
+    public void selectItem(){
+        int itemIndex = gp.ui.getItemIndexOnSlot();
+        if (itemIndex < Inventory.size()){
+            Entity selectedItem = Inventory.get(itemIndex);
+            if(selectedItem.type == Entity.type_magicAtk || selectedItem.type == Entity.type_magicBreak){
+                currentMagicatk = selectedItem;
+                getAttackImage();
+            }
         }
     }
 
