@@ -13,6 +13,6 @@ public class Obj_AtkToxina extends Entity {
         name = "atktoxina";
         down1 = setup("/objects/ataque_toxina", gp.tileSize, gp.tileSize);
 
-        description = "Habilidade Principal: \nToxína Nevoeira";
+        description = "Habilidade Principal: \nToxína da Morte";
     }
 }
