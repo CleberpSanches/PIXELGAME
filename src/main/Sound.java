@@ -11,11 +11,13 @@ public class Sound {
     Clip clip;
     URL soundURL[] = new URL[30];
     private boolean isPlaying = false;
+    int volumeScale= 3;
+    float volume;
 
     public Sound(){
         soundURL[0] = getClass().getResource("/sound/menusong1.wav");
         soundURL[1] = getClass().getResource("/sound/lavastage.wav");
-        soundURL[2] = getClass().getResource("/sound/lavastage.wav");
+        soundURL[2] = getClass().getResource("/sound/menuup.wav");
     }
 
     public void setFile( int i){

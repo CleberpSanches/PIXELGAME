@@ -30,6 +30,8 @@ public class GamePanel extends JPanel implements Runnable {
     public  int maxWorldRow = 50;
     public final int maxMap = 10;
     public int currentMap = 0;
+    public Sound music;
+    public Sound se;
 
     int FPS = 60;
 
@@ -65,6 +67,8 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel() {
         this.player = new Player(this, input);
         tileManager = new TileManager(this);
+        music = new Sound();
+        se = new Sound();
         this.setPreferredSize(new Dimension(1024, 768));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
@@ -150,7 +154,6 @@ public class GamePanel extends JPanel implements Runnable {
             } else if (gameState == pauseState) {
 
             }
-
             previousState = gameState;
         }
 
@@ -247,9 +250,9 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void playSE(int i){
-
-        sound.setFile(i);
-        sound.play();
+        se.setFile(i);
+        se.stop();
+        se.play();
     }
 
 

@@ -24,11 +24,12 @@ public class EventHandler {
         if(hit(2, 24, "left") == true){
             teleport();
         }
+
         if (gp.currentMap == 0) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 24 && tileY == 29) {
+            if (tileX == 25 && tileY == 29) {
                 teleportPlayer(1, 26, 28);
             }
         }
@@ -42,16 +43,14 @@ public class EventHandler {
             }
         }
 
-        //vou fazer uma lista com os lugares dos spawn point amanhã <3
-//
-//        if (gp.currentMap == 2) {
-//            int tileX = gp.player.worldX / gp.tileSize;
-//            int tileY = gp.player.worldY / gp.tileSize;
-//
-//            if (tileX == 12 && tileY == 24) {
-//                teleportPlayer(3, 25, 36);
-//            }
-//        }
+        if (gp.currentMap == 2) {
+            int tileX = gp.player.worldX / gp.tileSize;
+            int tileY = gp.player.worldY / gp.tileSize;
+
+            if (tileX == 12 && tileY == 24) {
+                teleportPlayer(3, 25, 36);
+            }
+        }
 //
 //        if (gp.currentMap == 3) {
 //            int tileX = gp.player.worldX / gp.tileSize;

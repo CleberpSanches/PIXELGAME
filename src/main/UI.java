@@ -17,9 +17,13 @@ public class UI {
     public boolean messageOn = false;
     public String currentDialogue;
     public boolean gameFinished = false;
+    boolean pauseJustOpened = true;
+
 
     int slotCol = 0;
     int slotRow = 0;
+
+    int subState = 0;
 
     public int commandNum = 0;
 
@@ -93,17 +97,7 @@ public class UI {
 
     }
 
-    public void drawSubWindow(int x, int y, int width, int height){
-        Color c = new Color(0, 0, 0, 175);
-        g2.setColor(c);
-        g2.fillRoundRect(x, y, width, height, 35, 35);
-
-        c = new Color(255,255,255);
-        g2.setColor(c);
-        g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(x+5, y+5 , width-10, height-10, 25, 25);
-    }
-
+    //TITLE SCREEN
     public void drawTitleScreen() {
         // LOAD IMAGES
         BufferedImage menuarrow = null;
@@ -141,19 +135,164 @@ public class UI {
         }
     }
 
-    public void drawPauseScreen(){
-        g2.setColor(new Color(0, 0, 0, 150));
-        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
-        g2.setFont(dotGothic16);
-        g2.setColor(Color.WHITE);
 
-        String text = "PAUSE";
-        int x = getXforCenterText(text);
-        int y = gp.screenHeight/2;
 
-        g2.drawString(text, x, y);
+    //PAUSE SCREEM
+    public void drawSubWindow(int x, int y, int width, int height){
+        Color c = new Color(0, 0, 0, 175);
+        g2.setColor(c);
+        g2.fillRoundRect(x, y, width, height, 35, 35);
+
+        c = new Color(255,255,255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x+5, y+5 , width-10, height-10, 25, 25);
     }
 
+    public void drawPauseScreen(){
+        if (pauseJustOpened) {
+            gp.keyH.enterPressed = false;
+            pauseJustOpened = false;
+        }
+
+        g2.setColor(new Color(0, 0, 0, 150));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        g2.setFont(dotGothic16.deriveFont(64f));
+        g2.setColor(Color.WHITE);
+
+        //SUBWINDOW
+        int frameX = gp.tileSize*4;
+        int frameY = gp.tileSize*2;
+        int frameWidth = gp.tileSize*8;
+        int frameHeight = gp.tileSize*8;
+
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+        switch (subState){
+            case 0: options_top(frameX, frameY);
+            break;
+            case 1:
+            break;
+            case 2: options_control(frameX, frameY);
+            break;
+        }
+    }
+
+    public void options_top(int frameX, int frameY) {
+        int textX;
+        int textY;
+
+        BufferedImage menuarrow = null;
+
+        try {
+            menuarrow = ImageIO.read(getClass().getResourceAsStream("/buttons/menuarrow.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //MENUPAUSE TITLE
+        String text = "MENU";
+        textX = getXforCenterText(text);
+        textY = frameY+96;
+        g2.drawString(text, textX, textY);
+
+
+        //CONTROL
+        g2.setFont(dotGothic16.deriveFont(48f));
+        textY += gp.tileSize+64;
+        textX = getXforCenterText(text)-96;
+        g2.drawString("CONTROLES", textX, textY);
+        if(gp.ui.commandNum == 0){
+            g2.drawImage(menuarrow, textX-48, textY-24, null);
+            if (gp.keyH.enterPressed == true){
+                subState = 2;
+                gp.ui.commandNum = 0;
+                gp.keyH.enterPressed = false;
+            }
+        }
+
+
+        //EXIT
+        textY += gp.tileSize+32;
+        textX = getXforCenterText(text)-96;
+        g2.drawString("SAIR", textX, textY);
+        if(gp.ui.commandNum == 1){
+            g2.drawImage(menuarrow, textX-48, textY-24 , null);
+        }
+
+        //GET BACK TO THE GAME
+        g2.setFont(dotGothic16.deriveFont(56f));
+        String text1 = "VOLTAR";
+        textX = getXforCenterText(text1);
+        textY = gp.tileSize*9;
+        g2.drawString(text1, textX, textY);
+        if(gp.ui.commandNum == 2){
+            g2.drawImage(menuarrow, textX-48, textY-24 , null);
+            if(gp.keyH.enterPressed == true){
+                subState = 0;
+                gp.ui.commandNum = 0;
+                gp.keyH.enterPressed = false;
+            }
+        }
+
+    }
+
+    public void options_control(int frameX, int frameY){
+
+        int textX;
+        int textY;
+
+        BufferedImage menuarrow = null;
+
+        try {
+            menuarrow = ImageIO.read(getClass().getResourceAsStream("/buttons/menuarrow.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //TITTLE CONTROL SCREEN
+        g2.setFont(dotGothic16.deriveFont(32f));
+        String text = "CONTROLES";
+        textX = getXforCenterText(text);
+        textY = frameY + gp.tileSize;
+        g2.drawString(text, textX, textY);
+
+        //CONTROLS
+        g2.setFont(dotGothic16.deriveFont(18f));
+        textX = frameX + gp.tileSize;
+        textY += frameY-128;
+        g2.drawString("Mover", textX, textY+=gp.tileSize);
+        g2.drawString("Poder", textX, textY+=gp.tileSize);
+        g2.drawString("Correr", textX, textY+=gp.tileSize);
+        g2.drawString("Inventário", textX, textY+=gp.tileSize);
+        g2.drawString("Tela de Personagem", textX, textY+=gp.tileSize);
+        g2.drawString("Menu", textX, textY+=gp.tileSize);
+
+        textX = frameX + gp.tileSize*6;
+        textY = frameY + gp.tileSize*2;
+        g2.drawString("WASD", textX, textY); textY += gp.tileSize;
+        g2.drawString("ESPAÇO", textX, textY); textY += gp.tileSize;
+        g2.drawString("SHIFT+WASD", textX, textY); textY += gp.tileSize;
+        g2.drawString("I", textX, textY); textY += gp.tileSize;
+        g2.drawString("C", textX, textY); textY += gp.tileSize;
+        g2.drawString("P ou ESC", textX, textY); textY += gp.tileSize;
+
+        //VOLTAR
+        g2.setFont(dotGothic16.deriveFont(48f));
+        textX = frameX + gp.tileSize*3;
+        textY = frameY + gp.tileSize*9;
+        g2.drawString("VOLTAR", textX, textY);
+        if (commandNum == 0){
+            g2.drawImage(menuarrow, textX-48, textY-24 , null);
+            if(gp.keyH.enterPressed == true){
+                subState = 0;
+                gp.ui.commandNum = 0;
+                gp.keyH.enterPressed = false;
+            }
+        }
+    }
+
+    //PLAY SCREEN
     public void drawPlayScreen(){
 
     }
@@ -164,6 +303,7 @@ public class UI {
         final int frameWidth;
         final int frameHeight;
     }
+
     private void drawInventory() {
         final int frameX= (int) (gp.tileSize *8.5);
         final int frameY= (int) (gp.tileSize *8.5);
