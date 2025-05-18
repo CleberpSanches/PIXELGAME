@@ -13,21 +13,25 @@ public class NPC_Sapita extends Entity{
         super(gp);
         direction = "down1";
         speed = 0;
+        dialogueSet = -1;
         getImage();
         setDialogue();
     }
 
     public void getImage() {
-        down1 = setup("/npc/sapeta1");
-        down2 = setup("/npc/sapeta2");
-        down3 = setup("/npc/sapeta3");
-        down4 = setup("/npc/sapeta4");
+        down1 = setup("/npc/sapeta1", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/sapeta2", gp.tileSize, gp.tileSize);
+        down3 = setup("/npc/sapeta3", gp.tileSize, gp.tileSize);
+        down4 = setup("/npc/sapeta4", gp.tileSize, gp.tileSize);
 
     }
 
     public void setDialogue(){
-        dialogues[0] = "Hello";
-        dialogues[1] = "Hellooooooooooooooooooooooooooooooooooooo/noooooooooooooooooooooooooooo";
+        dialogues[0][0] = "OIIIIIIIII";
+        dialogues[0][1] = "ESTAMOS SOFRENDO UMA CENSURA";
+
+        dialogues[1][0] = "ISSE KRIEN SILERS";
+        dialogues[1][1] = "OLD";
     }
 
     public void setAction(){
@@ -53,7 +57,12 @@ public class NPC_Sapita extends Entity{
     }
 
     public void speak(){
-        super.speak();
+        super.startDialogue(this, dialogueSet);
+        dialogueSet++;
+
+        if(dialogues[dialogueSet][0] == null){
+            dialogueSet = 0;
+        }
     }
 
 }

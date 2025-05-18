@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public abstract class Entity {
+    public Entity currentMagicatk;
+    public Entity currentMagicBreak;
     GamePanel gp;
     public int worldX;
     public int worldY;
@@ -28,19 +30,38 @@ public abstract class Entity {
     public BufferedImage right2;
     public BufferedImage left1;
     public BufferedImage left2;
+    public BufferedImage upattack1;
+    public BufferedImage upattack2;
+    public BufferedImage downattack1;
+    public BufferedImage downattack2;
+    public BufferedImage downattack3;
+    public BufferedImage downattack4;
+    public BufferedImage rightattack1;
+    public BufferedImage rightattack2;
+    public BufferedImage leftattack1;
+    public BufferedImage leftattack2;
     public String direction = "down1";
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public Rectangle solidArea = new Rectangle(0, 0, 64, 64);
+    public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn=false;
     public int actionLookCounter = 0;
-    String dialogues[] = new String[20];
-    int dialogueIndex;
+    public String dialogues[][] = new String[20][20];
+    public int dialogueIndex = 0;
+    public int dialogueSet = 0;
     public BufferedImage image;
     public String name;
     public boolean collision = false;
 
+    //types
+    public int type;
+    static final int type_player = 0;
+    static final int type_npc = 1;
+    static final int type_monster = 2;
+    public static final int type_magicAtk = 3;
+    public static final int type_magicBreak = 4;
 
     //item
     public String description = "";
@@ -55,12 +76,13 @@ public abstract class Entity {
     }
 
     public void speak(){
-        if(dialogues[dialogueIndex] == null)
-        {
-            dialogueIndex=0;
-        }
-        gp.ui.currentDialogue = dialogues[dialogueIndex];
-        dialogueIndex++;
+
+    }
+
+    public void startDialogue(Entity entity, int setNum){
+        gp.gameState = gp.dialogueState;
+        gp.ui.npc = entity;
+        dialogueSet = setNum;
     }
 
     public void update(){
@@ -105,14 +127,14 @@ public abstract class Entity {
 
     }
 
-    public BufferedImage setup(String imagePath)
+    public BufferedImage setup(String imagePath, int width, int height)
     {
         ToolBox tBox = new ToolBox();
         BufferedImage image = null;
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
-            image = tBox.scaleImage(image, gp.tileSize, gp.tileSize);
+            image = tBox.scaleImage(image, width, height);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

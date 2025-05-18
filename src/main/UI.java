@@ -1,5 +1,7 @@
 package main;
 
+import entity.Entity;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -22,6 +24,10 @@ public class UI {
 
     int slotCol = 0;
     int slotRow = 0;
+    public Entity npc;
+    int charIndex = 0;
+    String combinedText = "";
+
 
     int subState = 0;
 
@@ -90,9 +96,42 @@ public class UI {
         x += gp.tileSize;
         y += gp.tileSize;
 
-        for(String line : currentDialogue.split("/n")) {
-            g2.drawString(line, x, y);
-            y+=40;
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null){
+
+           // currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+
+            char character[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
+
+            if (charIndex < character.length){
+                String s = String.valueOf(character[charIndex]);
+                combinedText = combinedText + s;
+                currentDialogue = combinedText;
+                charIndex++;
+            }
+
+            if (gp.keyH.enterPressed == true){
+                charIndex = 0;
+                combinedText = "";
+                if (gp.gameState == gp.dialogueState){
+                    npc.dialogueIndex++;
+                    gp.keyH.enterPressed = false;
+                }
+            }
+        }
+        else {
+            npc.dialogueIndex = 0;
+
+            if(gp.gameState == gp.dialogueState)
+            {
+                gp.gameState = gp.playState;
+            }
+        }
+
+        if(currentDialogue != null) {
+            for(String line : currentDialogue.split("/n")) {
+                g2.drawString(line, x, y);
+                y += 40;
+            }
         }
 
     }
@@ -318,6 +357,22 @@ public class UI {
         int slotX = slotXstart;
         int slotY = slotYstart;
 
+        for (int i = 0; i < gp.player.Inventory.size(); i++) {
+
+            if(gp.player.Inventory.get(i) == gp.player.currentMagicatk){
+                g2.setColor(new Color(178, 159, 255));
+                g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
+            }
+
+            g2.drawImage(gp.player.Inventory.get(i).down1, slotX, slotY, null);
+            slotX +=gp.tileSize;
+
+            if (i == 6) {
+                slotX = slotXstart;
+                slotY += gp.tileSize;
+            }
+        }
+
         //selector
         int cursorX = slotXstart + (gp.tileSize * slotCol);
         int cursorY = slotYstart + (gp.tileSize * slotRow);
@@ -328,7 +383,35 @@ public class UI {
         g2.setStroke(new BasicStroke(2));
         g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10 , 10);
 
+        //description screen
+        int dframeX = frameX;
+        int dframeY = frameY - frameHeight;
+        int dframeWidth = frameWidth;
+        int dframeHeight = gp.tileSize*2;
+
+        //desc text
+        int textX = dframeX + 20;
+        int textY = dframeY + gp.tileSize;
+        g2.setFont(g2.getFont().deriveFont(28F ));
+
+        int itemIndex = getItemIndexOnSlot();
+
+        if (itemIndex < gp.player.Inventory.size())
+        {
+            drawSubWindow(dframeX, dframeY, dframeWidth, dframeHeight);
+
+            for (String line: gp.player.Inventory.get(itemIndex).description.split("\n")) {
+                g2.drawString(line, textX, textY);
+                textY+=32;
+            }
+        }
+
     }
+    public  int getItemIndexOnSlot(){
+        int itemIndex = slotCol + (slotRow * 7);
+        return itemIndex;
+    }
+
     public int getXforCenterText(String text){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2 - length/2;

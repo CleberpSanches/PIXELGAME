@@ -12,8 +12,7 @@ import javax.swing.*;
 
 import Interface.Command;
 import Interface.PlayerInput;
-import Objects.Obj_CaliceVento;
-import Objects.Obj_ChaveCipestre;
+import Objects.*;
 import main.GamePanel;
 import Adapter.KeyHandlerAdapter;
 import main.ToolBox;
@@ -25,7 +24,6 @@ public class Player extends Entity {
     public final int screenY;
     public ArrayList<Entity> Inventory = new ArrayList<>();
     public final int maxInventorySize = 15;
-    int hasCalice= 0;
 
 
 
@@ -40,8 +38,13 @@ public class Player extends Entity {
         solidArea = new Rectangle(8, 55,40,20);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
+
+        attackArea.width = 68;
+        attackArea.height = 68;
+
         this.setDefaultValues();
         this.getPlayerImage();
+        getAttackImage();
         setItems();
 
     }
@@ -51,23 +54,50 @@ public class Player extends Entity {
         this.worldY = gp.tileSize * 24;
         this.speed = 4;
         this.direction = "left";
+
+        currentMagicatk = new Obj_AtkToxina(gp);
     }
 
 
     public void setItems() {
-        //Inventory.add(new Obj_CaliceVento(gp));
+        Inventory.add(currentMagicatk);
 
+        Inventory.add(new Obj_AtkToxina2(gp));
     }
 
     public void getPlayerImage() {
-            up1 = setup("/player/gatuno_costas_1");
-            up2 = setup("/player/gatuno_costas_2");
-            down1 = setup("/player/gatuno_frente_1");
-            down2 = setup("/player/gatuno_frente_2");
-            left1 = setup("/player/gatuno_esquerda_1");
-            left2 = setup("/player/gatuno_esquerda_2");
-            right1 = setup("/player/gatuno_direita_1");
-            right2 = setup("/player/gatuno_direita_2");
+            up1 = setup("/player/gatuno_costas_1", gp.tileSize, gp.tileSize);
+            up2 = setup("/player/gatuno_costas_2", gp.tileSize, gp.tileSize);
+            down1 = setup("/player/gatuno_frente_1", gp.tileSize, gp.tileSize);
+            down2 = setup("/player/gatuno_frente_2", gp.tileSize, gp.tileSize);
+            left1 = setup("/player/gatuno_esquerda_1", gp.tileSize, gp.tileSize);
+            left2 = setup("/player/gatuno_esquerda_2", gp.tileSize, gp.tileSize);
+            right1 = setup("/player/gatuno_direita_1", gp.tileSize, gp.tileSize);
+            right2 = setup("/player/gatuno_direita_2", gp.tileSize, gp.tileSize);
+    }
+
+    public void getAttackImage() {
+        if (currentMagicatk.type == Entity.type_magicAtk){
+            upattack1 = setup("/player/gatuno_costasatk_1", gp.tileSize, gp.tileSize * 2);
+            upattack2 = setup("/player/gatuno_costasatk_2", gp.tileSize, gp.tileSize * 2);
+            downattack1 = setup("/player/gatuno_frenteatk_1", gp.tileSize, gp.tileSize * 2);
+            downattack2 = setup("/player/gatuno_frenteatk_2", gp.tileSize, gp.tileSize * 2);
+            leftattack1 = setup("/player/gatuno_esquerdaatk_1", gp.tileSize *2, gp.tileSize);
+            leftattack2 = setup("/player/gatuno_esquerdaatk_2", gp.tileSize*2, gp.tileSize);
+            rightattack1 = setup("/player/gatuno_direitaatk_1", gp.tileSize*2, gp.tileSize);
+            rightattack2 = setup("/player/gatuno_direitaatk_2", gp.tileSize*2, gp.tileSize);
+        }
+        if (currentMagicatk.type == Entity.type_magicBreak){
+            upattack1 = setup("/player/gatuno_costasb_2", gp.tileSize, gp.tileSize * 2);
+            upattack2 = setup("/player/gatuno_costasb_3", gp.tileSize, gp.tileSize * 2);
+            downattack1 = setup("/player/gatuno_frenteb_2", gp.tileSize, gp.tileSize * 2);
+            downattack2 = setup("/player/gatuno_frenteb_3", gp.tileSize, gp.tileSize * 2);
+            leftattack1 = setup("/player/gatuno_esquerdab_2", gp.tileSize *2, gp.tileSize);
+            leftattack2 = setup("/player/gatuno_esquerdab_3", gp.tileSize*2, gp.tileSize);
+            rightattack1 = setup("/player/gatuno_direitab_2", gp.tileSize*2, gp.tileSize);
+            rightattack2 = setup("/player/gatuno_direitab_3", gp.tileSize*2, gp.tileSize);
+        }
+
     }
 
     public void setPosition(int x, int y) {
@@ -76,7 +106,10 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (input.upButtonPressed()|| input.downButtonPressed()|| input.leftButtonPressed()|| input.rightButtonPressed()) {
+        if (input.qButtonPressed()){
+            attacking();
+        }
+        else if (input.upButtonPressed()|| input.downButtonPressed()|| input.leftButtonPressed()|| input.rightButtonPressed()||input.enterButtonPressed()) {
             if (input.upButtonPressed()) {
                 this.direction = "up";
 
@@ -103,16 +136,21 @@ public class Player extends Entity {
             int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
 
+            //tile items collision
+            int tTileIndex = gp.cChecker.checkEntity(this, gp.tItens);
+
             gp.eHandler.checkEvent();
 
             //without collision the command movement runs
-            if (collisionOn == false) {
+            if (!collisionOn && !input.enterButtonPressed()) {
 
                 for (Command command : commands) {
                     command.execute(this);
                 }
 
             }
+            gp.keyH.enterPressed = false;
+
             ++this.spriteCounter;
             if (this.spriteCounter > 10) {
                 if (this.spriteNum == 1) {
@@ -126,6 +164,53 @@ public class Player extends Entity {
         }
 
     }
+
+    private void attacking() {
+        spriteCounter++;
+        if (spriteCounter<=5){
+            spriteNum =1;
+        }
+        if (spriteCounter>10 && spriteCounter<=35){
+            spriteNum =2;
+            int currentWorldX = worldX;
+            int currentWorldY = worldY;
+            int solidAreaWidth = solidArea.width;
+            int solidAreaHeight = solidArea.height;
+
+            //ajuste para a posição ser a da magia de ataque
+            switch (direction){
+                case"up":
+                    worldY -=attackArea.height;
+                    break;
+                case"down":
+                    worldY +=gp.tileSize;
+                    break;
+                case"left":
+                    worldX -=attackArea.width;
+                    break;
+                case"right":
+                    worldX +=gp.tileSize;
+                    break;
+            }
+            // a area do ataque vira solida
+            solidArea.width = attackArea.width;
+            solidArea.height = attackArea.height;
+            //para o futuro monstro
+            //int monsterIndex = gp.cChecker.checkEntity(this,gp.tItens);
+            int tItemsIndex = gp.cChecker.checkEntity(this, gp.tItens);
+            damagetItems(tItemsIndex);
+            //de volta para o original
+            worldX = currentWorldX;
+            worldY = currentWorldY;
+            solidArea.width = solidAreaWidth;
+            solidArea.height = solidAreaHeight;
+        }
+        if (spriteCounter>35){
+            spriteNum =1;
+            spriteCounter = 0;
+        }
+    }
+
 
     public void pickUpObject(int index){
       if (index != 999)
@@ -161,45 +246,102 @@ public class Player extends Entity {
         if (i != 999) {
 
             if(gp.keyH.enterPressed == true){
-                gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
             }
         }
         gp.keyH.enterPressed = false;
     }
 
+    public void damagetItems(int index) {
+        if (index != 999 && gp.tItens[index].destructible && gp.tItens[index].isCorrectMagic(this)){
+            if (gp.tItens[index].name == "plua"){
+                Inventory.add(new Obj_AmuletoLua(gp));
+            }
+
+            gp.tItens[index] = null;
+        }
+
+    }
+
+    public void selectItem(){
+        int itemIndex = gp.ui.getItemIndexOnSlot();
+        if (itemIndex < Inventory.size()){
+            Entity selectedItem = Inventory.get(itemIndex);
+            if(selectedItem.type == Entity.type_magicAtk || selectedItem.type == Entity.type_magicBreak){
+                currentMagicatk = selectedItem;
+                getAttackImage();
+            }
+        }
+    }
+
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
+        int tempScreenX = screenX;
+        int tempScreenY = screenY;
         switch (this.direction) {
             case "up":
-                if (this.spriteNum == 1) {
-                    image = up1;
-                } else if (this.spriteNum == 2) {
-                    image = up2;
+                if (!input.qButtonPressed()){
+                    if (this.spriteNum == 1) {
+                        image = up1;
+                    } else if (this.spriteNum == 2) {
+                        image = up2;
+                    }
+                } else {
+                    tempScreenY = screenY - gp.tileSize;
+                    if (this.spriteNum == 1) {
+                        image = upattack1;
+                    } else if (this.spriteNum == 2) {
+                        image = upattack2;
+                    }
                 }
                 break;
             case "down":
-                if (this.spriteNum == 1) {
-                    image = down1;
-                } else if (this.spriteNum == 2) {
-                    image = down2;
+                if (!input.qButtonPressed()){
+                    if (this.spriteNum == 1) {
+                        image = down1;
+                    } else if (this.spriteNum == 2) {
+                        image = down2;
+                    }
+                } else {
+                    if (this.spriteNum == 1) {
+                        image = downattack1;
+                    } else if (this.spriteNum == 2) {
+                        image = downattack2;
+                    }
                 }
                 break;
             case "left":
-                if (this.spriteNum == 1) {
-                    image = left1;
-                } else if (this.spriteNum == 2) {
-                    image = left2;
+                if (!input.qButtonPressed()){
+                    if (this.spriteNum == 1) {
+                        image = left1;
+                    } else if (this.spriteNum == 2) {
+                        image = left2;
+                    }
+                } else {
+                    tempScreenX = screenX - gp.tileSize;
+                    if (this.spriteNum == 1) {
+                        image = leftattack1;
+                    } else if (this.spriteNum == 2) {
+                        image = leftattack2;
+                    }
                 }
                 break;
             case "right":
-                if (this.spriteNum == 1) {
-                    image = right1;
-                } else if (this.spriteNum == 2) {
-                    image = right2;
+                if (!input.qButtonPressed()){
+                    if (this.spriteNum == 1) {
+                        image = right1;
+                    } else if (this.spriteNum == 2) {
+                        image = right2;
+                    }
+                } else {
+                    if (this.spriteNum == 1) {
+                        image = rightattack1;
+                    } else if (this.spriteNum == 2) {
+                        image = rightattack2;
+                    }
                 }
         }
 
-        g2.drawImage(image, screenX, screenY, 64, 64, null);
+        g2.drawImage(image, tempScreenX, tempScreenY, null);
     }
 }

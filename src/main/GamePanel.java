@@ -3,6 +3,7 @@ package main;
 
 import Adapter.KeyHandlerAdapter;
 import Interface.PlayerInput;
+import Tile_Items.TileItems;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
@@ -53,7 +54,7 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     public Entity npc[] = new Entity[5];
     ArrayList<Entity> entityList = new ArrayList<>();
-
+    public TileItems tItens[] = new TileItems[50];
 
     //GAME STATE
     public int gameState;
@@ -104,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         asetter.setObject();
         asetter.setNPC();
+        asetter.setTItens();
         gameState = titleState;
         previousState = titleState;
         playMusic(0);
@@ -166,6 +168,12 @@ public class GamePanel extends JPanel implements Runnable {
                     npc[i].update();
                 }
             }
+
+            for (int i = 0; i < tItens.length; i++) {
+                if (tItens[i] != null) {
+                    tItens[i].update();
+                }
+            }
         }
     }
 
@@ -191,6 +199,12 @@ public class GamePanel extends JPanel implements Runnable {
             tileM.draw(g2);
 
             entityList.add(player);
+            for (int i = 0; i < tItens.length; i++) {
+                if (tItens[i] != null){
+                    tItens[i].draw(g2);
+                }
+
+            }
 
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null){
@@ -209,7 +223,7 @@ public class GamePanel extends JPanel implements Runnable {
             Collections.sort(entityList, new Comparator<Entity>() {
                 @Override
                 public int compare(Entity e1, Entity e2) {
-                    int result = Integer.compare(e1.worldY, e1.worldY);
+                    int result = Integer.compare(e1.worldY, e2.worldY);
                     return result;
                 }
             });
@@ -218,9 +232,7 @@ public class GamePanel extends JPanel implements Runnable {
                 entityList.get(i).draw(g2);
             }
 
-            for (int i = 0; i < entityList.size(); i++) {
-                entityList.remove(i);
-            }
+            entityList.clear();
 
             ui.draw(g2);
         }

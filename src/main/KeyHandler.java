@@ -10,6 +10,7 @@ public class KeyHandler implements KeyListener {
     public boolean rightPressed;
     public boolean shiftPressed;
     public boolean enterPressed;
+    public boolean qPressed;
     boolean checkDrawTime;
     GamePanel gp;
 
@@ -105,6 +106,9 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_SHIFT) {
                 this.shiftPressed = true;
             }
+            if (code == KeyEvent.VK_Q) {
+            this.qPressed = true;
+            }
 
             if (code == KeyEvent.VK_C) {
                 gp.gameState = gp.characterState;
@@ -168,7 +172,7 @@ public class KeyHandler implements KeyListener {
     public void dialogueState(int code){
         if (code == KeyEvent.VK_ENTER)
         {
-            gp.gameState = gp.playState;
+            enterPressed = true;
         }
     }
 
@@ -205,7 +209,10 @@ public class KeyHandler implements KeyListener {
             }
 
         }
-
+        if (code == KeyEvent.VK_ENTER)
+        {
+            gp.player.selectItem();
+        }
     }
 
     public void keyReleased(KeyEvent e) {
@@ -228,6 +235,9 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_SHIFT) {
             this.shiftPressed = false;
+        }
+        if (code == KeyEvent.VK_Q) {
+            this.qPressed = false;
         }
     }
 }

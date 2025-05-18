@@ -9,6 +9,8 @@ public interface PlayerInput {
     boolean downButtonPressed();
     boolean leftButtonPressed();
     boolean rightButtonPressed();
+    boolean enterButtonPressed();
+    boolean qButtonPressed();
     List<Command> getActiveCommands(Player player);
 
     List<Command> getCommands(Player player);
