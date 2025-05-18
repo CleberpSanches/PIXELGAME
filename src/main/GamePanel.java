@@ -75,7 +75,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(this.keyH);
         this.setFocusable(true);
-
         setPlayerSpawn();
     }
 
@@ -89,17 +88,13 @@ public class GamePanel extends JPanel implements Runnable {
         int playerTileY = player.worldY / tileSize;
 
         System.out.println("Player tile: " + playerTileX + ", " + playerTileY);
-
-        if (playerTileX == 24 && playerTileY == 27) {
-            teleportPlayer(1);
-        }
     }
 
     public void setPlayerSpawn() {
         int spawnX = tileManager.spawnPoints[currentMap][0];
         int spawnY = tileManager.spawnPoints[currentMap][1];
 
-        player.setPosition(spawnX * tileSize, spawnY * tileSize); // Multiplicamos pelo tamanho do tile
+        player.setPosition(spawnX * tileSize, spawnY * tileSize);
     }
 
     public void setupGame(){
@@ -109,7 +104,6 @@ public class GamePanel extends JPanel implements Runnable {
         gameState = titleState;
         previousState = titleState;
         playMusic(0);
-
     }
 
     public void startGameThread() {
@@ -187,9 +181,6 @@ public class GamePanel extends JPanel implements Runnable {
         {
             drawStart = System.nanoTime();
         }
-
-
-        //prestar atenção aqui que provavelmente é o que está fazendo não carregar os itens
 
         //TITLE SCREEN
         if(gameState == titleState){

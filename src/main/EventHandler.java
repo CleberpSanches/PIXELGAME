@@ -21,11 +21,14 @@ public class EventHandler {
     }
 
     public void checkEvent(){
+
         if (gp.currentMap == 0) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-
+            if (tileX == 25 && tileY == 29 || tileX == 24 && tileY == 29) {
+                teleportPlayer(1, 26, 28);
+            }
         }
 
         if (gp.currentMap == 1) {
@@ -50,8 +53,8 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 25 && tileY == 16 || tileX == 24 && tileY == 16) {
-                teleportPlayer(4, 10, 41);
+            if (tileX == 24 && tileY == 17 || tileX == 24 && tileY == 16) {
+                teleportPlayer(4, 10, 44);
             }
         }
 
@@ -60,7 +63,7 @@ public class EventHandler {
             int tileY = gp.player.worldY / gp.tileSize;
 
             if (tileX == 16 && tileY == 27) {
-                teleportPlayer(5, 7, 44);
+                teleportPlayer(5, 7, 43);
             }
         }
     }
@@ -70,4 +73,36 @@ public class EventHandler {
         gp.player.worldX = tileX * gp.tileSize;
         gp.player.worldY = tileY * gp.tileSize;
     }
+
+
+    private boolean hit(int eventCol, int eventRow, String reqDirection) {
+        boolean hit = false;
+
+        gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
+        gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
+        eventRect.x = eventCol * gp.tileSize + eventRect.x;
+        eventRect.y = eventRow * gp.tileSize + eventRect.y;
+
+        if(gp.player.solidArea.intersects(eventRect))
+        {
+            if(gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any"))
+            {
+                hit = true;
+            }
+        }
+
+        gp.player.solidArea.x = gp.player.solidAreaDefaultX;
+        gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+        eventRect.x = eventRectDefaultX;
+        eventRect.y = eventRectDefaultY;
+
+        return hit;
+    }
+
+    private void teleport() {
+        gp.player.worldX = gp.tileSize*2;
+        gp.player.worldY = gp.tileSize*26;
+    }
+
+
 }
