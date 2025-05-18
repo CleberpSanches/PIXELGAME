@@ -86,12 +86,14 @@ public class UI {
 
 
     private void drawDialogueScreen() {
+        //SUBWINDOW POSITION
         int x = gp.tileSize*2;
-        int y = gp.tileSize/2;
+        int y = gp.tileSize*8;
         int width = gp.screenWidth - (gp.tileSize*4);
         int height = (gp.tileSize*3);
         drawSubWindow(x,y,width,height);
 
+        //TEXT POSITION
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32));
         x += gp.tileSize;
         y += gp.tileSize;
