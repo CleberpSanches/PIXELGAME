@@ -19,10 +19,10 @@ public class NPC_Sapita extends Entity{
     }
 
     public void getImage() {
-        down1 = setup("/npc/sapeta1", gp.tileSize, gp.tileSize);
-        down2 = setup("/npc/sapeta2", gp.tileSize, gp.tileSize);
-        down3 = setup("/npc/sapeta3", gp.tileSize, gp.tileSize);
-        down4 = setup("/npc/sapeta4", gp.tileSize, gp.tileSize);
+        down1 = setup("/npc/NpcSapeta/sapeta1", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/NpcSapeta/sapeta2", gp.tileSize, gp.tileSize);
+        down3 = setup("/npc/NpcSapeta/sapeta3", gp.tileSize, gp.tileSize);
+        down4 = setup("/npc/NpcSapeta/sapeta4", gp.tileSize, gp.tileSize);
 
     }
 

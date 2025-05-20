@@ -66,6 +66,9 @@ public abstract class Entity {
     //item
     public String description = "";
 
+    //character placement
+    public int mapaOrigem = 0;
+
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
@@ -92,6 +95,10 @@ public abstract class Entity {
     }
 
     public void draw(Graphics2D g2) {
+        if (this.mapaOrigem != gp.currentMap) {
+            return;
+        }
+
         BufferedImage image = null;
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
@@ -120,6 +127,8 @@ public abstract class Entity {
                         image = down4;
                     }
             }
+
+
 
             g2.drawImage(image, screenX, screenY, 64, 64, null);
         }

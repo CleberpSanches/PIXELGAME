@@ -2,21 +2,22 @@ package entity;
 
 import main.GamePanel;
 
-public class NPC_Morceguita extends Entity{
-    public NPC_Morceguita(GamePanel gp) {
+public class Npc_Tigro extends Entity{
+
+    public Npc_Tigro(GamePanel gp) {
         super(gp);
         direction = "down1";
         speed = 0;
+        mapaOrigem = 2;
         getImage();
         setDialogue();
     }
 
     public void getImage() {
-        down1 = setup("/npc/NpcMorceguita/morceguita1", gp.tileSize, gp.tileSize);
-        down2 = setup("/npc/NpcMorceguita/morceguita2", gp.tileSize, gp.tileSize);
-        down3 = setup("/npc/NpcMorceguita/morceguita3", gp.tileSize, gp.tileSize);
-        down4 = setup("/npc/NpcMorceguita/morceguita4", gp.tileSize, gp.tileSize);
-
+        down1 = setup("/npc/NpcTigro/Tigro1", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/NpcTigro/Tigro2", gp.tileSize, gp.tileSize);
+        down3 = setup("/npc/NpcTigro/Tigro3", gp.tileSize, gp.tileSize);
+        down4 = setup("/npc/NpcTigro/Tigro3", gp.tileSize, gp.tileSize);
     }
 
     public void setDialogue(){

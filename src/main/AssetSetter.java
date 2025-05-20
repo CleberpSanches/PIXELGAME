@@ -4,6 +4,7 @@ import Objects.*;
 import Tile_Items.TI_PLua;
 import entity.NPC_Morceguita;
 import entity.NPC_Sapita;
+import entity.Npc_Tigro;
 
 public class AssetSetter {
     GamePanel gp;
@@ -58,6 +59,10 @@ public class AssetSetter {
         gp.npc[1] = new NPC_Morceguita(gp);
         gp.npc[1].worldX = 17 * gp.tileSize;
         gp.npc[1].worldY = 29 * gp.tileSize;
+
+        gp.npc[2] = new Npc_Tigro(gp);
+        gp.npc[2].worldX = 34 * gp.tileSize;
+        gp.npc[2].worldY = 26 * gp.tileSize;
     }
 
     public void setTItens(){
