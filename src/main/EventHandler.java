@@ -66,6 +66,15 @@ public class EventHandler {
                 teleportPlayer(5, 7, 43);
             }
         }
+
+        if (gp.currentMap == 5) {
+            int tileX = gp.player.worldX / gp.tileSize;
+            int tileY = gp.player.worldY / gp.tileSize;
+
+            if (tileX == 8 && tileY == 26) {
+                teleportPlayer(6, 24, 48);
+            }
+        }
     }
 
     public void teleportPlayer(int targetMap, int tileX, int tileY) {
