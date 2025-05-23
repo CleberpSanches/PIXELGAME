@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public abstract class Entity {
     public Entity currentMagicatk;
-    public Entity currentMagicBreak;
     GamePanel gp;
     public int worldX;
     public int worldY;
@@ -66,8 +65,6 @@ public abstract class Entity {
     //item
     public String description = "";
 
-    //character placement
-    public int mapaOrigem = 0;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -95,9 +92,6 @@ public abstract class Entity {
     }
 
     public void draw(Graphics2D g2) {
-        if (this.mapaOrigem != gp.currentMap) {
-            return;
-        }
 
         BufferedImage image = null;
         int screenX = worldX - gp.player.worldX + gp.player.screenX;

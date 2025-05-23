@@ -217,9 +217,9 @@ public class Player extends Entity {
         {
             if (Inventory.size() != maxInventorySize)
             {
-                Inventory.add(gp.obj[index]);
+                Inventory.add(gp.obj[gp.currentMap][index]);
             }
-            gp.obj[index] = null;
+            gp.obj[gp.currentMap][index] = null;
             transformItem();
         }
 
@@ -246,15 +246,15 @@ public class Player extends Entity {
         if (i != 999) {
 
             if(gp.keyH.enterPressed == true){
-                gp.npc[i].speak();
+                gp.npc[gp.currentMap][i].speak();
             }
         }
         gp.keyH.enterPressed = false;
     }
 
     public void damagetItems(int index) {
-        if (index != 999 && gp.tItens[index].destructible && gp.tItens[index].isCorrectMagic(this)){
-            if (gp.tItens[index].name == "plua"){
+        if (index != 999 && gp.tItens[gp.currentMap][index].destructible && gp.tItens[gp.currentMap][index].isCorrectMagic(this)){
+            if (gp.tItens[gp.currentMap][index].name == "plua"){
                 Inventory.add(new Obj_AmuletoLua(gp));
             }
 

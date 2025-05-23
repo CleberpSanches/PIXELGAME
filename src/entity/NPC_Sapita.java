@@ -13,6 +13,7 @@ public class NPC_Sapita extends Entity{
         super(gp);
         direction = "down1";
         speed = 0;
+
         dialogueSet = -1;
         getImage();
         setDialogue();

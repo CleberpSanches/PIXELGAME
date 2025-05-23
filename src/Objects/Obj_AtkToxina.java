@@ -9,6 +9,8 @@ public class Obj_AtkToxina extends Entity {
     {
         super(gp);
 
+        
+
         this.type = type_magicAtk;
         name = "atktoxina";
         down1 = setup("/objects/ataque_toxina", gp.tileSize, gp.tileSize);

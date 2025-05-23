@@ -6,6 +6,7 @@ public class NPC_Morceguita extends Entity{
     public NPC_Morceguita(GamePanel gp) {
         super(gp);
         direction = "down1";
+
         speed = 0;
         getImage();
         setDialogue();

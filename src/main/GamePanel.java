@@ -48,13 +48,13 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter asetter = new AssetSetter(this);
     public Player player;
-    public Entity obj[] = new Entity[16];
+    public Entity obj[][] = new Entity[maxMap][16];
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
-    public Entity npc[] = new Entity[5];
+    public Entity npc[][] = new Entity[maxMap][5];
     ArrayList<Entity> entityList = new ArrayList<>();
-    public TileItems tItens[] = new TileItems[50];
+    public TileItems tItens[][] = new TileItems[maxMap][50];
 
     //GAME STATE
     public int gameState;
@@ -157,15 +157,15 @@ public class GamePanel extends JPanel implements Runnable {
             player.update();
 
             checkTeleport();
-            for (int i = 0; i < npc.length; i++) {
-                if (npc[i] != null) {
-                    npc[i].update();
+            for (int i = 0; i < npc[1].length; i++) {
+                if (npc[currentMap][i] != null) {
+                    npc[currentMap][i].update();
                 }
             }
 
-            for (int i = 0; i < tItens.length; i++) {
-                if (tItens[i] != null) {
-                    tItens[i].update();
+            for (int i = 0; i < tItens[1].length; i++) {
+                if (tItens[currentMap][i] != null) {
+                    tItens[currentMap][i].update();
                 }
             }
         }
@@ -190,23 +190,23 @@ public class GamePanel extends JPanel implements Runnable {
             tileM.draw(g2);
 
             entityList.add(player);
-            for (int i = 0; i < tItens.length; i++) {
-                if (tItens[i] != null){
-                    tItens[i].draw(g2);
+            for (int i = 0; i < tItens[1].length; i++) {
+                if (tItens[currentMap][i] != null){
+                    tItens[currentMap][i].draw(g2);
                 }
 
             }
 
-            for (int i = 0; i < npc.length; i++) {
-                if (npc[i] != null){
-                    entityList.add(npc[i]);
+            for (int i = 0; i < npc[1].length; i++) {
+                if (npc[currentMap][i] != null){
+                    entityList.add(npc[currentMap][i]);
                 }
 
             }
 
-            for (int i = 0; i < obj.length; i++) {
-                if (obj[i] != null){
-                    entityList.add(obj[i]);
+            for (int i = 0; i < obj[1].length; i++) {
+                if (obj[currentMap][i] != null){
+                    entityList.add(obj[currentMap][i]);
                 }
 
             }

@@ -8,7 +8,6 @@ public class Npc_Tigro extends Entity{
         super(gp);
         direction = "down1";
         speed = 0;
-        mapaOrigem = 2;
         getImage();
         setDialogue();
     }
