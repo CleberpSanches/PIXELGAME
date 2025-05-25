@@ -30,11 +30,11 @@ public class NPC_Cavaleiro extends Entity{
         dialogues[0][1] = "Antes de empunhar sua lâmina contra/nas forças do mal, deve aprender o básico.";
         dialogues[0][2] = "Use as teclas W, A, S e D para mover-se/npelo mundo — um passo de cada vez,/njovem herói.";
 
-        dialogues[1][1] = "Deseja atacar? Então pressione a tecla Q,/nhá alguns slimes pelo mapa, teste neles/ne volte!";
-        dialogues[1][2] = "No seu inventário você pode verificar/nseu poder e seus itens, mas como você é pobre/nnão deve ter muito!";
+        dialogues[1][0] = "Deseja atacar? Então pressione a tecla Q,/nhá alguns slimes pelo mapa, teste neles/ne volte!";
+        dialogues[1][1] = "No seu inventário você pode verificar/nseu poder e seus itens, mas como você é pobre/nnão deve ter muito!";
 
-        dialogues[2][1] = "Para ir para os outros mapa apenas/nvá para os portais como o que você chegou!";
-        dialogues[2][2] = "Agora foco meu querido, sua aventura te espera!";
+        dialogues[2][0] = "Para ir para os outros mapa apenas/nvá para os portais como o que você chegou!";
+        dialogues[2][1] = "Agora foco meu querido, sua aventura te espera!";
     }
 
     public void setAction(){
