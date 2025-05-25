@@ -1,4 +1,3 @@
-
 package main;
 
 import Adapter.KeyHandlerAdapter;
@@ -7,6 +6,7 @@ import Tile_Items.TileItems;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
+import tile.Map;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -50,6 +50,8 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player;
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
+    //miniMap
+    Map map = new Map(this);
     Thread gameThread;
 
     //ENTITYS
@@ -68,6 +70,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int titleState = 0;
     public final int characterState = 4;
     public final int transitionState = 5;
+    public final int mapState = 6;
+
 
     public GamePanel() {
         this.player = new Player(this, input);
@@ -191,6 +195,10 @@ public class GamePanel extends JPanel implements Runnable {
         if(gameState == titleState){
             ui.draw(g2);
         }//OTHERS
+        //miniMap
+        else if (gameState == mapState) {
+            map.drawMapScreean(g2);
+        }
         else{
             tileM.draw(g2);
 
@@ -231,6 +239,8 @@ public class GamePanel extends JPanel implements Runnable {
 
             entityList.clear();
 
+            map.drawMiniMap(g2);
+
             ui.draw(g2);
         }
         if (keyH.checkDrawTime == true){
@@ -266,5 +276,3 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 }
-
-
