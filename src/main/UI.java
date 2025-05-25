@@ -89,13 +89,7 @@ public class UI {
         if(gp.gameState == gp.transitionState){
             drawTransition();
         }
-
-        //TRADE STATE
-        if(gp.gameState == gp.tradeState){
-            drawTradeScreen();
-        }
     }
-
 
 
 
@@ -443,32 +437,7 @@ public class UI {
         }
     }
 
-    private void drawTradeScreen() {
 
-        switch(subState){
-            case 0: trade_select(); break;
-            case 1: trade_buy(); break;
-            case 2: trade_sell(); break;
-        }
-        gp.keyH.enterPressed = false;
-    }
-
-    public void trade_select(){
-        drawDialogueScreen();
-
-        int x = gp.tileSize * 15;
-        int y =  gp.tileSize * 4;
-        int width = gp.tileSize * 3;
-        int height = (int)(gp.tileSize * 3.5);
-        drawSubWindow(x,y,width,height);
-    }
-
-    public void trade_buy(){
-
-    }
-    public void trade_sell(){
-
-    }
     public  int getItemIndexOnSlot(){
         int itemIndex = slotCol + (slotRow * 7);
         return itemIndex;

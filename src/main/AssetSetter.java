@@ -76,6 +76,7 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
         i++;
 
+        mapNum = 5;
         gp.npc[mapNum][i] = new NPC_LapideJ(gp);
         gp.npc[mapNum][i].worldX = 45 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 8 * gp.tileSize;
