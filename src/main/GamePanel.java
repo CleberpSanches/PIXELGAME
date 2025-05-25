@@ -48,11 +48,14 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter asetter = new AssetSetter(this);
     public Player player;
-    public Entity obj[][] = new Entity[maxMap][16];
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
-    public Entity npc[][] = new Entity[maxMap][5];
+
+    //ENTITYS
+    public Entity obj[][] = new Entity[maxMap][16];
+    public Entity npc[][] = new Entity[maxMap][10];
+    public Entity monster[][] = new Entity[maxMap][20];
     ArrayList<Entity> entityList = new ArrayList<>();
     public TileItems tItens[][] = new TileItems[maxMap][50];
 
@@ -64,6 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogueState = 3;
     public final int titleState = 0;
     public final int characterState = 4;
+    public final int transitionState = 5;
 
     public GamePanel() {
         this.player = new Player(this, input);
@@ -101,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
         asetter.setObject();
         asetter.setNPC();
         asetter.setTItens();
+        asetter.setMonster();
         gameState = titleState;
         previousState = titleState;
         playMusic(0);
@@ -140,6 +145,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
+
+        //GAME STATE UPDATE
         if (gameState != previousState) {
             stopMusic();
 
@@ -153,9 +160,9 @@ public class GamePanel extends JPanel implements Runnable {
             previousState = gameState;
         }
 
+        //CHARACTER UPDATE
         if (gameState == playState) {
             player.update();
-
             checkTeleport();
             for (int i = 0; i < npc[1].length; i++) {
                 if (npc[currentMap][i] != null) {
@@ -168,12 +175,17 @@ public class GamePanel extends JPanel implements Runnable {
                     tItens[currentMap][i].update();
                 }
             }
+
+            for (int i = 0; i < monster[1].length; i++){
+                if (monster[currentMap][i] != null){
+                    monster[currentMap][i].update();
+                }
+            }
         }
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D)g;
 
         long drawStart = 0;
@@ -189,6 +201,7 @@ public class GamePanel extends JPanel implements Runnable {
         else{
             tileM.draw(g2);
 
+            //CHARACTER PAINTCOMPONENT
             entityList.add(player);
             for (int i = 0; i < tItens[1].length; i++) {
                 if (tItens[currentMap][i] != null){
@@ -196,19 +209,25 @@ public class GamePanel extends JPanel implements Runnable {
                 }
 
             }
-
             for (int i = 0; i < npc[1].length; i++) {
                 if (npc[currentMap][i] != null){
                     entityList.add(npc[currentMap][i]);
+                    npc[currentMap][i].draw(g2);
+
                 }
 
             }
-
             for (int i = 0; i < obj[1].length; i++) {
                 if (obj[currentMap][i] != null){
                     entityList.add(obj[currentMap][i]);
                 }
 
+            }
+            for (int i = 0; i < monster[1].length; i++){
+                if (monster[currentMap][i] != null){
+                    entityList.add(monster[currentMap][i]);
+                    monster[currentMap][i].draw(g2);
+                }
             }
 
             Collections.sort(entityList, new Comparator<Entity>() {

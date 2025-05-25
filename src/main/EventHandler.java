@@ -7,6 +7,8 @@ public class EventHandler {
     Rectangle eventRect;
     int eventRectDefaultX, eventRectDefaultY;
 
+    int tempMap, tempCol, tempRow;
+
     public EventHandler(GamePanel gp){
         this.gp = gp;
 
@@ -78,10 +80,14 @@ public class EventHandler {
     }
 
     public void teleportPlayer(int targetMap, int tileX, int tileY) {
-        gp.currentMap = targetMap;
-        gp.player.worldX = tileX * gp.tileSize;
-        gp.player.worldY = tileY * gp.tileSize;
+        gp.ui.targetMap = targetMap;
+        gp.ui.targetTileX = tileX;
+        gp.ui.targetTileY = tileY;
+        gp.ui.teleportRequested = true;
+        gp.gameState = gp.transitionState;
+        gp.ui.counter = 0;
     }
+
 
 
     private boolean hit(int eventCol, int eventRow, String reqDirection) {

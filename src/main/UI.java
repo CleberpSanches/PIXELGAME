@@ -27,6 +27,9 @@ public class UI {
     public Entity npc;
     int charIndex = 0;
     String combinedText = "";
+    int counter =  0;
+    public int targetMap, targetTileX, targetTileY;
+    public boolean teleportRequested = false;
 
 
     int subState = 0;
@@ -80,6 +83,11 @@ public class UI {
         if(gp.gameState == gp.characterState){
             drawCharacterScreen();
             drawInventory();
+        }
+
+        //TRANSITION STATE
+        if(gp.gameState == gp.transitionState){
+            drawTransition();
         }
     }
 
@@ -409,6 +417,27 @@ public class UI {
         }
 
     }
+
+    public void drawTransition() {
+        if (counter <= 50) {
+            counter++;
+            g2.setColor(new Color(0, 0, 0, counter * 5));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        }
+
+        if (counter == 50) {
+            counter = 0;
+
+            // Transição completa: troca o mapa e volta pro jogo
+            gp.gameState = gp.playState;
+            gp.currentMap = gp.ui.targetMap;
+            gp.player.worldX = gp.ui.targetTileX * gp.tileSize;
+            gp.player.worldY = gp.ui.targetTileY * gp.tileSize;
+            gp.ui.teleportRequested = false;
+        }
+    }
+
+
     public  int getItemIndexOnSlot(){
         int itemIndex = slotCol + (slotRow * 7);
         return itemIndex;

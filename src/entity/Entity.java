@@ -21,12 +21,17 @@ public abstract class Entity {
     public int speed;
     public BufferedImage up1;
     public BufferedImage up2;
+    public BufferedImage up3;
+    public BufferedImage up4;
     public BufferedImage down1;
     public BufferedImage down2;
     public BufferedImage down3;
     public BufferedImage down4;
     public BufferedImage right1;
     public BufferedImage right2;
+    public BufferedImage left3;
+    public BufferedImage left4;
+    public BufferedImage right3, right4;
     public BufferedImage left1;
     public BufferedImage left2;
     public BufferedImage upattack1;
@@ -65,6 +70,10 @@ public abstract class Entity {
     //item
     public String description = "";
 
+    //CHARACTER STATUS
+    public int maxLife = 0;
+    public int life;
+
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -87,12 +96,12 @@ public abstract class Entity {
 
     public void update(){
         setAction();
+        gp.cChecker.checkEntity(this, gp.npc);
+        gp.cChecker.checkEntity(this, gp.monster);
         gp.cChecker.checkPlayer(this);
-
     }
 
     public void draw(Graphics2D g2) {
-
         BufferedImage image = null;
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
@@ -121,8 +130,6 @@ public abstract class Entity {
                         image = down4;
                     }
             }
-
-
 
             g2.drawImage(image, screenX, screenY, 64, 64, null);
         }

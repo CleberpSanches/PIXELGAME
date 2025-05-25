@@ -196,6 +196,7 @@ public class Player extends Entity {
             solidArea.width = attackArea.width;
             solidArea.height = attackArea.height;
             //para o futuro monstro
+            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
             //int monsterIndex = gp.cChecker.checkEntity(this,gp.tItens);
             int tItemsIndex = gp.cChecker.checkEntity(this, gp.tItens);
             damagetItems(tItemsIndex);
