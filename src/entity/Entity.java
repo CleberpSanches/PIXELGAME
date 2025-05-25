@@ -97,7 +97,6 @@ public abstract class Entity {
     public void update(){
         setAction();
         gp.cChecker.checkEntity(this, gp.npc);
-        gp.cChecker.checkEntity(this, gp.monster);
         gp.cChecker.checkPlayer(this);
     }
 

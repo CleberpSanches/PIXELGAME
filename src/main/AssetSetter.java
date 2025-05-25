@@ -70,15 +70,21 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
         i++;
 
-        gp.npc[mapNum][i] = new NPC_Sapita(gp);
-        gp.npc[mapNum][i].worldX = 15 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 27 * gp.tileSize;
+        mapNum = 5;
+        gp.npc[mapNum][i] = new NPC_Orus(gp);
+        gp.npc[mapNum][i].worldX = 17 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
         i++;
 
-        mapNum = 4;
-        gp.npc[mapNum][i] = new NPC_Orus(gp);
-        gp.npc[mapNum][i].worldX = 12 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 42 * gp.tileSize;
+        mapNum = 5;
+        gp.npc[mapNum][i] = new NPC_LapideJ(gp);
+        gp.npc[mapNum][i].worldX = 45 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 8 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_LapideM(gp);
+        gp.npc[mapNum][i].worldX = 42 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 8 * gp.tileSize;
         i++;
 
     }
@@ -92,25 +98,8 @@ public class AssetSetter {
         i++;
     }
 
-    public void setMonster(){
-        int i=0;
-        int mapNum = 0;
-
-        mapNum = 4;
-        gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
-        gp.monster[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.monster[mapNum][i].worldY = 26 * gp.tileSize;
-        i++;
-
-        gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
-        gp.monster[mapNum][i].worldX = 8 * gp.tileSize;
-        gp.monster[mapNum][i].worldY = 31 * gp.tileSize;
-        i++;
-
-        gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
-        gp.monster[mapNum][i].worldX = 11 * gp.tileSize;
-        gp.monster[mapNum][i].worldY = 29 * gp.tileSize;
-        i++;
-    }
+//    public void setMonster(){
+//
+//    }
 }
 

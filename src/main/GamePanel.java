@@ -105,7 +105,6 @@ public class GamePanel extends JPanel implements Runnable {
         asetter.setObject();
         asetter.setNPC();
         asetter.setTItens();
-        asetter.setMonster();
         gameState = titleState;
         previousState = titleState;
         playMusic(0);
@@ -175,12 +174,6 @@ public class GamePanel extends JPanel implements Runnable {
                     tItens[currentMap][i].update();
                 }
             }
-
-            for (int i = 0; i < monster[1].length; i++){
-                if (monster[currentMap][i] != null){
-                    monster[currentMap][i].update();
-                }
-            }
         }
     }
 
@@ -222,12 +215,6 @@ public class GamePanel extends JPanel implements Runnable {
                     entityList.add(obj[currentMap][i]);
                 }
 
-            }
-            for (int i = 0; i < monster[1].length; i++){
-                if (monster[currentMap][i] != null){
-                    entityList.add(monster[currentMap][i]);
-                    monster[currentMap][i].draw(g2);
-                }
             }
 
             Collections.sort(entityList, new Comparator<Entity>() {

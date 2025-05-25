@@ -23,18 +23,17 @@ public class NPC_Cavaleiro extends Entity{
         down2 = setup("/npc/NpcCavaleiroTutor/CavaleiroTutorial2", gp.tileSize, gp.tileSize);
         down3 = setup("/npc/NpcCavaleiroTutor/CavaleiroTutorial3", gp.tileSize, gp.tileSize);
         down4 = setup("/npc/NpcCavaleiroTutor/CavaleiroTutorial1", gp.tileSize, gp.tileSize);
-
     }
 
     public void setDialogue(){
         dialogues[0][0] = "Ah, um novo aventureiro!/nVejo que o destino o trouxe até aqui.";
-        dialogues[0][1] = "Antes de empunhar sua lâmina contra/n as forças do mal, deve aprender o básico.";
-        dialogues[0][2] = "Use as teclas W, A, S e D para mover-se/n pelo mundo — um passo de cada vez,/n jovem herói.";
+        dialogues[0][1] = "Antes de empunhar sua lâmina contra/nas forças do mal, deve aprender o básico.";
+        dialogues[0][2] = "Use as teclas W, A, S e D para mover-se/npelo mundo — um passo de cada vez,/njovem herói.";
 
-        dialogues[1][1] = "Deseja atacar? Então pressione a tecla Q,/n há alguns slimes pelo mapa, teste neles/n e volte!";
-        dialogues[1][2] = "No seu inventário você pode verificar/n seu poder e seus itens, mas como você é pobre/n não deve ter muito!";
+        dialogues[1][1] = "Deseja atacar? Então pressione a tecla Q,/nhá alguns slimes pelo mapa, teste neles/ne volte!";
+        dialogues[1][2] = "No seu inventário você pode verificar/nseu poder e seus itens, mas como você é pobre/nnão deve ter muito!";
 
-        dialogues[2][1] = "Para ir para os outros mapa apenas/n vá para os portais como o que você chegou!";
+        dialogues[2][1] = "Para ir para os outros mapa apenas/nvá para os portais como o que você chegou!";
         dialogues[2][2] = "Agora foco meu querido, sua aventura te espera!";
     }
 
