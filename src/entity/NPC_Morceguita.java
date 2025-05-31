@@ -1,6 +1,11 @@
 package entity;
 
+import Objects.Obj_ChaveCipestre;
 import main.GamePanel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class NPC_Morceguita extends Entity{
     public NPC_Morceguita(GamePanel gp) {
@@ -21,11 +26,12 @@ public class NPC_Morceguita extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "OIIIIIIIII";
-        dialogues[0][1] = "ESTAMOS SOFRENDO UMA CENSURA";
+            dialogues[0][0] = "OIIIIIIIII";
+            dialogues[0][1] = "ESTAMOS SOFRENDO UMA CENSURA";
 
-        dialogues[1][0] = "ISSE KRIEN SILERS";
-        dialogues[1][1] = "OLD";
+            dialogues[1][0] = "ISSE KRIEN SILERS";
+            dialogues[1][1] = "OLD";
+
     }
 
     public void setAction(){
@@ -51,6 +57,20 @@ public class NPC_Morceguita extends Entity{
     }
     public void speak(){
         startDialogue(this, dialogueSet);
+        Set<String> requiredItems = Set.of("amuletoluaverde", "amuletonevoa", "amuletoseiva");
+        List<Entity> itemsToRemove = new ArrayList<>();
+
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItems.contains(obj.name)) {
+                itemsToRemove.add(obj);
+            }
+        }
+
+        if (itemsToRemove.size() == 3) {
+            gp.player.Inventory.removeAll(itemsToRemove);
+
+            gp.player.Inventory.add(new Obj_ChaveCipestre(gp));
+        }
     }
 
 }

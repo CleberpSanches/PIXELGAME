@@ -55,9 +55,9 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
 
     //ENTITYS
-    public Entity obj[][] = new Entity[maxMap][16];
-    public Entity npc[][] = new Entity[maxMap][10];
-    public Entity monster[][] = new Entity[maxMap][20];
+    public Entity obj[][] = new Entity[maxMap][50];
+    public Entity npc[][] = new Entity[maxMap][50];
+    public Entity monster[][] = new Entity[maxMap][50];
     ArrayList<Entity> entityList = new ArrayList<>();
     public TileItems tItens[][] = new TileItems[maxMap][50];
 

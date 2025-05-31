@@ -1,5 +1,6 @@
 package main;
 
+import Tile_Items.TI_ArvoreSeiva;
 import entity.Enemy_SlimedeFogo;
 import Objects.*;
 import Tile_Items.TI_PLua;
@@ -69,6 +70,10 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldX = 17 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
         i++;
+        gp.npc[mapNum][i] = new NPC_Fantasmito(gp);
+        gp.npc[mapNum][i].worldX = 16 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
+        i++;
 
         mapNum = 5;
         gp.npc[mapNum][i] = new NPC_Orus(gp);
@@ -92,9 +97,18 @@ public class AssetSetter {
     public void setTItens(){
         int i = 0;
         int mapNum = 0;
+        mapNum = 1;
+
+        mapNum = 2;
+
+        mapNum = 3;
         gp.tItens[mapNum][i] = new TI_PLua(gp);
-        gp.tItens[mapNum][i].worldX = 16 * gp.tileSize;
-        gp.tItens[mapNum][i].worldY = 26 * gp.tileSize;
+        gp.tItens[mapNum][i].worldX = 15 * gp.tileSize;
+        gp.tItens[mapNum][i].worldY = 29 * gp.tileSize;
+        i++;
+        gp.tItens[mapNum][i] = new TI_ArvoreSeiva(gp);
+        gp.tItens[mapNum][i].worldX = 14 * gp.tileSize;
+        gp.tItens[mapNum][i].worldY = 29 * gp.tileSize;
         i++;
     }
 

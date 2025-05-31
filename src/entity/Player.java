@@ -257,9 +257,11 @@ public class Player extends Entity {
         if (index != 999 && gp.tItens[gp.currentMap][index].destructible && gp.tItens[gp.currentMap][index].isCorrectMagic(this)){
             if (gp.tItens[gp.currentMap][index].name == "plua"){
                 Inventory.add(new Obj_AmuletoLua(gp));
+            } else if ((gp.tItens[gp.currentMap][index].name == "aseiva")) {
+                    Inventory.add(new Obj_AmuletoSeiva(gp));
             }
+            gp.tItens[gp.currentMap][index] = null;
 
-            gp.tItens[index] = null;
         }
 
     }
