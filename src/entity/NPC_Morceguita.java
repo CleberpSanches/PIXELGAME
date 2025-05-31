@@ -56,7 +56,6 @@ public class NPC_Morceguita extends Entity{
 
     }
     public void speak(){
-        startDialogue(this, dialogueSet);
         Set<String> requiredItems = Set.of("amuletoluaverde", "amuletonevoa", "amuletoseiva");
         List<Entity> itemsToRemove = new ArrayList<>();
 
@@ -70,7 +69,13 @@ public class NPC_Morceguita extends Entity{
             gp.player.Inventory.removeAll(itemsToRemove);
 
             gp.player.Inventory.add(new Obj_ChaveCipestre(gp));
+
+            dialogues[0][0] = "Seus itens se tornam um";
+
+            dialogues[0][1] = null;
         }
+        startDialogue(this, dialogueSet);
+
     }
 
 }

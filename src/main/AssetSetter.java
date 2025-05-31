@@ -67,12 +67,12 @@ public class AssetSetter {
 
         mapNum = 3;
         gp.npc[mapNum][i] = new NPC_Morceguita(gp);
-        gp.npc[mapNum][i].worldX = 17 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
+        gp.npc[mapNum][i].worldX = (int) (24.5 * gp.tileSize);
+        gp.npc[mapNum][i].worldY = 23 * gp.tileSize;
         i++;
         gp.npc[mapNum][i] = new NPC_Fantasmito(gp);
-        gp.npc[mapNum][i].worldX = 16 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
+        gp.npc[mapNum][i].worldX = 13 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
         i++;
 
         mapNum = 5;
@@ -103,12 +103,12 @@ public class AssetSetter {
 
         mapNum = 3;
         gp.tItens[mapNum][i] = new TI_PLua(gp);
-        gp.tItens[mapNum][i].worldX = 15 * gp.tileSize;
-        gp.tItens[mapNum][i].worldY = 29 * gp.tileSize;
+        gp.tItens[mapNum][i].worldX = 11 * gp.tileSize;
+        gp.tItens[mapNum][i].worldY = 27 * gp.tileSize;
         i++;
         gp.tItens[mapNum][i] = new TI_ArvoreSeiva(gp);
-        gp.tItens[mapNum][i].worldX = 14 * gp.tileSize;
-        gp.tItens[mapNum][i].worldY = 29 * gp.tileSize;
+        gp.tItens[mapNum][i].worldX = 39 * gp.tileSize;
+        gp.tItens[mapNum][i].worldY = 13 * gp.tileSize;
         i++;
     }
 
