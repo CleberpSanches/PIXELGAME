@@ -28,6 +28,7 @@ public class NPC_LapideM extends Entity{
 
     public void setDialogue(){
         dialogues[0][0] = "Apenas uma lápide com um J gravado/ne abaixo diz: 'Aqui jaz Maria Eduarda,/ndesenvolvedora deste jogo! Deixe seu/nagradecimento aqui!'";
+        dialogues[0][1] = "Deseja deixar uma oferenda?";
     }
 
     public void setAction(){
@@ -59,6 +60,9 @@ public class NPC_LapideM extends Entity{
         if(dialogues[dialogueSet][0] == null){
             dialogueSet = 0;
         }
+
+        gp.gameState = gp.tradeState;
+        gp.ui.npc = this;
     }
 
 }

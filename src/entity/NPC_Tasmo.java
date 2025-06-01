@@ -1,15 +1,9 @@
 package entity;
 
 import main.GamePanel;
-import main.ToolBox;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Random;
-
-public class NPC_LapideJ extends Entity{
-    public NPC_LapideJ(GamePanel gp) {
+public class NPC_Tasmo extends Entity{
+    public NPC_Tasmo(GamePanel gp) {
         super(gp);
         direction = "down1";
         speed = 0;
@@ -19,16 +13,16 @@ public class NPC_LapideJ extends Entity{
     }
 
     public void getImage() {
-        down1 = setup("/npc/NpcparaPuzzles/NpcLapideJ/lapidej", gp.tileSize, gp.tileSize);
-        down2 = setup("/npc/NpcparaPuzzles/NpcLapideJ/lapidej", gp.tileSize, gp.tileSize);
-        down3 = setup("/npc/NpcparaPuzzles/NpcLapideJ/lapidej", gp.tileSize, gp.tileSize);
-        down4 = setup("/npc/NpcparaPuzzles/NpcLapideJ/lapidej", gp.tileSize, gp.tileSize);
+        down1 = setup("/npc/NpcTasmo/TAS1", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/NpcTasmo/TAS2", gp.tileSize, gp.tileSize);
+        down3 = setup("/npc/NpcTasmo/TAS3", gp.tileSize, gp.tileSize);
+        down4 = setup("/npc/NpcTasmo/TAS4", gp.tileSize, gp.tileSize);
 
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Apenas uma lápide com um J gravado/ne abaixo diz: 'Aqui jaz João Cleber,/ndesenvolvedor deste jogo! Deixe seu/nagradecimento aqui!'";
-        dialogues[0][1] = "Deseja deixar uma oferenda?";
+        dialogues[0][0] = "Fala comigo não!";
+
     }
 
     public void setAction(){
@@ -60,9 +54,6 @@ public class NPC_LapideJ extends Entity{
         if(dialogues[dialogueSet][0] == null){
             dialogueSet = 0;
         }
-
-        gp.gameState = gp.tradeState;
-        gp.ui.npc = this;
     }
 
 }
