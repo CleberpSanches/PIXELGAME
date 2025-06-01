@@ -56,7 +56,33 @@ public class KeyHandler implements KeyListener {
         {
             mapState(code);
         }
+        //TRADE STATE
+        else if (gp.gameState == gp.tradeState)
+        {
+            tradeState(code);
+        }
 
+    }
+
+    private void tradeState(int code) {
+        if(code == KeyEvent.VK_ENTER){
+            enterPressed = true;
+        }
+        if (gp.ui.subState == 0){
+            if (code == KeyEvent.VK_W){
+                gp.ui.commandNum--;
+                if (gp.ui.commandNum < 0){
+                    gp.ui.commandNum = 2;
+                }
+            }
+
+            if (code == KeyEvent.VK_S){
+                gp.ui.commandNum++;
+                if (gp.ui.commandNum > 2){
+                    gp.ui.commandNum = 0;
+                }
+            }
+        }
     }
 
     private void mapState(int code) {

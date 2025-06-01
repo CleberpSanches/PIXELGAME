@@ -22,8 +22,10 @@ public class UI {
     boolean pauseJustOpened = true;
 
 
-    int slotCol = 0;
-    int slotRow = 0;
+    public int slotCol = 0;
+    public int slotRow = 0;
+    public int npcslotRow = 0;
+    public int npcslotCol = 0;
     public Entity npc;
     int charIndex = 0;
     String combinedText = "";
@@ -89,10 +91,15 @@ public class UI {
         if(gp.gameState == gp.transitionState){
             drawTransition();
         }
+
+        //TRADE STATE
+        if(gp.gameState == gp.tradeState){
+            drawTradeScreen();
+        }
     }
 
 
-
+    //DIALOGUE SCREEN
     private void drawDialogueScreen() {
         //SUBWINDOW POSITION
         int x = gp.tileSize*2;
@@ -107,8 +114,6 @@ public class UI {
         y += gp.tileSize;
 
         if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null){
-
-           // currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
 
             char character[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
 
@@ -184,9 +189,6 @@ public class UI {
         }
     }
 
-
-
-    //PAUSE SCREEM
     public void drawSubWindow(int x, int y, int width, int height){
         Color c = new Color(0, 0, 0, 175);
         g2.setColor(c);
@@ -198,6 +200,7 @@ public class UI {
         g2.drawRoundRect(x+5, y+5 , width-10, height-10, 25, 25);
     }
 
+    //PAUSE SCREEM
     public void drawPauseScreen(){
         if (pauseJustOpened) {
             gp.keyH.enterPressed = false;
@@ -224,6 +227,170 @@ public class UI {
             break;
             case 2: options_control(frameX, frameY);
             break;
+        }
+    }
+
+    //PLAY SCREEN
+    public void drawPlayScreen(){
+
+    }
+
+    //CHARACTER SCREEN
+    private void drawCharacterScreen() {
+        final int frameX;
+        final int frameY;
+        final int frameWidth;
+        final int frameHeight;
+    }
+
+    //TRADE SCREEN
+    private void drawTradeScreen() {
+        switch (subState){
+            case 0 : tradeSelect(); break;
+            case 1 : tradeCatch(); break;
+            case 2 : tradeGive(); break;
+        }
+        gp.keyH.enterPressed = false;
+    }
+
+    public void tradeSelect(){
+        BufferedImage menuarrow = null;
+
+        try {
+            menuarrow = ImageIO.read(getClass().getResourceAsStream("/buttons/menuarrow.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        drawDialogueScreen();
+
+        //WINDOW
+        int x = gp.tileSize * 11;
+        int y = gp.tileSize * 4;
+        int width = gp.tileSize * 3;
+        int height = (int) (gp.tileSize * 3.5);
+        drawSubWindow(x,y,width, height);
+
+        //TEXT
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString("Pegar", x, y);
+        if(gp.ui.commandNum == 0){
+            g2.drawImage(menuarrow, x-42, y-24, null);
+            if(gp.keyH.enterPressed == true){
+                subState = 1;
+            }
+        }
+        y += gp.tileSize;
+
+        g2.drawString("Deixar", x, y);
+        if(gp.ui.commandNum == 1){
+            g2.drawImage(menuarrow, x-42, y-24, null);
+            if(gp.keyH.enterPressed == true){
+                subState = 2;
+            }
+        }
+        y += gp.tileSize;
+
+        g2.drawString("Sair", x, y);
+        if(gp.ui.commandNum == 2){
+            g2.drawImage(menuarrow, x-42, y-24, null);
+            if(gp.keyH.enterPressed == true){
+                commandNum = 0;
+                gp.gameState = gp.playState;
+            }
+        }
+    }
+
+    public void tradeCatch(){
+
+    }
+
+    public void tradeGive(){
+
+    }
+    private void drawInventory() {
+
+        //FRAME
+        final int frameX = gp.tileSize*12;
+        final int frameY = gp.tileSize;
+        final int frameWidth = gp.tileSize*6;
+        final int frameHeight = gp.tileSize*5;
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        //SLOTS
+        final int slotXstart = frameX +20;
+        final int slotYstart = frameY + 20;
+
+        int slotX = slotXstart;
+        int slotY = slotYstart;
+
+        for (int i = 0; i < gp.player.Inventory.size(); i++) {
+
+            if(gp.player.Inventory.get(i) == gp.player.currentMagicatk){
+                g2.setColor(new Color(178, 159, 255));
+                g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
+            }
+
+            g2.drawImage(gp.player.Inventory.get(i).down1, slotX, slotY, null);
+            slotX +=gp.tileSize;
+
+            if (i == 6) {
+                slotX = slotXstart;
+                slotY += gp.tileSize;
+            }
+        }
+
+        //selector
+        int cursorX = slotXstart + (gp.tileSize * slotCol);
+        int cursorY = slotYstart + (gp.tileSize * slotRow);
+        int cursorWidth = gp.tileSize;
+        int cursorHeight = gp.tileSize;
+        //cursor
+        g2.setColor(Color.white);
+        g2.setStroke(new BasicStroke(2));
+        g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10 , 10);
+
+        //description screen
+        int dframeX = frameX;
+        int dframeY = frameY - frameHeight;
+        int dframeWidth = frameWidth;
+        int dframeHeight = gp.tileSize*2;
+
+        //desc text
+        int textX = dframeX + 20;
+        int textY = dframeY + gp.tileSize;
+        g2.setFont(g2.getFont().deriveFont(28F ));
+
+        int itemIndex = getItemIndexOnSlot();
+
+        if (itemIndex < gp.player.Inventory.size())
+        {
+            drawSubWindow(dframeX, dframeY, dframeWidth, dframeHeight);
+
+            for (String line: gp.player.Inventory.get(itemIndex).description.split("\n")) {
+                g2.drawString(line, textX, textY);
+                textY+=32;
+            }
+        }
+
+    }
+
+    public void drawTransition() {
+        if (counter <= 50) {
+            counter++;
+            g2.setColor(new Color(0, 0, 0, counter * 5));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        }
+
+        if (counter == 50) {
+            counter = 0;
+
+            gp.gameState = gp.playState;
+            gp.currentMap = gp.ui.targetMap;
+            gp.player.worldX = gp.ui.targetTileX * gp.tileSize;
+            gp.player.worldY = gp.ui.targetTileY * gp.tileSize;
+            gp.ui.teleportRequested = false;
         }
     }
 
@@ -341,103 +508,6 @@ public class UI {
         }
     }
 
-    //PLAY SCREEN
-    public void drawPlayScreen(){
-
-    }
-
-    private void drawCharacterScreen() {
-        final int frameX;
-        final int frameY;
-        final int frameWidth;
-        final int frameHeight;
-    }
-
-    private void drawInventory() {
-        final int frameX= (int) (gp.tileSize *8.5);
-        final int frameY= (int) (gp.tileSize *8.5);
-        final int frameWidth= (int) (gp.tileSize *7.5);
-        final int frameHeight= (int) (gp.tileSize *2.5);
-        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
-
-        //SLOTS
-        final int slotXstart = frameX +20;
-        final int slotYstart = frameY + 20;
-
-        int slotX = slotXstart;
-        int slotY = slotYstart;
-
-        for (int i = 0; i < gp.player.Inventory.size(); i++) {
-
-            if(gp.player.Inventory.get(i) == gp.player.currentMagicatk){
-                g2.setColor(new Color(178, 159, 255));
-                g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
-            }
-
-            g2.drawImage(gp.player.Inventory.get(i).down1, slotX, slotY, null);
-            slotX +=gp.tileSize;
-
-            if (i == 6) {
-                slotX = slotXstart;
-                slotY += gp.tileSize;
-            }
-        }
-
-        //selector
-        int cursorX = slotXstart + (gp.tileSize * slotCol);
-        int cursorY = slotYstart + (gp.tileSize * slotRow);
-        int cursorWidth = gp.tileSize;
-        int cursorHeight = gp.tileSize;
-        //cursor
-        g2.setColor(Color.white);
-        g2.setStroke(new BasicStroke(2));
-        g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10 , 10);
-
-        //description screen
-        int dframeX = frameX;
-        int dframeY = frameY - frameHeight;
-        int dframeWidth = frameWidth;
-        int dframeHeight = gp.tileSize*2;
-
-        //desc text
-        int textX = dframeX + 20;
-        int textY = dframeY + gp.tileSize;
-        g2.setFont(g2.getFont().deriveFont(28F ));
-
-        int itemIndex = getItemIndexOnSlot();
-
-        if (itemIndex < gp.player.Inventory.size())
-        {
-            drawSubWindow(dframeX, dframeY, dframeWidth, dframeHeight);
-
-            for (String line: gp.player.Inventory.get(itemIndex).description.split("\n")) {
-                g2.drawString(line, textX, textY);
-                textY+=32;
-            }
-        }
-
-    }
-
-    public void drawTransition() {
-        if (counter <= 50) {
-            counter++;
-            g2.setColor(new Color(0, 0, 0, counter * 5));
-            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
-        }
-
-        if (counter == 50) {
-            counter = 0;
-
-            // Transição completa: troca o mapa e volta pro jogo
-            gp.gameState = gp.playState;
-            gp.currentMap = gp.ui.targetMap;
-            gp.player.worldX = gp.ui.targetTileX * gp.tileSize;
-            gp.player.worldY = gp.ui.targetTileY * gp.tileSize;
-            gp.ui.teleportRequested = false;
-        }
-    }
-
-
     public  int getItemIndexOnSlot(){
         int itemIndex = slotCol + (slotRow * 7);
         return itemIndex;
@@ -448,6 +518,4 @@ public class UI {
         int x = gp.screenWidth/2 - length/2;
         return x;
     }
-
-
 }
