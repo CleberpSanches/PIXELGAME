@@ -8,9 +8,6 @@ public class Obj_AtkToxina extends Entity {
     public Obj_AtkToxina(GamePanel gp)
     {
         super(gp);
-
-        
-
         this.type = type_magicAtk;
         name = "atktoxina";
         down1 = setup("/objects/ataque_toxina", gp.tileSize, gp.tileSize);

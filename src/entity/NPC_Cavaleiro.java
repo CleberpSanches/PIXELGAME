@@ -1,5 +1,6 @@
 package entity;
 
+import Objects.Obj_AmuletoLua;
 import main.GamePanel;
 import main.ToolBox;
 
@@ -16,6 +17,7 @@ public class NPC_Cavaleiro extends Entity{
         dialogueSet = -1;
         getImage();
         setDialogue();
+        setItems();
     }
 
     public void getImage() {
@@ -57,6 +59,10 @@ public class NPC_Cavaleiro extends Entity{
 
         }
 
+    }
+
+    public void setItems(){
+        Inventory.add(new Obj_AmuletoLua(gp));
     }
 
     public void speak(){

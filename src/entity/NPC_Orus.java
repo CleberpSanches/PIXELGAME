@@ -1,5 +1,6 @@
 package entity;
 
+import Objects.Obj_AmuletoLua;
 import main.GamePanel;
 import main.ToolBox;
 
@@ -23,7 +24,6 @@ public class NPC_Orus extends Entity{
         down2 = setup("/npc/NpcOrus/Orus2", gp.tileSize, gp.tileSize);
         down3 = setup("/npc/NpcOrus/Orus3", gp.tileSize, gp.tileSize);
         down4 = setup("/npc/NpcOrus/Orus1", gp.tileSize, gp.tileSize);
-
     }
 
     public void setDialogue(){
@@ -57,6 +57,11 @@ public class NPC_Orus extends Entity{
 
         }
 
+    }
+
+    public void setItems(){
+        Inventory.add(new Obj_AmuletoLua(gp));
+        Inventory.add(new Obj_AmuletoLua(gp));
     }
 
     public void speak(){

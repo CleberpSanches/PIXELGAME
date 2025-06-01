@@ -12,9 +12,12 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class Entity {
     public Entity currentMagicatk;
+    public ArrayList<Entity> Inventory = new ArrayList<>();
+    public final int maxInventorySize = 14;
     GamePanel gp;
     public int worldX;
     public int worldY;
@@ -47,17 +50,20 @@ public abstract class Entity {
     public String direction = "down1";
     public int spriteCounter = 0;
     public int spriteNum = 1;
+
     public Rectangle solidArea = new Rectangle(0, 0, 64, 64);
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn=false;
+    public boolean collision = false;
+
     public int actionLookCounter = 0;
     public String dialogues[][] = new String[20][20];
     public int dialogueIndex = 0;
     public int dialogueSet = 0;
+
     public BufferedImage image;
     public String name;
-    public boolean collision = false;
 
     //types
     public int type;

@@ -22,8 +22,6 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
-    public ArrayList<Entity> Inventory = new ArrayList<>();
-    public final int maxInventorySize = 15;
 
 
 
@@ -61,8 +59,9 @@ public class Player extends Entity {
 
     public void setItems() {
         Inventory.add(currentMagicatk);
-
         Inventory.add(new Obj_AtkToxina2(gp));
+
+
     }
 
     public void getPlayerImage() {
@@ -241,6 +240,8 @@ public class Player extends Entity {
 
             Inventory.add(new Obj_ChaveCipestre(gp));
         }
+
+
     }
 
     public void interactNPC(int i) {
@@ -267,7 +268,8 @@ public class Player extends Entity {
     }
 
     public void selectItem(){
-        int itemIndex = gp.ui.getItemIndexOnSlot();
+        int itemIndex = gp.ui.getItemIndexOnSlot(gp.ui.playerSlotCol, gp.ui.playerSlotRow);
+
         if (itemIndex < Inventory.size()){
             Entity selectedItem = Inventory.get(itemIndex);
             if(selectedItem.type == Entity.type_magicAtk || selectedItem.type == Entity.type_magicBreak){
