@@ -53,6 +53,8 @@ public class AssetSetter {
     public void setNPC(){
         int i=0;
         int mapNum = 0;
+        //NPCS USADOS
+        //Cavaleiro do Tutorial, Morceguita, Fantasmito, Orus, Golem de Fogo, Kramu, Tasmo, LapideM e LapideJ
 
         //MAPA INICIAL
         //NPCS : Cavaleiro do Tutorial ✅
@@ -60,11 +62,6 @@ public class AssetSetter {
         gp.npc[mapNum][i] = new NPC_Cavaleiro(gp);
         gp.npc[mapNum][i].worldX = 35 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 25 * gp.tileSize;
-        i++;
-
-        gp.npc[mapNum][i] = new Npc_Tigro(gp);
-        gp.npc[mapNum][i].worldX = 34 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 26 * gp.tileSize;
         i++;
 
         //MATA NEBULOSA
@@ -106,8 +103,8 @@ public class AssetSetter {
         i++;
 
         gp.npc[mapNum][i] = new NPC_Tasmo(gp);
-        gp.npc[mapNum][i].worldX = 13 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 26 * gp.tileSize;
+        gp.npc[mapNum][i].worldX = 5 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 9 * gp.tileSize;
         i++;
 
         gp.npc[mapNum][i] = new NPC_Kramu(gp);
