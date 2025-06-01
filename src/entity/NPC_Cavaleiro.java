@@ -56,7 +56,6 @@ public class NPC_Cavaleiro extends Entity{
                 direction = "down1";
             }
             actionLookCounter = 0;
-
         }
 
     }
@@ -68,7 +67,6 @@ public class NPC_Cavaleiro extends Entity{
     public void speak(){
         super.startDialogue(this, dialogueSet);
         dialogueSet++;
-
         if(dialogues[dialogueSet][0] == null){
             dialogueSet = 0;
         }

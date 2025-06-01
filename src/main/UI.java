@@ -293,6 +293,8 @@ public class UI {
         //DRAW PLAYER INVENTORY
         drawInventory(npc, true);
 
+        drawInventory(gp.player, false);
+
         // TAKE ITEM
         int selectedItemIndex = getItemIndexOnSlot(npcSlotCol, npcSlotRow);
         if (gp.keyH.enterPressed) {
@@ -302,6 +304,12 @@ public class UI {
 
                     npc.Inventory.remove(selectedItemIndex);
                     gp.player.Inventory.add(selectedItem);
+                    gp.gameState = gp.dialogueState;
+                    gp.keyH.enterPressed = false;
+
+                    subState = 0;
+                    gp.gameState = gp.dialogueState;
+                    gp.keyH.enterPressed = false;
                 }
             }
         }
@@ -329,6 +337,9 @@ public class UI {
                     gp.player.Inventory.remove(selectedItemIndex);
                     npc.Inventory.add(itemToGive);
 
+                    subState = 0;
+                    gp.gameState = gp.dialogueState;
+                    gp.keyH.enterPressed = false;
                 }
             }
         }
