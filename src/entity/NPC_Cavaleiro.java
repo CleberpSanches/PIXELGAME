@@ -72,7 +72,6 @@ public class NPC_Cavaleiro extends Entity{
         if(dialogues[dialogueSet][0] == null){
             dialogueSet = 0;
         }
-
         gp.gameState = gp.tradeState;
         gp.ui.npc = this;
     }

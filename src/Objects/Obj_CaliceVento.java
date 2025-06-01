@@ -8,8 +8,6 @@ public class Obj_CaliceVento extends Entity {
         super(gp);
         name = "calicevento";
         down1 = setup("/objects/calicevento", gp.tileSize, gp.tileSize);
-
         description = name;
-
     }
 }

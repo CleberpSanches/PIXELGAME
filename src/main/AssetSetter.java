@@ -53,12 +53,6 @@ public class AssetSetter {
     public void setNPC(){
         int i=0;
         int mapNum = 0;
-        //NPCS TESTE
-        mapNum = 0;
-        gp.npc[mapNum][i] = new NPC_Cavaleiro(gp);
-        gp.npc[mapNum][i].worldX = 24 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 28 * gp.tileSize;
-        i++;
 
         //MAPA INICIAL
         //NPCS : Cavaleiro do Tutorial ✅
@@ -135,9 +129,6 @@ public class AssetSetter {
     public void setTItens(){
         int i = 0;
         int mapNum = 0;
-        mapNum = 1;
-
-        mapNum = 2;
 
         mapNum = 3;
         gp.tItens[mapNum][i] = new TI_PLua(gp);
@@ -148,6 +139,7 @@ public class AssetSetter {
         gp.tItens[mapNum][i].worldX = 39 * gp.tileSize;
         gp.tItens[mapNum][i].worldY = 13 * gp.tileSize;
         i++;
+
     }
 
 //    public void setMonster(){
