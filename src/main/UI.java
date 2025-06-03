@@ -121,12 +121,12 @@ public class UI {
                 charIndex++;
             }
 
-            if (gp.keyH.enterPressed == true){
+            if (gp.keyH.spacePressed == true){
                 charIndex = 0;
                 combinedText = "";
                 if (gp.gameState == gp.dialogueState){
                     npc.dialogueIndex++;
-                    gp.keyH.enterPressed = false;
+                    gp.keyH.spacePressed = false;
                 }
             }
         }

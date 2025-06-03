@@ -4,6 +4,7 @@ import Tile_Items.TI_ArvoreSeiva;
 import Objects.*;
 import Tile_Items.TI_PLua;
 import entity.*;
+import monster.Enemy_SlimedeFogo;
 
 public class AssetSetter {
     GamePanel gp;
@@ -142,8 +143,15 @@ public class AssetSetter {
 
     }
 
-//    public void setMonster(){
-//
-//    }
+    public void setMonster(){
+        int i = 0;
+        int mapNum = 0;
+
+        mapNum = 4;
+        gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
+        gp.monster[mapNum][i].worldX = 9 * gp.tileSize;
+        gp.monster[mapNum][i].worldY = 41 * gp.tileSize;
+        i++;
+    }
 }
 

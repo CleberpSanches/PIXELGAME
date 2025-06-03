@@ -71,7 +71,7 @@ public class NPC_Cavaleiro extends Entity{
             dialogueSet = 0;
         }
         gp.gameState = gp.tradeState;
-        gp.ui.npc = this;
+
     }
 
 }

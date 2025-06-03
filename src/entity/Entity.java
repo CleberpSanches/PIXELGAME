@@ -18,7 +18,7 @@ public abstract class Entity {
     public Entity currentMagicatk;
     public ArrayList<Entity> Inventory = new ArrayList<>();
     public final int maxInventorySize = 14;
-    GamePanel gp;
+    public GamePanel gp;
     public int worldX;
     public int worldY;
     public int speed;

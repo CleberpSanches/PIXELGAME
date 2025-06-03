@@ -10,6 +10,7 @@ public class KeyHandler implements KeyListener {
     public boolean rightPressed;
     public boolean shiftPressed;
     public boolean enterPressed;
+    public boolean spacePressed;
     public boolean qPressed;
     boolean checkDrawTime;
     GamePanel gp;
@@ -198,9 +199,9 @@ public class KeyHandler implements KeyListener {
 
     //DIALOGUE CONTROLS
     public void dialogueState(int code){
-        if (code == KeyEvent.VK_ENTER)
+        if (code == KeyEvent.VK_SPACE)
         {
-            enterPressed = true;
+            spacePressed = true;
         }
     }
 
