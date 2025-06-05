@@ -310,7 +310,7 @@ public class UI {
 
                     npc.Inventory.remove(selectedItemIndex);
                     gp.player.Inventory.add(selectedItem);
-                    gp.gameState = gp.dialogueState;
+                    gp.gameState = gp.playState;
                     gp.keyH.enterPressed = false;
 
                     subState = 0;
@@ -344,7 +344,7 @@ public class UI {
                     npc.Inventory.add(itemToGive);
 
                     subState = 0;
-                    gp.gameState = gp.dialogueState;
+                    gp.gameState = gp.playState;
                     gp.keyH.enterPressed = false;
                 }
             }

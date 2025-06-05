@@ -21,6 +21,8 @@ public class NPC_Rainbow extends Entity{
         getImage();
         setDialogue();
         name = "rainbow";
+        solidArea.height = 144;
+        solidArea.width = 144;
     }
 
     public void getImage() {
@@ -72,7 +74,8 @@ public class NPC_Rainbow extends Entity{
             this.Inventory.removeAll(items);
             this.Inventory.add(new Obj_CaliceVento(gp));
 
-        } else if (items2.size()==1) {
+        }
+        else if (items2.size()==1) {
             dialogues[0][0] = "Tenho todos os meus orbes, se vá!";
         } else {
             if (name.equals("rainbow") && dialogueIndex == 0) {
