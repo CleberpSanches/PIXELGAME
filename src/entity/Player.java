@@ -60,8 +60,9 @@ public class Player extends Entity {
     public void setItems() {
         Inventory.add(currentMagicatk);
         Inventory.add(new Obj_AtkToxina2(gp));
-
-
+        Inventory.add(new Obj_OrbeRedemoinho(gp));
+        Inventory.add(new Obj_OrbeOutono(gp));
+        Inventory.add(new Obj_OrbeBrisaDourada(gp));
     }
 
     public void getPlayerImage() {

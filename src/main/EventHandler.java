@@ -64,7 +64,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 16 && tileY == 27) {
+            if (tileX == 16 && tileY == 26) {
                 teleportPlayer(5, 7, 43);
             }
         }
@@ -73,7 +73,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 8 && tileY == 26) {
+            if (tileX == 11 && tileY == 40) {
                 teleportPlayer(6, 24, 48);
             }
         }

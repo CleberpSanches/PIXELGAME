@@ -54,6 +54,10 @@ public class AssetSetter {
     public void setNPC(){
         int i=0;
         int mapNum = 0;
+        gp.npc[mapNum][i] = new NPC_Rainbow(gp);
+        gp.npc[mapNum][i].worldX = 24 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 26 * gp.tileSize;
+        i++;
 
         //MAPA INICIAL
         //NPCS : Cavaleiro do Tutorial ✅
@@ -115,9 +119,14 @@ public class AssetSetter {
         //NPC : Sapita, Tigro
         mapNum = 6;
         gp.npc[mapNum][i] = new NPC_Sapita(gp);
-        gp.npc[mapNum][i].worldX = 18 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 37 * gp.tileSize;
+        gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
         i++;
+
+       // gp.npc[mapNum][i] = new NPC_Rainbow(gp);
+       // gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+       // gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
+       // i++;
 
         gp.npc[mapNum][i] = new Npc_Tigro(gp);
         gp.npc[mapNum][i].worldX = 9 * gp.tileSize;

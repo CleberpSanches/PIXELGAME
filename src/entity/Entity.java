@@ -95,8 +95,12 @@ public abstract class Entity {
     }
 
     public void startDialogue(Entity entity, int setNum){
+        gp.ui.npc = this;
+        gp.ui.charIndex = 0;
+        gp.ui.combinedText = "";
+        gp.ui.currentDialogue = "";
         gp.gameState = gp.dialogueState;
-        gp.ui.npc = entity;
+        gp.ui.npc = this;
         dialogueSet = setNum;
     }
 

@@ -50,6 +50,11 @@ public class Npc_Tigro extends Entity{
     }
     public void speak(){
         startDialogue(this, dialogueSet);
+        dialogueSet++;
+
+        if(dialogues[dialogueSet][0] == null){
+            dialogueSet = 0;
+        }
     }
 
 }

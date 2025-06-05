@@ -13,6 +13,7 @@ public class NPC_Cavaleiro extends Entity{
     public NPC_Cavaleiro(GamePanel gp) {
         super(gp);
         direction = "down1";
+        name = "cavaleiro";
         speed = 0;
         dialogueSet = -1;
         getImage();
@@ -65,12 +66,12 @@ public class NPC_Cavaleiro extends Entity{
     }
 
     public void speak(){
-        super.startDialogue(this, dialogueSet);
+
+        startDialogue(this, dialogueSet);
         dialogueSet++;
         if(dialogues[dialogueSet][0] == null){
             dialogueSet = 0;
         }
-        gp.gameState = gp.tradeState;
 
     }
 

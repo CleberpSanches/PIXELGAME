@@ -29,8 +29,8 @@ public class UI {
     int playerInventoryIndex = 0;
     int npcInventoryIndex = 0;
     public Entity npc;
-    int charIndex = 0;
-    String combinedText = "";
+    public int charIndex = 0;
+    public String combinedText = "";
     int counter =  0;
     public int targetMap, targetTileX, targetTileY;
     public boolean teleportRequested = false;
@@ -125,9 +125,15 @@ public class UI {
                 charIndex = 0;
                 combinedText = "";
                 if (gp.gameState == gp.dialogueState){
+                    if (npc.name != null && npc.name.equals("cavaleiro") && npc.dialogueIndex == 1 && npc.dialogueSet == 2) {
+                        gp.gameState = gp.tradeState;
+                        npc.dialogues[2][1] = "Faça sua troca";
+                        npc.dialogueIndex = 0;
+                    }
                     npc.dialogueIndex++;
                     gp.keyH.spacePressed = false;
                 }
+
             }
         }
         else {

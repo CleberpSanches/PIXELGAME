@@ -11,7 +11,7 @@ public class NPC_Morceguita extends Entity{
     public NPC_Morceguita(GamePanel gp) {
         super(gp);
         direction = "down1";
-
+        dialogueSet = -1;
         speed = 0;
         getImage();
         setDialogue();
@@ -75,7 +75,11 @@ public class NPC_Morceguita extends Entity{
             dialogues[0][1] = null;
         }
         startDialogue(this, dialogueSet);
+        dialogueSet++;
 
+        if(dialogues[dialogueSet][0] == null){
+            dialogueSet = 0;
+        }
     }
 
 }
