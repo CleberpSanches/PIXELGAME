@@ -21,7 +21,7 @@ public class NPC_Kramu extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Fala comigo não!";
+        dialogues[0][0] = "Olá gatinho, tá um calor aqui né?/nEu queria muito beber uma água!";
 
     }
 

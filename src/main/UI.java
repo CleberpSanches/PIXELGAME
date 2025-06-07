@@ -174,7 +174,7 @@ public class UI {
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 24F));
 
-        String[] menuOptions = {"NOVO JOGO", "OPÇÕES", "SAIR"};
+        String[] menuOptions = {"NOVO JOGO", "CONTINUAR JOGO", "SAIR"};
 
         int menuY = (int) (gp.screenHeight / 1.5);
 

@@ -10,9 +10,8 @@ public class Enemy_SlimedeFogo extends Entity {
         super(gp);
         name = "Fire Slime";
         speed = 1;
-        maxLife = 4;
+        maxLife = 2;
         life  = maxLife;
-
         solidArea.x = 3;
         solidArea.y = 18;
         solidArea.width = 42;

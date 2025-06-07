@@ -66,12 +66,9 @@ public class NPC_Cavaleiro extends Entity{
     }
 
     public void speak(){
-
-        startDialogue(this, dialogueSet);
+        super.startDialogue(this, dialogueSet);
         dialogueSet++;
-        if(dialogues[dialogueSet][0] == null){
-            dialogueSet = 0;
-        }
+        gp.gameState = gp.tradeState;
 
     }
 

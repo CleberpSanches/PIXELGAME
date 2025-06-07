@@ -192,7 +192,7 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.playState;
             }
             if (gp.ui.commandNum == 1){
-                System.exit(0);
+                gp.gameState = gp.titleState;
             }
         }
     }

@@ -1,6 +1,7 @@
 package entity;
 
 import Objects.Obj_AmuletoLua;
+import Objects.Obj_CristalFlamejante;
 import main.GamePanel;
 import main.ToolBox;
 
@@ -27,14 +28,8 @@ public class NPC_Orus extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Oh, olá gato! Não recebemos muitos como/nvocê aqui!";
-        dialogues[0][1] = "O que procura?";
-        dialogues[0][2] = "Os itens para a armadura?";
-        dialogues[0][3] = "Eu tenho um, mas não quero ficar de mãos/nvazias, mesmo não tendo mãos!";
-        dialogues[0][4] = "Eu preciso dar cabo de alguns slimes ao norte,/n mas como pode ver eu não tenho mãos!/n Poderia fazer isso para mim?";
-        dialogues[0][5] = "Sabia que você não decepcionaria!";
-
-
+        dialogues[0][0] = "Oh, olá gato! Não recebemos muitos como/nvocê aqui! Pegue 5 slimes e eu te/najudarei em sua missão!";
+        dialogues[0][1] = "Terminou? Hehe, sabia que não me decepcioinaria!";
     }
 
     public void setAction(){
@@ -60,17 +55,21 @@ public class NPC_Orus extends Entity{
     }
 
     public void setItems(){
-        Inventory.add(new Obj_AmuletoLua(gp));
-        Inventory.add(new Obj_AmuletoLua(gp));
+        Inventory.add(new Obj_CristalFlamejante(gp));
     }
 
     public void speak(){
-        super.startDialogue(this, dialogueSet);
         dialogueSet++;
 
-        if(dialogues[dialogueSet][0] == null){
+        if (dialogueSet >= dialogues.length || dialogues[dialogueSet][0] == null) {
             dialogueSet = 0;
+            gp.gameState = gp.tradeState;
+            dialogues[0][0] = "Manda pra cá!";
+            dialogues[0][1] = null;
+            return;
         }
+
+        super.startDialogue(this, dialogueSet);
     }
 
 }
