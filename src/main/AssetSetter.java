@@ -93,8 +93,18 @@ public class AssetSetter {
         i++;
 
         //DESERTO SOMBRIO
-        //NPCS : Kramu✅, Tasmo✅, LapideM✅ e LapideJ✅
+        //NPCS : Kramu✅, Placas✅, Tasmo✅, LapideM✅ e LapideJ✅
         mapNum = 5;
+        gp.npc[mapNum][i] = new NPC_Placa(gp);
+        gp.npc[mapNum][i].worldX = 5 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 42 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_Placa(gp);
+        gp.npc[mapNum][i].worldX = 10 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 42 * gp.tileSize;
+        i++;
+
         gp.npc[mapNum][i] = new NPC_LapideJ(gp);
         gp.npc[mapNum][i].worldX = 45 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 8 * gp.tileSize;
@@ -116,7 +126,7 @@ public class AssetSetter {
         i++;
 
         //CAMPOS INFINITOS
-        //NPC : Sapita, Tigro
+        //NPC : Sapita✅, Tigro✅
         mapNum = 6;
         gp.npc[mapNum][i] = new NPC_Sapita(gp);
         gp.npc[mapNum][i].worldX = 25 * gp.tileSize;

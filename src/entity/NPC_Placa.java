@@ -1,7 +1,5 @@
 package entity;
 
-import Objects.Obj_AmuletoLua;
-import Objects.Obj_CristalFlamejante;
 import main.GamePanel;
 import main.ToolBox;
 
@@ -10,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class NPC_Orus extends Entity{
-    public NPC_Orus(GamePanel gp) {
+public class NPC_Placa extends Entity{
+    public NPC_Placa(GamePanel gp) {
         super(gp);
         direction = "down1";
         speed = 0;
@@ -21,16 +19,15 @@ public class NPC_Orus extends Entity{
     }
 
     public void getImage() {
-        down1 = setup("/npc/NpcOrus/Orus1", gp.tileSize, gp.tileSize);
-        down2 = setup("/npc/NpcOrus/Orus2", gp.tileSize, gp.tileSize);
-        down3 = setup("/npc/NpcOrus/Orus3", gp.tileSize, gp.tileSize);
-        down4 = setup("/npc/NpcOrus/Orus1", gp.tileSize, gp.tileSize);
+        down1 = setup("/npc/NpcparaPuzzles/Placa", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/NpcparaPuzzles/Placa", gp.tileSize, gp.tileSize);
+        down3 = setup("/npc/NpcparaPuzzles/Placa", gp.tileSize, gp.tileSize);
+        down4 = setup("/npc/NpcparaPuzzles/Placa", gp.tileSize, gp.tileSize);
+
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Oh, olá gato! Não recebemos muitos como/nvocê aqui! Pegue 5 slimes e eu te/najudarei em sua missão!";
-
-        dialogues[1][0] = "Terminou? Hehe, sabia que não me decepcioinaria!";
+        dialogues[0][0] = "Norte - Fazenda dos mortos./nLeste - Castelo da verdade & Cemitério/ndos esquecidos.";
     }
 
     public void setAction(){
@@ -55,22 +52,16 @@ public class NPC_Orus extends Entity{
 
     }
 
-    public void setItems(){
-        Inventory.add(new Obj_CristalFlamejante(gp));
-    }
-
     public void speak(){
+        super.startDialogue(this, dialogueSet);
         dialogueSet++;
 
-        if (dialogueSet >= dialogues.length || dialogues[dialogueSet][0] == null) {
+        if(dialogues[dialogueSet][0] == null){
             dialogueSet = 0;
-            gp.gameState = gp.tradeState;
-            dialogues[0][0] = "Manda pra cá!";
-            dialogues[0][1] = null;
-            return;
         }
 
-        super.startDialogue(this, dialogueSet);
+        gp.gameState = gp.tradeState;
+        gp.ui.npc = this;
     }
 
 }
