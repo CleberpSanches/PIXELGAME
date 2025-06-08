@@ -64,7 +64,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 16 && tileY == 26) {
+            if ((tileX == 16 && tileY == 26) && gp.golemQuest) {
                 teleportPlayer(5, 7, 43);
             }
         }

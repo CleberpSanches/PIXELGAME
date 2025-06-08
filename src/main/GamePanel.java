@@ -73,6 +73,9 @@ public class GamePanel extends JPanel implements Runnable {
     public final int mapState = 6;
     public final int tradeState = 7;
 
+    //PUZZLES
+    public boolean golemQuest = false;
+
 
     public GamePanel() {
         this.player = new Player(this, input);

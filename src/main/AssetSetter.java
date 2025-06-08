@@ -49,6 +49,23 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 32 * gp.tileSize;
         i++;
+
+        //INFERNO DE MAGMERIA
+        mapNum = 4;
+        gp.obj[mapNum][i] = new Obj_CristalFlamejante(gp);
+        gp.obj[mapNum][i].worldX = 6 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 43 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new Obj_EssenciadeFogo(gp);
+        gp.obj[mapNum][i].worldX = 6 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 43 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new Obj_NucleodeMagma(gp);
+        gp.obj[mapNum][i].worldX = 6 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 43 * gp.tileSize;
+        i++;
     }
 
     public void setNPC(){
@@ -155,11 +172,11 @@ public class AssetSetter {
         gp.tItens[mapNum][i].worldX = 11 * gp.tileSize;
         gp.tItens[mapNum][i].worldY = 27 * gp.tileSize;
         i++;
+
         gp.tItens[mapNum][i] = new TI_ArvoreSeiva(gp);
         gp.tItens[mapNum][i].worldX = 39 * gp.tileSize;
         gp.tItens[mapNum][i].worldY = 13 * gp.tileSize;
         i++;
-
     }
 
     public void setMonster(){

@@ -1,6 +1,11 @@
 package entity;
 
+import Objects.Obj_Garrafadagua;
 import main.GamePanel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class NPC_GolemdeFogo extends Entity{
     public NPC_GolemdeFogo(GamePanel gp) {
@@ -21,7 +26,9 @@ public class NPC_GolemdeFogo extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Fala comigo não!";
+        dialogues[0][0] = "Não fique aqui garoto, pode se queimar!";
+        dialogues[0][1] = "O que estou fazendo? Apenas os itens/n de minha armadura!";
+        dialogues[0][2] = "Você quer ir ao Desertos Sombrio?/nOkay, me traga o último item da armadura/nque lhe ajudo!";
 
     }
 
@@ -48,12 +55,36 @@ public class NPC_GolemdeFogo extends Entity{
     }
 
     public void speak(){
-        super.startDialogue(this, dialogueSet);
-        dialogueSet++;
+        Set<String> requiredItems = Set.of("cristalflamejante", "essenciadofogo", "nucleodemagma");
+        List<Entity> itemsToRemove = new ArrayList<>();
 
-        if(dialogues[dialogueSet][0] == null){
-            dialogueSet = 0;
+        if (gp.golemQuest) {
+            dialogues[0][0] = "Você já me entregou tudo. O círculo atrás de você está ativo./nE leve este brinde raro daqui!";
+            dialogues[0][1] = null;
+            startDialogue(this, 0);
+            return;
         }
+
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItems.contains(obj.name)) {
+                itemsToRemove.add(obj);
+            }
+        }
+
+        if (itemsToRemove.size() == 3) {
+            gp.player.Inventory.removeAll(itemsToRemove);
+            gp.player.Inventory.add(new Obj_Garrafadagua(gp));
+            gp.golemQuest = true;
+
+            dialogues[0][0] = "Boa, pode ir embora nesse círculo atrás/nonde você! nE leve este brinde raro daqui!";
+            dialogues[0][1] = "Você recebeu uma garrafa de água!";
+            dialogues[0][2] = null;
+        } else {
+            dialogues[0][0] = "Você ainda não trouxe todos os itens./nFaltam " + (3 - itemsToRemove.size()) + ".";
+            dialogues[0][1] = null;
+        }
+
+        startDialogue(this, 0);
     }
 
 }
