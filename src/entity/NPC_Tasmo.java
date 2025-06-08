@@ -7,6 +7,7 @@ public class NPC_Tasmo extends Entity{
         super(gp);
         direction = "down1";
         speed = 0;
+        name = "tasmo";
         dialogueSet = -1;
         getImage();
         setDialogue();
@@ -21,7 +22,8 @@ public class NPC_Tasmo extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Fala comigo não!";
+        dialogues[0][0] = "Vi algo brilhante dentro dos olhos/nde um desses mortos!";
+        dialogues[0][1] = "Parece interessante!";
 
     }
 

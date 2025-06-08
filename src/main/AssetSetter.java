@@ -110,7 +110,7 @@ public class AssetSetter {
         i++;
 
         //DESERTO SOMBRIO
-        //NPCS : Kramu✅, Placas✅, Tasmo✅, LapideM✅ e LapideJ✅
+        //NPCS : Kramu✅, Tasmo✅, LapideM✅, LapideJ✅, NPC Cenário Caveiras, NPC Puzzle Caveira
         mapNum = 5;
         gp.npc[mapNum][i] = new NPC_Placa(gp);
         gp.npc[mapNum][i].worldX = 5 * gp.tileSize;
@@ -140,6 +140,81 @@ public class AssetSetter {
         gp.npc[mapNum][i] = new NPC_Kramu(gp);
         gp.npc[mapNum][i].worldX = 13 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 26 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 10 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 45 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 4 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 39 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraMorta(gp);
+        gp.npc[mapNum][i].worldX = 17 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 40 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 12 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 35 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 15 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 31 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 6 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 12 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 20 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 5 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 17 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 7 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 8 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 3 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 5 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 12 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 3 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 38 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 40 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 41 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 35 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 47 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 37 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
+        gp.npc[mapNum][i].worldX = 44 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
         i++;
 
         //CAMPOS INFINITOS

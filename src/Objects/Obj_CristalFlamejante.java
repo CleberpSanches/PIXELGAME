@@ -8,5 +8,7 @@ public class Obj_CristalFlamejante extends Entity {
         super(gp);
         name = "cristalflamejante";
         down1 = setup("/objects/cristal_flamejante", gp.tileSize, gp.tileSize);
+
+        description = "Objeto sólido muito usado em armaduras!";
     }
 }

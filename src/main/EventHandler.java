@@ -24,6 +24,7 @@ public class EventHandler {
 
     public void checkEvent(){
 
+        //TP QUARTO - LOJA
         if (gp.currentMap == 0) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
@@ -33,6 +34,7 @@ public class EventHandler {
             }
         }
 
+        //TP LOJA - INICIO
         if (gp.currentMap == 1) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
@@ -42,6 +44,7 @@ public class EventHandler {
             }
         }
 
+        //TP INICIO - MATA NEBULOSA
         if (gp.currentMap == 2) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
@@ -51,32 +54,37 @@ public class EventHandler {
             }
         }
 
+        //TP MATA NEBULOSA - CAMPOS INFINITOS
         if (gp.currentMap == 3) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
             if (tileX == 24 && tileY == 17 || tileX == 24 && tileY == 16) {
-                teleportPlayer(4, 10, 44);
+                teleportPlayer(4, 24, 48);
             }
         }
 
+        //TP CAMPOS INFINITOS - INFERNO DE MAGMERIA
         if (gp.currentMap == 4) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if ((tileX == 16 && tileY == 26) && gp.golemQuest) {
-                teleportPlayer(5, 7, 43);
+            if (tileX == 25 && tileY == 16) {
+                teleportPlayer(5, 10, 44);
             }
         }
 
+        //TP INFERNO DE MAGMERIA - DESERTO SOMBRIO
         if (gp.currentMap == 5) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 11 && tileY == 40) {
-                teleportPlayer(6, 24, 48);
+            if ((tileX == 11 && tileY == 40) && gp.golemQuest) {
+                teleportPlayer(6, 16, 27);
             }
         }
+
+        //TP DESERTO SOMBRIO - FINAL
     }
 
     public void teleportPlayer(int targetMap, int tileX, int tileY) {

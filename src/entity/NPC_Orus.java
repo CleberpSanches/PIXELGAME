@@ -55,9 +55,7 @@ public class NPC_Orus extends Entity{
 
     }
 
-    public void setItems(){
-        Inventory.add(new Obj_CristalFlamejante(gp));
-    }
+
 
     public void speak(){
         dialogueSet++;

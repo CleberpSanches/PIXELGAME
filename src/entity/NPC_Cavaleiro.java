@@ -58,7 +58,6 @@ public class NPC_Cavaleiro extends Entity{
             }
             actionLookCounter = 0;
         }
-
     }
 
     public void setItems(){

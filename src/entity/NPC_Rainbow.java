@@ -32,8 +32,6 @@ public class NPC_Rainbow extends Entity{
 
     public void setDialogue(){
         dialogues[0][0] = "Você possui todos os meus orbes? Me dê!/nLhe darei uma grande recompensa!";
-
-
     }
 
     public void setAction(){
