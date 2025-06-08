@@ -6,6 +6,15 @@ import Tile_Items.TI_PLua;
 import entity.*;
 import monster.Enemy_SlimedeFogo;
 
+//ORDEM DOS MAPAS
+//        0-Quarto;
+//        1-Loja;
+//        2-Inicio;
+//        3-Mata Nebulosa;
+//        4-Campos Infinitos;
+//        5-Inferno de Magmeria;
+//        6-Deserto Sombrio;
+
 public class AssetSetter {
     GamePanel gp;
 
@@ -16,42 +25,12 @@ public class AssetSetter {
 
     public  void setObject(){
         int i=0;
+
         int mapNum = 2;
-        gp.obj[mapNum][i] = new Obj_AmuletoLua(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 25 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Obj_AmuletoNevoa(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 26 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Obj_AmuletoSeiva(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 27 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Obj_ChaveCipestre(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 28 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Obj_OrbeOutono(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 29 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Obj_OrbeBrisaDourada(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 30 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Obj_OrbeRedemoinho(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 31 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Obj_CaliceVento(gp);
-        gp.obj[mapNum][i].worldX = 7 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 32 * gp.tileSize;
-        i++;
+
 
         //INFERNO DE MAGMERIA
-        mapNum = 4;
+        mapNum = 5;
         gp.obj[mapNum][i] = new Obj_CristalFlamejante(gp);
         gp.obj[mapNum][i].worldX = 6 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 43 * gp.tileSize;
@@ -96,9 +75,27 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
         i++;
 
-        //INFERNO DE MAGMÉRIA
-        //NPCS : Orus✅ e Golem de Fogo✅
+        //CAMPOS INFINITOS
+        //NPC : Sapita✅, Tigro✅, Totem Rainbow✅
         mapNum = 4;
+        gp.npc[mapNum][i] = new NPC_Sapita(gp);
+        gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
+        i++;
+
+       // gp.npc[mapNum][i] = new NPC_Rainbow(gp);
+       // gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+       // gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
+       // i++;
+
+        gp.npc[mapNum][i] = new Npc_Tigro(gp);
+        gp.npc[mapNum][i].worldX = 9 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 18 * gp.tileSize;
+        i++;
+
+        //INFERNO DE MAGMÉRIA
+        //NPC: ORUS✅, GOLEM DE FOGO✅
+        mapNum = 5;
         gp.npc[mapNum][i] = new NPC_Orus(gp);
         gp.npc[mapNum][i].worldX = 13 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 41 * gp.tileSize;
@@ -110,8 +107,8 @@ public class AssetSetter {
         i++;
 
         //DESERTO SOMBRIO
-        //NPCS : Kramu✅, Tasmo✅, LapideM✅, LapideJ✅, NPC Cenário Caveiras, NPC Puzzle Caveira
-        mapNum = 5;
+        //NPCS : Kramu✅, Tasmo✅, LapideM✅, LapideJ✅, NPC Cenário Caveiras✅, NPC Puzzle Caveira✅
+        mapNum = 6;
         gp.npc[mapNum][i] = new NPC_Placa(gp);
         gp.npc[mapNum][i].worldX = 5 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 42 * gp.tileSize;
@@ -217,23 +214,6 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
         i++;
 
-        //CAMPOS INFINITOS
-        //NPC : Sapita✅, Tigro✅
-        mapNum = 6;
-        gp.npc[mapNum][i] = new NPC_Sapita(gp);
-        gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
-        i++;
-
-       // gp.npc[mapNum][i] = new NPC_Rainbow(gp);
-       // gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
-       // gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
-       // i++;
-
-        gp.npc[mapNum][i] = new Npc_Tigro(gp);
-        gp.npc[mapNum][i].worldX = 9 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 18 * gp.tileSize;
-        i++;
 
 
     }
