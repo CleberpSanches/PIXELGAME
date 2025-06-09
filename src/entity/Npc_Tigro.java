@@ -1,6 +1,14 @@
 package entity;
 
+import Objects.Obj_AmuletoNevoa;
+import Objects.Obj_CaliceVento;
+import Objects.Obj_OrbeBrisaDourada;
+import Objects.Obj_PocaoSangue;
 import main.GamePanel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class Npc_Tigro extends Entity{
 
@@ -20,11 +28,9 @@ public class Npc_Tigro extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "OIIIIIIIII";
-        dialogues[0][1] = "ESTAMOS SOFRENDO UMA CENSURA";
-
-        dialogues[1][0] = "ISSE KRIEN SILERS";
-        dialogues[1][1] = "OLD";
+        dialogues[0][0] = "Aquela sapeta disse que estou com /n o orbe da brisa dourada?";
+        dialogues[0][1] = "Não posso ficar de mãos vazias!/nSe quiser o orbe terá que me dar /nalgo em troca";
+        dialogues[0][2] = "";
     }
 
     public void setAction(){
@@ -50,11 +56,35 @@ public class Npc_Tigro extends Entity{
     }
     public void speak(){
         startDialogue(this, dialogueSet);
-        dialogueSet++;
 
-        if(dialogues[dialogueSet][0] == null){
-            dialogueSet = 0;
+        Set<String> requiredItems = Set.of("pocaosangue");
+        List<Entity> items = new ArrayList<>();
+        Set<String> requiredItem = Set.of("orbebrisadourada");
+        List<Entity> items2 = new ArrayList<>();
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItems.contains(obj.name)) {
+                items.add(obj);
+            }
         }
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItem.contains(obj.name)) {
+                items2.add(obj);
+            }
+        }
+        if (items.size() == 1) {
+            dialogues[0][0] = "Aqui está sua recompensa! /nOlhe seu inventário";
+            for (int i = 1; dialogues[0][i] != null ; i++) {
+                dialogues[0][i] = null;
+            }
+            gp.player.Inventory.add(new Obj_OrbeBrisaDourada(gp));
+            gp.player.Inventory.removeAll(items);
+            this.Inventory.add(new Obj_PocaoSangue(gp));
+
+        }
+        else if (items2.size()==1) {
+            dialogues[0][0] = "Tenho minha poção, se vá!";
+        }
+
     }
 
 }

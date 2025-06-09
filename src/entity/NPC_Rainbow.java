@@ -82,8 +82,6 @@ public class NPC_Rainbow extends Entity{
 
         }
 
-
-
     }
 
     @Override

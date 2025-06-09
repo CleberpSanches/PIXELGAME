@@ -1,12 +1,17 @@
 package entity;
 
+import Objects.Obj_OrbeBrisaDourada;
+import Objects.Obj_OrbeOutono;
 import main.GamePanel;
 import main.ToolBox;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class NPC_Sapita extends Entity{
     public NPC_Sapita(GamePanel gp) {
@@ -14,7 +19,6 @@ public class NPC_Sapita extends Entity{
         direction = "down1";
         speed = 0;
 
-        dialogueSet = -1;
         getImage();
         setDialogue();
     }
@@ -28,11 +32,10 @@ public class NPC_Sapita extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "OIIIIIIIII";
-        dialogues[0][1] = "ESTAMOS SOFRENDO UMA CENSURA";
+        dialogues[0][0] = "Atrás de mim está a grande relíquia de/narco-íris";
+        dialogues[0][1] = "Precisamos retornar todos os orbes para ela!!";
+        dialogues[0][2] = "Aqui está o orbe que já tenho/nfaltam dois";
 
-        dialogues[1][0] = "ISSE KRIEN SILERS";
-        dialogues[1][1] = "OLD";
     }
 
     public void setAction(){
@@ -58,12 +61,22 @@ public class NPC_Sapita extends Entity{
     }
 
     public void speak(){
-        super.startDialogue(this, dialogueSet);
-        dialogueSet++;
+        Set<String> requiredItems = Set.of("orbeoutono");
+        List<Entity> itemsToRemove = new ArrayList<>();
 
-        if(dialogues[dialogueSet][0] == null){
-            dialogueSet = 0;
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItems.contains(obj.name)) {
+                itemsToRemove.add(obj);
+            }
         }
+
+        if (itemsToRemove.size() == 1) {
+            gp.player.Inventory.removeAll(itemsToRemove);
+
+        }
+        startDialogue(this, dialogueSet);
+        gp.player.Inventory.add(new Obj_OrbeOutono(gp));
+
     }
 
 }

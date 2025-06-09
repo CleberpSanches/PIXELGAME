@@ -11,7 +11,7 @@ public class NPC_Morceguita extends Entity{
     public NPC_Morceguita(GamePanel gp) {
         super(gp);
         direction = "down1";
-        dialogueSet = -1;
+        name = "anao";
         speed = 0;
         getImage();
         setDialogue();
@@ -26,11 +26,8 @@ public class NPC_Morceguita extends Entity{
     }
 
     public void setDialogue(){
-            dialogues[0][0] = "OIIIIIIIII";
-            dialogues[0][1] = "ESTAMOS SOFRENDO UMA CENSURA";
-
-            dialogues[1][0] = "ISSE KRIEN SILERS";
-            dialogues[1][1] = "OLD";
+            dialogues[0][0] = "Reúna todos os meus amuletos perdidos /n Lhe darei uma recompensa!";
+            dialogues[0][1] = "Espero seu retorno!";
 
     }
 
@@ -70,9 +67,9 @@ public class NPC_Morceguita extends Entity{
 
             gp.player.Inventory.add(new Obj_ChaveCipestre(gp));
 
-            dialogues[0][0] = "Seus itens se tornam um";
+            dialogues[0][0] = "Meus amuletos enfim se tornam meus!";
 
-            dialogues[0][1] = null;
+            dialogues[0][1] = "Aqui sua recompensa!";
         }
         startDialogue(this, dialogueSet);
         dialogueSet++;

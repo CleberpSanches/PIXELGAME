@@ -12,6 +12,8 @@ public class KeyHandler implements KeyListener {
     public boolean enterPressed;
     public boolean spacePressed;
     public boolean qPressed;
+    public boolean nPressed;
+    public boolean sPressed;
     boolean checkDrawTime;
     GamePanel gp;
 
@@ -202,6 +204,14 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_SPACE)
         {
             spacePressed = true;
+        }
+        if (code == KeyEvent.VK_N)
+        {
+            nPressed = true;
+        }
+        if (code == KeyEvent.VK_S)
+        {
+            sPressed = true;
         }
     }
 
