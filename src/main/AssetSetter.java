@@ -5,6 +5,8 @@ import Objects.*;
 import Tile_Items.TI_PLua;
 import entity.*;
 import monster.Enemy_SlimedeFogo;
+import monster.Monster_Lagarta;
+import monster.Monster_LagartaNormal;
 
 //ORDEM DOS MAPAS
 //        0-Quarto;
@@ -240,6 +242,20 @@ public class AssetSetter {
         int mapNum = 0;
 
         mapNum = 4;
+        gp.npc[mapNum][i] = new Monster_Lagarta(gp);
+        gp.npc[mapNum][i].worldX = 38 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 15 * gp.tileSize;
+        i++;
+        gp.npc[mapNum][i] = new Monster_LagartaNormal(gp);
+        gp.npc[mapNum][i].worldX = 41 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 34 * gp.tileSize;
+        i++;
+        gp.npc[mapNum][i] = new Monster_LagartaNormal(gp);
+        gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 25 * gp.tileSize;
+        i++;
+
+        mapNum = 5;
         gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
         gp.monster[mapNum][i].worldX = 9 * gp.tileSize;
         gp.monster[mapNum][i].worldY = 41 * gp.tileSize;

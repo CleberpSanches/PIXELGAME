@@ -30,7 +30,7 @@ public class Npc_Tigro extends Entity{
     public void setDialogue(){
         dialogues[0][0] = "Aquela sapeta disse que estou com /n o orbe da brisa dourada?";
         dialogues[0][1] = "Não posso ficar de mãos vazias!/nSe quiser o orbe terá que me dar /nalgo em troca";
-        dialogues[0][2] = "";
+        dialogues[0][2] = "Vá até o anão e consiga uma poção de sangue";
     }
 
     public void setAction(){
@@ -72,7 +72,7 @@ public class Npc_Tigro extends Entity{
             }
         }
         if (items.size() == 1) {
-            dialogues[0][0] = "Aqui está sua recompensa! /nOlhe seu inventário";
+            dialogues[0][0] = "Aqui está sua recompensa! Olhe seu inventário";
             for (int i = 1; dialogues[0][i] != null ; i++) {
                 dialogues[0][i] = null;
             }
@@ -82,7 +82,7 @@ public class Npc_Tigro extends Entity{
 
         }
         else if (items2.size()==1) {
-            dialogues[0][0] = "Tenho minha poção, se vá!";
+            dialogues[0][0] = "Tenho minha poção, se vá!/nOuvi dizer que uma lagarta comeu/num dos orbes";
         }
 
     }

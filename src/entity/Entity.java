@@ -123,21 +123,29 @@ public abstract class Entity {
                 case "down1":
                     if (this.spriteNum == 1) {
                         image = down1;
+                    } else if (this.spriteNum == 2) {
+                        image = down1;
                     }
                     break;
                 case "down2":
                     if (this.spriteNum == 1) {
+                        image = down2;
+                    } else if (this.spriteNum == 2) {
                         image = down2;
                     }
                     break;
                 case "down3":
                     if (this.spriteNum == 1) {
                         image = down3;
+                    } else if (this.spriteNum == 2) {
+                        image = right3;
                     }
                     break;
                 case "down4":
                     if (this.spriteNum == 1) {
                         image = down4;
+                    } else if (this.spriteNum == 2) {
+                        image = right4;
                     }
             }
 
