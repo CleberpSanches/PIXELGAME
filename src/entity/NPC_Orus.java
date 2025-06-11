@@ -28,9 +28,7 @@ public class NPC_Orus extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Oh, olá gato! Não recebemos muitos como/nvocê aqui! Pegue 5 slimes e eu te/najudarei em sua missão!";
-
-        dialogues[1][0] = "Terminou? Hehe, sabia que não me decepcioinaria!";
+        dialogues[0][0] = "Consegue ver direito? Então apenas/num olho é o correto!";
     }
 
     public void setAction(){

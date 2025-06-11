@@ -79,12 +79,20 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if ((tileX == 11 && tileY == 40) && gp.golemQuest) {
-                teleportPlayer(6, 16, 27);
+            if ((tileX == 16 && tileY == 27) && gp.arkamQuest) {
+                teleportPlayer(6, 7, 45);
             }
         }
 
         //TP DESERTO SOMBRIO - FINAL
+//        if (gp.currentMap == 6) {
+//            int tileX = gp.player.worldX / gp.tileSize;
+//            int tileY = gp.player.worldY / gp.tileSize;
+//
+//            if ((tileX == 26 && tileY == 8) && gp.questDeserto) {
+//                teleportPlayer(7, x, y);
+//            }
+//        }
     }
 
     public void teleportPlayer(int targetMap, int tileX, int tileY) {

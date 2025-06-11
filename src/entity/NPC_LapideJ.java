@@ -1,16 +1,10 @@
 package entity;
 
-import Objects.Obj_Garrafadagua;
 import Objects.Obj_LagrimadaLua;
 import main.GamePanel;
-import main.ToolBox;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class NPC_LapideJ extends Entity{
@@ -64,7 +58,7 @@ public class NPC_LapideJ extends Entity{
         Set<String> requiredItems = Set.of("monsterzero");
         List<Entity> itemsToRemove = new ArrayList<>();
 
-        if (gp.golemQuest) {
+        if (gp.arkamQuest) {
             dialogues[0][0] = "Você já realizou sua oferenda!";
             dialogues[0][1] = null;
             startDialogue(this, 0);
@@ -80,7 +74,7 @@ public class NPC_LapideJ extends Entity{
         if (itemsToRemove.size() == 1) {
             gp.player.Inventory.removeAll(itemsToRemove);
             gp.player.Inventory.add(new Obj_LagrimadaLua(gp));
-            gp.golemQuest = true;
+            gp.arkamQuest = true;
 
             dialogues[0][0] = "Ei, valeu carinha, aqui pra te ajudar!";
             dialogues[0][1] = "Você recebeu lágrima da lua!";

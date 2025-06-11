@@ -76,30 +76,20 @@ public class NPC_CaveiraMorta extends Entity{
 
     @Override
     public void draw(Graphics2D g2) {
-        BufferedImage image = null;
+        BufferedImage image = down1;
 
-        // Seleciona a imagem com base na direção atual
-        switch (direction) {
-            case "down1": image = down1; break;
-            case "down2": image = down2; break;
-            case "down3": image = down3; break;
-            case "down4": image = down4; break;
-            default: image = down1; break;
-        }
-
-        // Calcula a posição do NPC na tela com base na posição do jogador
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        // Verifica se o NPC está dentro da área visível
         if (worldX + gp.tileSize * 2 > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize * 2 < gp.player.worldX + gp.player.screenX &&
                 worldY + gp.tileSize * 2 > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize * 2 < gp.player.worldY + gp.player.screenY) {
 
-            g2.drawImage(image, screenX, screenY, gp.tileSize * 2, gp.tileSize * 2, null);
+            int drawWidth = gp.tileSize * 2;
+            int drawHeight = gp.tileSize * 2;
+
+            g2.drawImage(image, screenX, screenY, drawWidth, drawHeight, null);
         }
     }
-
-
 }

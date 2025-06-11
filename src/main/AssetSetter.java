@@ -26,24 +26,23 @@ public class AssetSetter {
     public  void setObject(){
         int i=0;
 
-        int mapNum = 2;
-
+        int mapNum;
 
         //INFERNO DE MAGMERIA
         mapNum = 5;
-        gp.obj[mapNum][i] = new Obj_CristalFlamejante(gp);
-        gp.obj[mapNum][i].worldX = 6 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 43 * gp.tileSize;
+        gp.obj[mapNum][i] = new Obj_PedraMagmeria(gp);
+        gp.obj[mapNum][i].worldX = 35 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 22 * gp.tileSize;
         i++;
 
-        gp.obj[mapNum][i] = new Obj_EssenciadeFogo(gp);
-        gp.obj[mapNum][i].worldX = 6 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 43 * gp.tileSize;
+        gp.obj[mapNum][i] = new Obj_PedraMagmeria(gp);
+        gp.obj[mapNum][i].worldX = 36 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 22 * gp.tileSize;
         i++;
 
-        gp.obj[mapNum][i] = new Obj_NucleodeMagma(gp);
-        gp.obj[mapNum][i].worldX = 6 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 43 * gp.tileSize;
+        gp.obj[mapNum][i] = new Obj_PedraMagmeria(gp);
+        gp.obj[mapNum][i].worldX = 37 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 22 * gp.tileSize;
         i++;
     }
 
@@ -97,14 +96,70 @@ public class AssetSetter {
         //NPC: ORUS✅, GOLEM DE FOGO✅
         mapNum = 5;
         gp.npc[mapNum][i] = new NPC_Orus(gp);
-        gp.npc[mapNum][i].worldX = 13 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 41 * gp.tileSize;
+        gp.npc[mapNum][i].worldX = 29 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 6 * gp.tileSize;
         i++;
 
         gp.npc[mapNum][i] = new NPC_GolemdeFogo(gp);
-        gp.npc[mapNum][i].worldX = 16 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 25 * gp.tileSize;
+        gp.npc[mapNum][i].worldX = 10 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 9 * gp.tileSize;
         i++;
+
+        gp.npc[mapNum][i] = new NPC_Arkam(gp);
+        gp.npc[mapNum][i].worldX = 15 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 24 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_Ilusina(gp);
+        gp.npc[mapNum][i].worldX = 36 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 18 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_OlhoCenario(gp);
+        gp.npc[mapNum][i].worldX = 29 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 9 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_OlhoCenario(gp);
+        gp.npc[mapNum][i].worldX = 26 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 9 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_OlhoMagmeria(gp);
+        gp.npc[mapNum][i].worldX = 32 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 9 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_TotemCenario(gp);
+        gp.npc[mapNum][i].worldX = 35 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 20 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_TotemCorreto(gp);
+        gp.npc[mapNum][i].worldX = 36 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 20 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_TotemCenario(gp);
+        gp.npc[mapNum][i].worldX = 37  * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 20 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_FogoMagmeria(gp);
+        gp.npc[mapNum][i].worldX = 8  * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 10 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_FogoMagmeria(gp);
+        gp.npc[mapNum][i].worldX = 10 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 11 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_FogoCorreto(gp);
+        gp.npc[mapNum][i].worldX = 12 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 10 * gp.tileSize;
+        i++;
+
 
         //DESERTO SOMBRIO
         //NPCS : Kramu✅, Tasmo✅, LapideM✅, LapideJ✅, NPC Cenário Caveiras✅, NPC Puzzle Caveira✅
@@ -212,6 +267,11 @@ public class AssetSetter {
         gp.npc[mapNum][i] = new NPC_CaveiraCenario(gp);
         gp.npc[mapNum][i].worldX = 44 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 29 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_EspelhodaVerdade(gp);
+        gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 5 * gp.tileSize;
         i++;
 
 

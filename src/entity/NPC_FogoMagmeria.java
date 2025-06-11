@@ -1,35 +1,34 @@
 package entity;
 
-import Objects.Obj_Garrafadagua;
+import Objects.Obj_EssenciadeFogo;
 import main.GamePanel;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class NPC_GolemdeFogo extends Entity{
-    public NPC_GolemdeFogo(GamePanel gp) {
+public class NPC_FogoMagmeria extends Entity{
+    public boolean totemCorreto = false;
+
+    public NPC_FogoMagmeria(GamePanel gp) {
         super(gp);
         direction = "down1";
         speed = 0;
         dialogueSet = -1;
+        name = "fogomagmeria";
         getImage();
         setDialogue();
     }
 
     public void getImage() {
-        down1 = setup("/npc/NpcGolemdeFogo/GolemdeFogo1", gp.tileSize, gp.tileSize);
-        down2 = setup("/npc/NpcGolemdeFogo/GolemdeFogo2", gp.tileSize, gp.tileSize);
-        down3 = setup("/npc/NpcGolemdeFogo/GolemdeFogo3", gp.tileSize, gp.tileSize);
-        down4 = setup("/npc/NpcGolemdeFogo/GolemdeFogo1", gp.tileSize, gp.tileSize);
-
+        down1 = setup("/npc/NpcparaPuzzles/NPC_FogoCenario/fogo1", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/NpcparaPuzzles/NPC_FogoCenario/fogo2", gp.tileSize, gp.tileSize);
+        down3 = setup("/npc/NpcparaPuzzles/NPC_FogoCenario/fogo3", gp.tileSize, gp.tileSize);
+        down3 = setup("/npc/NpcparaPuzzles/NPC_FogoCenario/fogo4", gp.tileSize, gp.tileSize);
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Eu sou Luminus, o golem protetor de Magméria./nO fogo queima, mas apenas os tolos que/nnão sabem idar com o mesmo!";
-        dialogues[0][1] = "Interaja com eles e receba seu prêmio!";
-
-
+        dialogues[0][0] = "O fogo te queima/nvocê saí rápido de perto!";
     }
 
     public void setAction(){
@@ -62,6 +61,7 @@ public class NPC_GolemdeFogo extends Entity{
             dialogueSet = 0;
         }
         gp.ui.npc = this;
+        direction = "down2";
     }
 
 }
