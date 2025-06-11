@@ -76,8 +76,8 @@ public class GamePanel extends JPanel implements Runnable {
     //PUZZLES
     public boolean golemQuest = false;
     public boolean demonQuest = false;
-
-
+    public boolean MorceguitaQuest = false;
+    public boolean RainbowQuest = false;
     public GamePanel() {
         this.player = new Player(this, input);
         tileManager = new TileManager(this);

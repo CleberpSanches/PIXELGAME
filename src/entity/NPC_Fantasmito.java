@@ -26,9 +26,8 @@ public class NPC_Fantasmito extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "VOCE QUER O AMULETO DA NEVOA?";
-        dialogues[0][1] = "OLHE SEU INVENTARIO";
-
+        dialogues[0][0] = "Um amuleto? Acho que tenho algum";
+        dialogues[0][1] = "Aqui, nunca usei então pode ficar";
 
     }
 
@@ -62,7 +61,8 @@ public class NPC_Fantasmito extends Entity{
 
         if (itemsToRemove.size() == 1) {
             gp.player.Inventory.removeAll(itemsToRemove);
-
+            dialogues[0][0] = "Já te dei o que você queria/npode ir";
+            dialogues[0][1] = null;
         }
         startDialogue(this, dialogueSet);
         gp.player.Inventory.add(new Obj_AmuletoNevoa(gp));

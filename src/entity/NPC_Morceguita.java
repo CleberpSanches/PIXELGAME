@@ -11,7 +11,6 @@ public class NPC_Morceguita extends Entity{
     public NPC_Morceguita(GamePanel gp) {
         super(gp);
         direction = "down1";
-        name = "anao";
         speed = 0;
         getImage();
         setDialogue();
@@ -67,9 +66,10 @@ public class NPC_Morceguita extends Entity{
 
             gp.player.Inventory.add(new Obj_ChaveCipestre(gp));
 
+            gp.MorceguitaQuest = true;
             dialogues[0][0] = "Meus amuletos enfim se tornam meus!";
 
-            dialogues[0][1] = "Aqui sua recompensa!";
+            dialogues[0][1] = "Aqui sua recompensa! Lá atrás você pode /npara sua próxima aventura!";
         }
         startDialogue(this, dialogueSet);
         dialogueSet++;

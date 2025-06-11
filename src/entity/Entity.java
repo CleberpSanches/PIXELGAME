@@ -41,8 +41,6 @@ public abstract class Entity {
     public BufferedImage upattack2;
     public BufferedImage downattack1;
     public BufferedImage downattack2;
-    public BufferedImage downattack3;
-    public BufferedImage downattack4;
     public BufferedImage rightattack1;
     public BufferedImage rightattack2;
     public BufferedImage leftattack1;
@@ -100,7 +98,6 @@ public abstract class Entity {
         gp.ui.combinedText = "";
         gp.ui.currentDialogue = "";
         gp.gameState = gp.dialogueState;
-        gp.ui.npc = this;
         dialogueSet = setNum;
     }
 
