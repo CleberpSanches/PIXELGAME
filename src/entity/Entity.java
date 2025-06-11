@@ -41,8 +41,6 @@ public abstract class Entity {
     public BufferedImage upattack2;
     public BufferedImage downattack1;
     public BufferedImage downattack2;
-    public BufferedImage downattack3;
-    public BufferedImage downattack4;
     public BufferedImage rightattack1;
     public BufferedImage rightattack2;
     public BufferedImage leftattack1;
@@ -100,7 +98,6 @@ public abstract class Entity {
         gp.ui.combinedText = "";
         gp.ui.currentDialogue = "";
         gp.gameState = gp.dialogueState;
-        gp.ui.npc = this;
         dialogueSet = setNum;
     }
 
@@ -123,21 +120,29 @@ public abstract class Entity {
                 case "down1":
                     if (this.spriteNum == 1) {
                         image = down1;
+                    } else if (this.spriteNum == 2) {
+                        image = down1;
                     }
                     break;
                 case "down2":
                     if (this.spriteNum == 1) {
+                        image = down2;
+                    } else if (this.spriteNum == 2) {
                         image = down2;
                     }
                     break;
                 case "down3":
                     if (this.spriteNum == 1) {
                         image = down3;
+                    } else if (this.spriteNum == 2) {
+                        image = right3;
                     }
                     break;
                 case "down4":
                     if (this.spriteNum == 1) {
                         image = down4;
+                    } else if (this.spriteNum == 2) {
+                        image = right4;
                     }
             }
 

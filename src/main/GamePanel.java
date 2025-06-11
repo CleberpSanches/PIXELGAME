@@ -74,9 +74,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int tradeState = 7;
 
     //PUZZLES
-    public boolean arkamQuest = false;
+    public boolean golemQuest = false;
     public boolean demonQuest = false;
-    public boolean questDeserto = false;
 
 
     public GamePanel() {

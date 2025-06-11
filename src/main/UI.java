@@ -130,6 +130,10 @@ public class UI {
                         npc.dialogues[2][1] = "Faça sua troca";
                         npc.dialogueIndex = 0;
                     }
+                    else if (npc.name != null && npc.name.equals("anao") && npc.dialogueIndex == 0 && npc.dialogueSet == 0) {
+                        npc.dialogues[0][0] = "Se um número é divisível por 6, ele também/né divisível por 3(S/N)";
+                        npc.dialogueIndex = 0;
+                    }
                     npc.dialogueIndex++;
                     gp.keyH.spacePressed = false;
                 }

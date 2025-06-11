@@ -1,6 +1,9 @@
  package main;
 
-import java.awt.Component;
+import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Main {
@@ -19,5 +22,16 @@ public class Main {
         window.setVisible(true);
         gamePanel.setupGame();
         gamePanel.startGameThread();
+        try {
+            InputStream iconStream = Main.class.getResourceAsStream("/icon/bg.png");
+            if (iconStream != null) {
+                Image icon = ImageIO.read(iconStream);
+                window.setIconImage(icon);
+            } else {
+                System.err.println("Ícone não encontrado.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -66,23 +66,23 @@ public class NPC_Rainbow extends Entity{
             }
         }
         if (items.size() == 3) {
-            dialogues[0][0] = "Aqui está sua recompensa! /n Olhe seu inventário";
+            dialogues[0][0] = "Aqui está sua recompensa! /nOlhe seu inventário";
             direction = "down2";
             gp.player.Inventory.add(new Obj_CaliceVento(gp));
+            gp.RainbowQuest = true;
             this.Inventory.removeAll(items);
             this.Inventory.add(new Obj_CaliceVento(gp));
 
         }
         else if (items2.size()==1) {
-            dialogues[0][0] = "Tenho todos os meus orbes, se vá!";
+            dialogues[0][0] = "Tenho todos os meus orbes, se vá!" +
+                    "/nAtrás de Tigro há uma passagem secreta";
         } else {
             if (name.equals("rainbow") && dialogueIndex == 0) {
                 gp.gameState = gp.tradeState;
             }
 
         }
-
-
 
     }
 

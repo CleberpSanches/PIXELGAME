@@ -59,7 +59,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 24 && tileY == 17 || tileX == 24 && tileY == 16) {
+            if ((tileX == 24 && tileY == 17 || tileX == 24 && tileY == 16) && gp.MorceguitaQuest) {
                 teleportPlayer(4, 24, 48);
             }
         }
@@ -69,7 +69,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 25 && tileY == 16) {
+            if (tileX == 9 && tileY == 16 && gp.RainbowQuest) {
                 teleportPlayer(5, 10, 44);
             }
         }
