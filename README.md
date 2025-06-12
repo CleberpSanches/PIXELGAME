@@ -14,16 +14,16 @@ Somente ao reunir todos os artefatos e derrotar os guardiões poderá Catuno enc
 
 #### 🌲 1ª Fase - Mata Nebulosa
 
-**Descrição:** Uma floresta densa e coberta por neblina mágica, onde o tempo parece congelado.
+**Descrição:** Uma floresta densa e mágica, onde o tempo parece congelado.
 
-**Clima:** Úmido, enevoado, sombrio.
+**Clima:** Úmido e sombrio.
 
 **Objetivo:** Achar 3 amuletos para formar a Chave de Cipreste que abre o portal para os Campos Infinitos.
 
 **NPCs:**
-- **Sábio Musgoso (Aliado):** Um velho esquilo druida, com barba de musgo e olhos brilhantes. Ajuda Catuno a entender como os amuletos funcionam.
-- **Coruja Nebulosa (Hostil):** Um pássaro enorme com asas que espalham confusão. Guarda um dos amuletos.
-- **Duendes da Névoa (Neutros):** Pequenos seres que adoram pregar peças, mas trocam pistas por itens encontrados.
+- **Morceguita:** Um velho esquilo druida, com barba de musgo e olhos brilhantes. Ajuda Catuno a entender como os amuletos funcionam.
+- **Coruja:** Um pássaro enorme com asas que espalham confusão. Guarda um dos amuletos.
+- **Aão da Névoa:** Pequenos seres que adoram pregar peças, mas trocam pistas por itens encontrados.
 
 **Itens:**
 - Amuleto da Névoa
@@ -36,9 +36,9 @@ Somente ao reunir todos os artefatos e derrotar os guardiões poderá Catuno enc
 
 #### 🌾 2ª Fase - Campos Infinitos
 
-**Descrição:** Um vasto campo de grama dourada, com colinas sem fim e ventos mágicos que mudam o terreno.
+**Descrição:** Um vasto campo de grama, com com nuvens onde parece não ter fim.
 
-**Clima:** Ventoso, céu aberto, pôr-do-sol eterno.
+**Clima:** Ventoso, céu aberto, dia ensolarado.
 
 **Objetivo:** Achar 3 essências para criar o Cálice dos Ventos, necessário para atravessar os ventos e chegar ao portal.
 
@@ -62,34 +62,32 @@ Somente ao reunir todos os artefatos e derrotar os guardiões poderá Catuno enc
 
 **Clima:** Extremamente quente, ar vibrante de calor.
 
-**Objetivo:** Forjar a Armadura de Magma para resistir ao calor e atravessar o terreno instável.
+**Objetivo:** Entregar os itens Arkam o deus e protetor da próxima fase.
 
 **NPCs:**
-- **Tartaruga Vulcânica (Aliada):** Um ser ancião coberto de rochas e lava endurecida que ensina Catuno a suportar o calor.
-- **Salamandra Ígnea (Hostil):** Lagarto de fogo que ataca Catuno, protegendo parte do material necessário.
-- **Gêiseres Cantores (Neutros):** Fendas no chão que emitem sons mágicos — acertar a sequência certa revela passagens secretas.
+- **Ilusina:**Um cálice de fogo que representa o equilíbrio que guarda a essência do fogo.
+- **Luminus**Golem de fogo que guarda o cristal flamejante.
+- **Orus:** Olho de magma que guarda Núcleo de Magma.
 
 **Itens:**
 - Núcleo de Magma
 - Cristal Flamejante
 - Essência da Rocha Viva
 
-*(Forjados juntos viram a Armadura de Magma)*
-
 ---
 
 #### 👻 4ª Fase - Deserto das Sombras
 
-**Descrição:** Um deserto amaldiçoado onde o dia nunca nasce e a areia parece viva.
+**Descrição:** Um deserto amaldiçoado onde o dia nunca nasce.
 
-**Clima:** Frio e seco, ventos assobiantes, sombras dançantes no horizonte.
+**Clima:** Frio e seco, animais mortos etc.
 
-**Objetivo:** Montar o Espelho das Almas, que permite atravessar para o Santuário Fantasma.
+**Objetivo:** Montar o Espelho da verdade, que permite atravessar para o Santuário Fantasma.
 
 **NPCs:**
-- **Sábia Serpente Cega (Aliada):** Uma cobra mística que, apesar de cega, enxerga o mundo espiritual.
-- **Escorpião de Sombras (Hostil):** Um monstro que habita as dunas e que guarda uma parte do espelho.
-- **Fantasmas Errantes (Neutros):** Almas perdidas que Catuno pode libertar para receber pistas.
+- **Sábio Encapuzado:** Um sábio que faz observações sobre o mapa.
+- **Krammu (Demônio das sombras):** Demônio de magméria que habita o castelo da verdade.
+- **Lápides J e M:** Almas perdidas que Catuno pode realizar oferendas.
 
 **Itens:**
 - Fragmento de Espelho
@@ -110,8 +108,8 @@ Somente ao reunir todos os artefatos e derrotar os guardiões poderá Catuno enc
 
 **Eventos:**
 - Usar a Chave de Cipreste para abrir as portas do santuário.
-- Usar o Cálice dos Ventos para atravessar corredores instáveis.
-- Usar a Armadura de Magma para suportar armadilhas de fogo fantasma.
-- Usar o Espelho das Almas para enfrentar o espírito que aprisiona Catita.
+- Usar o Cálice dos Ventos para ir ao inferno de Magméria.
+- Juntar os itens corretos para ir ao castelo do espelho da verdade.
+- Usar o Espelho das Almas para ir enfrentar o espírito que aprisiona Catita.
 
-O jogo termina com Catuno e Catita reunidos — mas, nos créditos finais, uma nova ameaça desperta nas profundezas do santuário... abrindo brecha para uma continuação.
+O jogo termina com Catuno e Catita reunidos.
