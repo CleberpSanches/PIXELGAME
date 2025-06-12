@@ -51,7 +51,7 @@ public class NPC_Arkam extends Entity{
         List<Entity> itemsToRemove = new ArrayList<>();
 
         if (gp.arkamQuest) {
-            dialogues[0][0] = "Você já me entregou tudo. O círculo atrás de você está ativo./nE leve este brinde raro daqui!";
+            dialogues[0][0] = "Você já me entregou tudo. O círculo atrás de você está ativo. /nLeve este brinde raro daqui!";
             dialogues[0][1] = null;
             startDialogue(this, 0);
             return;
@@ -68,10 +68,10 @@ public class NPC_Arkam extends Entity{
             gp.player.Inventory.add(new Obj_Garrafadagua(gp));
             gp.arkamQuest = true;
 
-            dialogues[0][0] = "Boa, pode ir embora nesse círculo atrás/nonde você! nE leve este brinde raro daqui!";
+            dialogues[0][0] = "Boa, pode ir embora nesse círculo atrás de você! /nE leve este brinde raro daqui!";
             dialogues[0][1] = "Você recebeu uma garrafa de água!";
             dialogues[0][2] = null;
-        } else {
+        } else if (itemsToRemove.size()>0 && itemsToRemove.size()<3){
             dialogues[0][0] = "Você ainda não trouxe todos os itens./nFaltam " + (3 - itemsToRemove.size()) + ".";
             dialogues[0][1] = null;
         }

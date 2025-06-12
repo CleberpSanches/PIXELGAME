@@ -57,30 +57,27 @@ public class NPC_LapideJ extends Entity{
     public void speak(){
         Set<String> requiredItems = Set.of("monsterzero");
         List<Entity> itemsToRemove = new ArrayList<>();
-
-        if (gp.arkamQuest) {
-            dialogues[0][0] = "Você já realizou sua oferenda!";
-            dialogues[0][1] = null;
-            startDialogue(this, 0);
-            return;
-        }
-
+        Set<String> requiredItem = Set.of("lagrimadalua");
+        List<Entity> items2 = new ArrayList<>();
         for (Entity obj : gp.player.Inventory) {
             if (requiredItems.contains(obj.name)) {
                 itemsToRemove.add(obj);
+            }
+        }
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItem.contains(obj.name)) {
+                items2.add(obj);
             }
         }
 
         if (itemsToRemove.size() == 1) {
             gp.player.Inventory.removeAll(itemsToRemove);
             gp.player.Inventory.add(new Obj_LagrimadaLua(gp));
-            gp.arkamQuest = true;
 
             dialogues[0][0] = "Ei, valeu carinha, aqui pra te ajudar!";
             dialogues[0][1] = "Você recebeu lágrima da lua!";
-            dialogues[0][2] = null;
-        } else {
-            dialogues[0][0] = "Para realizar seu agradecimento você/nnecessita do item correto!";
+        } else if(items2.size() == 1){
+            dialogues[0][0] = "Obrigado pelo monster!";
             dialogues[0][1] = null;
         }
 

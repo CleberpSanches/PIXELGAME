@@ -125,12 +125,12 @@ public class UI {
                 charIndex = 0;
                 combinedText = "";
                 if (gp.gameState == gp.dialogueState){
-                    if (npc.name != null && npc.name.equals("cavaleiro") && npc.dialogueIndex == 1 && npc.dialogueSet == 2) {
-                        gp.gameState = gp.tradeState;
-                        npc.dialogues[2][1] = "Faça sua troca";
-                        npc.dialogueIndex = 0;
-                    }
-                    else if (npc.name != null && npc.name.equals("anao") && npc.dialogueIndex == 0 && npc.dialogueSet == 0) {
+                    //if (npc.name != null && npc.name.equals("cavaleiro") && npc.dialogueIndex == 1 && npc.dialogueSet == 2) {
+                    //    gp.gameState = gp.tradeState;
+                    //    npc.dialogues[2][1] = "Faça sua troca";
+                    //    npc.dialogueIndex = 0;
+                    //}
+                    if (npc.name != null && npc.name.equals("anao") && npc.dialogueIndex == 0 && npc.dialogueSet == 0) {
                         npc.dialogues[0][0] = "Se um número é divisível por 6, ele também/né divisível por 3(S/N)";
                         npc.dialogueIndex = 0;
                     }

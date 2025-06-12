@@ -76,7 +76,10 @@ public class GamePanel extends JPanel implements Runnable {
     //PUZZLES
     public boolean golemQuest = false;
     public boolean demonQuest = false;
-
+    public boolean arkamQuest= false;
+    public boolean MorceguitaQuest= false;
+    public boolean RainbowQuest= false;
+    public boolean questDeserto = false;
 
     public GamePanel() {
         this.player = new Player(this, input);
@@ -295,3 +298,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 }
+
+
+
