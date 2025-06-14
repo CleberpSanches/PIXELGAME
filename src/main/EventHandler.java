@@ -59,7 +59,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if ((tileX == 24 && tileY == 17 || tileX == 24 && tileY == 16) && gp.MorceguitaQuest) {
+            if ((tileX == 25 && tileY == 17 || tileX == 25 && tileY == 16) && gp.MorceguitaQuest) {
                 teleportPlayer(4, 24, 48);
             }
         }
@@ -85,14 +85,14 @@ public class EventHandler {
         }
 
         //TP DESERTO SOMBRIO - FINAL
-//        if (gp.currentMap == 6) {
-//            int tileX = gp.player.worldX / gp.tileSize;
-//            int tileY = gp.player.worldY / gp.tileSize;
-//
-//            if ((tileX == 26 && tileY == 8) && gp.questDeserto) {
-//                teleportPlayer(7, x, y);
-//            }
-//        }
+        if (gp.currentMap == 6) {
+            int tileX = gp.player.worldX / gp.tileSize;
+            int tileY = gp.player.worldY / gp.tileSize;
+
+            if ((tileX == 26 && tileY == 8) && gp.questDeserto) {
+                teleportPlayer(7, 24, 41);
+            }
+        }
     }
 
     public void teleportPlayer(int targetMap, int tileX, int tileY) {
