@@ -16,12 +16,21 @@ public class Sound {
 
     public Sound(){
         soundURL[0] = getClass().getResource("/sound/menusong1.wav");
-        soundURL[1] = getClass().getResource("/sound/lavastage.wav");
-        soundURL[2] = getClass().getResource("/sound/menuup.wav");
+        soundURL[1] = getClass().getResource("/sound/mapaslojaequarto.wav");
+        soundURL[2] = getClass().getResource("/sound/mapainicio.wav");
+        soundURL[3] = getClass().getResource("/sound/mapamatanebulosa.wav");
+        soundURL[4] = getClass().getResource("/sound/mapacamposinfinitos.wav");
+        soundURL[5] = getClass().getResource("/sound/mapamagmeria.wav");
+        soundURL[6] = getClass().getResource("/sound/mapadesertodassombras.wav");
+
     }
 
     public void setFile( int i){
         try{
+            if (clip != null) {
+                clip.stop();
+                clip.close();
+            }
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
@@ -33,6 +42,7 @@ public class Sound {
 
     public void play (){
         if(clip != null) {
+            clip.setFramePosition(0); // volta ao início
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             isPlaying = true;

@@ -28,6 +28,7 @@ public class EventHandler {
         if (gp.currentMap == 0) {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
+            gp.playSE(1);
 
             if (tileX == 25 && tileY == 29 || tileX == 24 && tileY == 29) {
                 teleportPlayer(1, 26, 28);

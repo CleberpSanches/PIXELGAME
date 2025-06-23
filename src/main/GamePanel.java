@@ -80,6 +80,12 @@ public class GamePanel extends JPanel implements Runnable {
     public boolean RainbowQuest= false;
     public boolean questDeserto = false;
 
+    //MUSIC
+    int[] mapMusicIndices = new int[8]; // até 10 mapas, por exemplo
+    int currentMusicIndex = -1;
+    int lastMapWithMusic = -1;
+
+
     public GamePanel() {
         this.player = new Player(this, input);
         tileManager = new TileManager(this);
@@ -91,6 +97,15 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(this.keyH);
         this.setFocusable(true);
         setPlayerSpawn();
+
+        mapMusicIndices[0] = 1;
+        mapMusicIndices[1] = 1;
+        mapMusicIndices[2] = 2;
+        mapMusicIndices[3] = 3;
+        mapMusicIndices[4] = 4;
+        mapMusicIndices[5] = 5;
+        mapMusicIndices[6] = 6;
+
     }
 
     public void teleportPlayer(int targetMap) {
@@ -156,19 +171,24 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-
-        //GAME STATE UPDATE
+        // 1. GAME STATE UPDATE
         if (gameState != previousState) {
             stopMusic();
 
             if (gameState == titleState) {
                 playMusic(0);
-            } else if (gameState == playState) {
-                playMusic(1);
-            } else if (gameState == pauseState) {
-
             }
             previousState = gameState;
+        }
+
+        if (gameState == playState) {
+            int expectedMusicIndex = mapMusicIndices[currentMap];
+
+            if (currentMusicIndex != expectedMusicIndex) {
+                stopMusic();
+                playMusic(expectedMusicIndex);
+                currentMusicIndex = expectedMusicIndex;
+            }
         }
 
         //CHARACTER UPDATE
@@ -275,18 +295,21 @@ public class GamePanel extends JPanel implements Runnable {
         g2.dispose();
     }
 
-    public void playMusic(int i){
-
-        if (sound.clip != null) {
-            sound.stop();  // para o que tá tocando antes
+    public void playMusic(int i) {
+        if (currentMusicIndex == i && music.clip != null && music.clip.isRunning()) {
+            return;
         }
 
-        sound.setFile(i);
-        sound.play();
+        stopMusic();
+        currentMusicIndex = i;
+        music.setFile(i);
+        music.play();
     }
 
-    public void stopMusic(){
-        sound.stop();
+    public void stopMusic() {
+        if (music != null) {
+            music.stop();
+        }
     }
 
     public void playSE(int i){
@@ -294,7 +317,6 @@ public class GamePanel extends JPanel implements Runnable {
         se.stop();
         se.play();
     }
-
 
 }
 
