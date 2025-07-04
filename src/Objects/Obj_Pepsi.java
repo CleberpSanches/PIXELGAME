@@ -8,5 +8,6 @@ public class Obj_Pepsi extends Entity {
         super(gp);
         name = "pepsi";
         down1 = setup("/objects/bepsi", gp.tileSize, gp.tileSize);
+        stackable = true;
     }
 }

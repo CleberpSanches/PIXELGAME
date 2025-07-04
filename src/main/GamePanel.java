@@ -3,6 +3,7 @@ package main;
 import Adapter.KeyHandlerAdapter;
 import Interface.PlayerInput;
 import Tile_Items.TileItems;
+import data.SaveLoad;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
@@ -50,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player;
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
+    SaveLoad saveload = new SaveLoad(this);
     //miniMap
     Map map = new Map(this);
     Thread gameThread;

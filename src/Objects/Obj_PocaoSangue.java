@@ -8,5 +8,6 @@ public class Obj_PocaoSangue extends Entity {
         super(gp);
         name = "pocaosangue";
         down1 = setup("/objects/potionblood", gp.tileSize, gp.tileSize);
+        stackable = true;
     }
 }

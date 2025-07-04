@@ -8,5 +8,6 @@ public class Obj_OrbeRedemoinho extends Entity {
         super(gp);
         name = "orberedemoinho";
         down1 = setup("/objects/orberedemoinho", gp.tileSize, gp.tileSize);
+        stackable = true;
     }
 }

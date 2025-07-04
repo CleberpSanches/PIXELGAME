@@ -12,6 +12,7 @@ public class Obj_AmuletoSeiva extends Entity {
         super(gp);
         name = "amuletoseiva";
         down1 = setup("/objects/amuletoseiva", gp.tileSize, gp.tileSize);
+        stackable = true;
 
     }
 }

@@ -89,7 +89,8 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.playState;
             }
             if (gp.ui.commandNum == 1){
-                //permanência de dados
+                gp.saveload.load();
+                gp.gameState = gp.playState;
             }
             if (gp.ui.commandNum == 2){
                 System.exit(0);
@@ -190,9 +191,11 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER){
             gp.keyH.enterPressed = true;
             if(gp.ui.commandNum == 2){
+                gp.saveload.save();
                 gp.gameState = gp.playState;
             }
             if (gp.ui.commandNum == 1){
+                gp.saveload.save();
                 gp.gameState = gp.titleState;
             }
         }

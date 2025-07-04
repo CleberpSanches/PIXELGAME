@@ -9,5 +9,6 @@ public class Obj_CaliceVento extends Entity {
         name = "calicevento";
         down1 = setup("/objects/calicevento", gp.tileSize, gp.tileSize);
         description = name;
+        stackable = true;
     }
 }
