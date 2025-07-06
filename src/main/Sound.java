@@ -11,10 +11,10 @@ public class Sound {
     Clip clip;
     URL soundURL[] = new URL[30];
     private boolean isPlaying = false;
-    int volumeScale= 3;
+    int volumeScale = 3;
     float volume;
 
-    public Sound(){
+    public Sound() {
         soundURL[0] = getClass().getResource("/sound/menusong1.wav");
         soundURL[1] = getClass().getResource("/sound/mapaslojaequarto.wav");
         soundURL[2] = getClass().getResource("/sound/mapainicio.wav");
@@ -25,8 +25,8 @@ public class Sound {
 
     }
 
-    public void setFile( int i){
-        try{
+    public void setFile(int i) {
+        try {
             if (clip != null) {
                 clip.stop();
                 clip.close();
@@ -34,22 +34,23 @@ public class Sound {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void play (){
-        if(clip != null) {
-            clip.setFramePosition(0); // volta ao início
+    public void play() {
+        if (clip != null) {
+            clip.stop();            // Para antes de reiniciar
+            clip.setFramePosition(0); // Volta pro começo
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             isPlaying = true;
         }
     }
 
-    public void loop(){
+
+    public void loop() {
         if (clip != null) {
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             isPlaying = true;
@@ -59,16 +60,18 @@ public class Sound {
     public void stop(){
         if (clip != null && isPlaying) {
             clip.stop();
-            isPlaying = false; // Marca como não tocando
+            clip.flush();    // Força a parada imediata
+            clip.close();    // Fecha o clip para liberar recurso
+            isPlaying = false;
         }
     }
 
-    public void setVolume(float value){
+    public void setVolume(float value) {
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(value);
     }
 
     public boolean isPlaying() {
-        return isPlaying;
+        return clip != null && clip.isRunning();
     }
 }

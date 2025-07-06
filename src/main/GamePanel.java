@@ -81,12 +81,11 @@ public class GamePanel extends JPanel implements Runnable {
     public boolean MorceguitaQuest= false;
     public boolean RainbowQuest= false;
     public boolean questDeserto = false;
+    public boolean[] speakEvent = new boolean[10]; // até 10 mapas por exemplo
 
     //MUSIC
     int[] mapMusicIndices = new int[8]; // até 10 mapas, por exemplo
     int currentMusicIndex = -1;
-    int lastMapWithMusic = -1;
-
 
     public GamePanel() {
         this.player = new Player(this, input);
@@ -173,24 +172,24 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        // 1. GAME STATE UPDATE
         if (gameState != previousState) {
-            stopMusic();
-
             if (gameState == titleState) {
+                stopMusic();
                 playMusic(0);
+                currentMusicIndex = 0;
+            }
+            else if (gameState == playState || gameState == pauseState || gameState == dialogueState
+                    || gameState == characterState || gameState == mapState || gameState == tradeState) {
+                int expectedMusicIndex = mapMusicIndices[currentMap];
+                if (currentMusicIndex != expectedMusicIndex) {
+                    stopMusic();
+                    playMusic(expectedMusicIndex);
+                    currentMusicIndex = expectedMusicIndex;
+                }
+            } else {
+
             }
             previousState = gameState;
-        }
-
-        if (gameState == playState) {
-            int expectedMusicIndex = mapMusicIndices[currentMap];
-
-            if (currentMusicIndex != expectedMusicIndex) {
-                stopMusic();
-                playMusic(expectedMusicIndex);
-                currentMusicIndex = expectedMusicIndex;
-            }
         }
 
         //CHARACTER UPDATE

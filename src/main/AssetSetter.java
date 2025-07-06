@@ -167,12 +167,12 @@ public class AssetSetter {
         //DESERTO SOMBRIO
         //NPCS : Kramu✅, Tasmo✅, LapideM✅, LapideJ✅, NPC Cenário Caveiras✅, NPC Puzzle Caveira✅
         mapNum = 6;
-        gp.npc[mapNum][i] = new NPC_Placa(gp);
+        gp.npc[mapNum][i] = new NPC_PDesertoSombrio(gp);
         gp.npc[mapNum][i].worldX = 5 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 42 * gp.tileSize;
         i++;
 
-        gp.npc[mapNum][i] = new NPC_Placa(gp);
+        gp.npc[mapNum][i] = new NPC_PDesertoSombrio(gp);
         gp.npc[mapNum][i].worldX = 10 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 42 * gp.tileSize;
         i++;

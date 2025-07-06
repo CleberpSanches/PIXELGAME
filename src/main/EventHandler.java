@@ -6,7 +6,6 @@ public class EventHandler {
     GamePanel gp;
     Rectangle eventRect;
     int eventRectDefaultX, eventRectDefaultY;
-
     int tempMap, tempCol, tempRow;
 
     public EventHandler(GamePanel gp){
@@ -92,6 +91,24 @@ public class EventHandler {
 
             if ((tileX == 26 && tileY == 8) && gp.questDeserto) {
                 teleportPlayer(7, 24, 41);
+            }
+        }
+
+        //FALA MAPA QUARTO
+        if (gp.currentMap == 0 && !gp.speakEvent[0]) {
+            if (hit(23, 25, "any")) {
+                gp.ui.currentDialogue = "Bom dia irmãzinha!... Irmã? Será que ela/nestá na loja?/n*Aperte ESPAÇO para continuar";
+                gp.gameState = gp.dialogueState;
+                gp.speakEvent[0] = true;
+            }
+        }
+
+        //FALA MAPA LOJA
+        if (gp.currentMap == 1 && !gp.speakEvent[1]) {
+            if (hit(26, 28, "any")) {
+                gp.ui.currentDialogue = "A loja está intacta... Onde ela está?";
+                gp.gameState = gp.dialogueState;
+                gp.speakEvent[1] = true;
             }
         }
     }

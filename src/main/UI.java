@@ -98,56 +98,82 @@ public class UI {
 
     //DIALOGUE SCREEN
     private void drawDialogueScreen() {
+        BufferedImage dialogueWindowImg = null;
+
+        try {
+            dialogueWindowImg = ImageIO.read(getClass().getResourceAsStream("/tile_items/falaimg.png")); // ajuste o caminho
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //SUBWINDOW POSITION
         int x = gp.tileSize*2;
         int y = gp.tileSize*8;
         int width = gp.screenWidth - (gp.tileSize*4);
         int height = (gp.tileSize*3);
-        drawSubWindow(x,y,width,height);
+        if (dialogueWindowImg != null) {
+            g2.drawImage(dialogueWindowImg, x, y, width, height, null);
+        } else {
+            drawSubWindow(x, y, width, height); // fallback se imagem não carregar
+        }
 
         //TEXT POSITION
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32));
+        g2.setColor(Color.black);
         x += gp.tileSize;
         y += gp.tileSize;
 
-        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null){
+        if (npc != null && npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
 
             char character[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
 
-            if (charIndex < character.length){
+            if (charIndex < character.length) {
                 String s = String.valueOf(character[charIndex]);
                 combinedText = combinedText + s;
                 currentDialogue = combinedText;
                 charIndex++;
             }
 
-            if (gp.keyH.spacePressed == true){
+            if (gp.keyH.spacePressed) {
                 charIndex = 0;
                 combinedText = "";
-                if (gp.gameState == gp.dialogueState){
-                    //if (npc.name != null && npc.name.equals("cavaleiro") && npc.dialogueIndex == 1 && npc.dialogueSet == 2) {
-                    //    gp.gameState = gp.tradeState;
-                    //    npc.dialogues[2][1] = "Faça sua troca";
-                    //    npc.dialogueIndex = 0;
-                    //}
-                    if (npc.name != null && npc.name.equals("anao") && npc.dialogueIndex == 0 && npc.dialogueSet == 0) {
-                        npc.dialogues[0][0] = "Se um número é divisível por 6, ele também/né divisível por 3(S/N)";
-                        npc.dialogueIndex = 0;
-                    }
-                    npc.dialogueIndex++;
-                    gp.keyH.spacePressed = false;
+
+                if (npc.name != null && npc.name.equals("anao") && npc.dialogueIndex == 0 && npc.dialogueSet == 0) {
+                    npc.dialogues[0][0] = "Se um número é divisível por 6, ele também/né divisível por 3(S/N)";
+                    npc.dialogueIndex = 0;
                 }
 
+                npc.dialogueIndex++;
+                gp.keyH.spacePressed = false;
             }
-        }
-        else {
-            npc.dialogueIndex = 0;
 
-            if(gp.gameState == gp.dialogueState)
-            {
+        } else if (npc == null && currentDialogue != null) {
+            char character[] = currentDialogue.toCharArray();
+
+            if (charIndex < character.length) {
+                String s = String.valueOf(character[charIndex]);
+                combinedText += s;
+                charIndex++;
+            }
+
+            if (gp.keyH.spacePressed) {
+                charIndex = 0;
+                combinedText = "";
+                currentDialogue = null;
+                gp.keyH.spacePressed = false;
+                gp.gameState = gp.playState;
+            }
+
+        } else {
+            if (npc != null) {
+                npc.dialogueIndex = 0;
+            }
+
+            if (gp.gameState == gp.dialogueState) {
                 gp.gameState = gp.playState;
             }
         }
+
 
         if(currentDialogue != null) {
             for(String line : currentDialogue.split("/n")) {
@@ -204,19 +230,31 @@ public class UI {
             pauseJustOpened = false;
         }
 
+        BufferedImage pauseWindowimg = null;
+
+        try {
+            pauseWindowimg = ImageIO.read(getClass().getResourceAsStream("/tile_items/menuimg.png")); // ajuste o caminho
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         g2.setColor(new Color(0, 0, 0, 150));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
         g2.setFont(dotGothic16.deriveFont(64f));
-        g2.setColor(Color.WHITE);
+        g2.setColor(Color.black);
 
         //SUBWINDOW
         int frameX = gp.tileSize*4;
         int frameY = gp.tileSize*2;
         int frameWidth = gp.tileSize*8;
         int frameHeight = gp.tileSize*8;
+        if (pauseWindowimg != null) {
+            g2.drawImage(pauseWindowimg, frameX, frameY, frameWidth, frameHeight, null);
+        } else {
+            drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+        }
 
-        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
         switch (subState){
             case 0: options_top(frameX, frameY);
             break;
@@ -500,6 +538,17 @@ public class UI {
             }
         }
 
+        // SAVE (nova opção)
+        textY += gp.tileSize + 32;
+        g2.drawString("SALVAR", textX, textY);
+        if (gp.ui.commandNum == 1) {
+            g2.drawImage(menuarrow, textX - 48, textY - 24, null);
+            if (gp.keyH.enterPressed == true) {
+                // Aqui você coloca a ação de salvar
+
+                gp.keyH.enterPressed = false;
+            }
+        }
 
         //EXIT
         textY += gp.tileSize+32;
