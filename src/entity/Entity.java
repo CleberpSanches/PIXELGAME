@@ -108,7 +108,6 @@ public abstract class Entity {
         setAction();
         gp.cChecker.checkEntity(this, gp.npc);
         gp.cChecker.checkPlayer(this);
-
     }
 
     public void draw(Graphics2D g2) {

@@ -69,7 +69,7 @@ public class SaveLoad {
                     else {
                         ds.mapObjectNames[mapNum][i] = gp.obj[mapNum][i].name;
                         ds.mapObjectWorldX[mapNum][i] = gp.obj[mapNum][i].worldX;
-                        ds.mapObjectWorldY[mapNum][i] = gp.obj[mapNum][i].worldX;
+                        ds.mapObjectWorldY[mapNum][i] = gp.obj[mapNum][i].worldY;
                     }
                 }
             }

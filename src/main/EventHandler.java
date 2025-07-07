@@ -69,7 +69,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 25 && tileY == 16 && gp.RainbowQuest) {
+            if (tileX == 24 && tileY == 14 && gp.RainbowQuest) {
                 teleportPlayer(5, 10, 44);
             }
         }

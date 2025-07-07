@@ -85,7 +85,6 @@ public class NPC_Rainbow extends Entity{
             dialogues[0][0] = "Tenho todos os meus orbes, se vá!" +
                     "/nA frente da sapita está a passagem";
             direction = "down2";
-            gp.RainbowQuest = true;
         } else {
             if (name.equals("rainbow") && dialogueIndex == 0) {
                 gp.gameState = gp.tradeState;
