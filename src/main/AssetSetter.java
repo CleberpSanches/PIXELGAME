@@ -60,6 +60,14 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldY = 25 * gp.tileSize;
         i++;
 
+        gp.npc[mapNum][i] = new NPC_PInicio(gp);
+        gp.npc[mapNum][i].worldX = 39 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 23 * gp.tileSize;
+
+        gp.npc[mapNum][i] = new NPC_PInicio(gp);
+        gp.npc[mapNum][i].worldX = 39 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 27 * gp.tileSize;
+
         //MATA NEBULOSA
         //NPCS : Morceguita✅ e Fantasmito ✅
         mapNum = 3;
@@ -67,9 +75,20 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldX = (int) (24.5 * gp.tileSize);
         gp.npc[mapNum][i].worldY = 23 * gp.tileSize;
         i++;
+
         gp.npc[mapNum][i] = new NPC_Fantasmito(gp);
         gp.npc[mapNum][i].worldX = 13 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 12 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_PMataNebulosa(gp);
+        gp.npc[mapNum][i].worldX = 23 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 35 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_PMataNebulosa(gp);
+        gp.npc[mapNum][i].worldX = 26 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 35 * gp.tileSize;
         i++;
 
         //CAMPOS INFINITOS
@@ -93,6 +112,16 @@ public class AssetSetter {
         gp.npc[mapNum][i] = new NPC_Anao(gp);
         gp.npc[mapNum][i].worldX = 41 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 15 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_PCamposInfinitos(gp);
+        gp.npc[mapNum][i].worldX = 23 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 46 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_PCamposInfinitos(gp);
+        gp.npc[mapNum][i].worldX = 26 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 46 * gp.tileSize;
         i++;
 
         //INFERNO DE MAGMÉRIA
@@ -161,6 +190,16 @@ public class AssetSetter {
         gp.npc[mapNum][i] = new NPC_FogoCorreto(gp);
         gp.npc[mapNum][i].worldX = 12 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 10 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_PMagmeria(gp);
+        gp.npc[mapNum][i].worldX = 8 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 43 * gp.tileSize;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_PMagmeria(gp);
+        gp.npc[mapNum][i].worldX = 12 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 43 * gp.tileSize;
         i++;
 
 

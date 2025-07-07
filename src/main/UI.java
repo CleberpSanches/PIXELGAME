@@ -554,7 +554,7 @@ public class UI {
         textY += gp.tileSize+32;
         textX = getXforCenterText(text)-96;
         g2.drawString("SAIR", textX, textY);
-        if(gp.ui.commandNum == 1){
+        if(gp.ui.commandNum == 3){
             g2.drawImage(menuarrow, textX-48, textY-24 , null);
         }
 
