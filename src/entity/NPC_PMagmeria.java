@@ -7,7 +7,7 @@ public class NPC_PMagmeria extends Entity {
         super(gp);
         direction = "down1";
         speed = 0;
-        dialogueSet = -1;
+        dialogueSet = 0;
         getImage();
         setDialogue();
     }
@@ -27,7 +27,6 @@ public class NPC_PMagmeria extends Entity {
     }
 
     public void speak(){
-        super.startDialogue(this, dialogueSet);
-        dialogueSet++;
+        startDialogue(this, dialogueSet);
     }
 }

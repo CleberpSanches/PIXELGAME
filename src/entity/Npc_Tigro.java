@@ -82,7 +82,11 @@ public class Npc_Tigro extends Entity{
 
         }
         else if (items2.size()==1) {
-            dialogues[0][0] = "Tenho minha poção, se vá!/nOuvi dizer que uma lagarta comeu/num dos orbes";
+            dialogues[0][0] = "Tenho minha poção, se vá!/nOuvi dizer que uma lagarta comeu um dos orbes/n *Aperte Enter para interagir com elas*";
+            for (int i = 1; dialogues[0][i] != null ; i++) {
+                dialogues[0][i] = null;
+            }
+
         }
 
     }

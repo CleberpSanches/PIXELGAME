@@ -13,4 +13,13 @@ public class DataStorage implements Serializable {
     int mapObjectWorldY[][];
 
     public int currentMap;
+
+    public int playerWorldX;
+    public int playerWorldY;
+
+    public boolean demonQuest;
+    public boolean arkamQuest;
+    public boolean MorceguitaQuest;
+    public boolean RainbowQuest;
+    public boolean questDeserto;
 }

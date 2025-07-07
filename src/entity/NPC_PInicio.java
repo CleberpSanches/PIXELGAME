@@ -8,7 +8,7 @@ public class NPC_PInicio extends Entity {
         name = "placainicio";
         direction = "down1";
         speed = 0;
-        dialogueSet = -1;
+        dialogueSet = 0;
         getImage();
         setDialogue();
     }
@@ -28,7 +28,6 @@ public class NPC_PInicio extends Entity {
     }
 
     public void speak(){
-        super.startDialogue(this, dialogueSet);
-        dialogueSet++;
+        startDialogue(this, dialogueSet);
     }
 }

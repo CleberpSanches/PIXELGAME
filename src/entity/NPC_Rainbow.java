@@ -55,6 +55,7 @@ public class NPC_Rainbow extends Entity{
         List<Entity> items = new ArrayList<>();
         Set<String> requiredItem = Set.of("calicevento");
         List<Entity> items2 = new ArrayList<>();
+        List<Entity> items3 = new ArrayList<>();
         for (Entity obj : this.Inventory) {
             if (requiredItems.contains(obj.name)) {
                 items.add(obj);
@@ -63,6 +64,12 @@ public class NPC_Rainbow extends Entity{
         for (Entity obj : this.Inventory) {
             if (requiredItem.contains(obj.name)) {
                 items2.add(obj);
+            }
+        }
+
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItem.contains(obj.name)) {
+                items3.add(obj);
             }
         }
         if (items.size() == 3) {
@@ -74,9 +81,11 @@ public class NPC_Rainbow extends Entity{
             this.Inventory.add(new Obj_CaliceVento(gp));
 
         }
-        else if (items2.size()==1) {
+        else if (items2.size()==1 || items3.size()==1) {
             dialogues[0][0] = "Tenho todos os meus orbes, se vá!" +
-                    "/nAtrás de Tigro há uma passagem secreta";
+                    "/nA frente da sapita está a passagem";
+            direction = "down2";
+            gp.RainbowQuest = true;
         } else {
             if (name.equals("rainbow") && dialogueIndex == 0) {
                 gp.gameState = gp.tradeState;

@@ -8,6 +8,7 @@ import java.io.*;
 
 public class SaveLoad {
     GamePanel gp;
+    public Entity npc;
     public SaveLoad(GamePanel gp){
         this.gp = gp;
     }
@@ -55,6 +56,7 @@ public class SaveLoad {
                 ds.itemAmounts.add(gp.player.Inventory.get(i).amount);
             }
 
+
             ds.mapObjectNames = new String[gp.maxMap][gp.obj[1].length];
             ds.mapObjectWorldX= new int[gp.maxMap][gp.obj[1].length];
             ds.mapObjectWorldY= new int[gp.maxMap][gp.obj[1].length];
@@ -72,6 +74,15 @@ public class SaveLoad {
                 }
             }
             ds.currentMap = gp.currentMap;
+
+            ds.playerWorldX = gp.player.worldX;
+            ds.playerWorldY = gp.player.worldY;
+
+            ds.demonQuest = gp.demonQuest;
+            ds.arkamQuest = gp.arkamQuest;
+            ds.MorceguitaQuest = gp.MorceguitaQuest;
+            ds.RainbowQuest = gp.RainbowQuest;
+            ds.questDeserto = gp.questDeserto;
 
             oos.writeObject(ds);
         } catch (IOException e) {
@@ -104,6 +115,14 @@ public class SaveLoad {
             }
 
             gp.currentMap = ds.currentMap;
+
+            gp.player.setPosition(ds.playerWorldX, ds.playerWorldY);
+
+            gp.demonQuest = ds.demonQuest;
+            gp.arkamQuest = ds.arkamQuest;
+            gp.MorceguitaQuest = ds.MorceguitaQuest;
+            gp.RainbowQuest = ds.RainbowQuest;
+            gp.questDeserto = ds.questDeserto;
         } catch (Exception e) {
             System.out.println("Error loading game!");
         }

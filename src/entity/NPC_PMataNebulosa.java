@@ -7,7 +7,7 @@ public class NPC_PMataNebulosa extends Entity {
         super(gp);
         direction = "down1";
         speed = 0;
-        dialogueSet = -1;
+        dialogueSet = 0;
         getImage();
         setDialogue();
     }
@@ -17,7 +17,10 @@ public class NPC_PMataNebulosa extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0][0] = "Fale com Morceguita, quebre os fungos com/nseu poder e entregue os itens a ela para passar/nde fase!";
+        dialogues[0][0] = "Fale com Morceguita, quebre os itens com/nseu poder e entregue os itens a ela para passar/nde fase!";
+        dialogues[0][1] = "Primeiro: Fale com a morceguita a frente";
+        dialogues[0][2] = "Segundo: Fale com o fantasmito lá em cima,/nele lhe dará algo...";
+        dialogues[0][3] ="Terceiro: Quebre, com sua magia de destruição,/na estrutura no oeste e nordeste";
     }
 
     public void setAction() {
@@ -27,7 +30,7 @@ public class NPC_PMataNebulosa extends Entity {
     }
 
     public void speak(){
-        super.startDialogue(this, dialogueSet);
-        dialogueSet++;
+        startDialogue(this, dialogueSet);
+
     }
 }
