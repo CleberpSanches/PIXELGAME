@@ -18,7 +18,6 @@ public class NPC_Cavaleiro extends Entity{
         dialogueSet = -1;
         getImage();
         setDialogue();
-        setItems();
     }
 
     public void getImage() {
@@ -29,15 +28,12 @@ public class NPC_Cavaleiro extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0][0] = "Ah, um novo aventureiro!/nVejo que o destino o trouxe até aqui.";
+        dialogues[0][0] = "Ah, o novo aventureiro! Ainda bem que o/ndestino o trouxe até aqui. *Pressione ESPAÇO/npara continuar conversando.";
         dialogues[0][1] = "Antes de empunhar sua lâmina contra/nas forças do mal, deve aprender o básico.";
-        dialogues[0][2] = "Use as teclas W, A, S e D para mover-se/npelo mundo — um passo de cada vez,/njovem herói.";
-
-        dialogues[1][0] = "Deseja atacar? Então pressione a tecla Q,/nhá alguns slimes pelo mapa, teste neles/ne volte!";
-        dialogues[1][1] = "No seu inventário você pode verificar/nseu poder e seus itens, mas como você é pobre/nnão deve ter muito!";
-
-        dialogues[2][0] = "Para ir para os outros mapa apenas/nvá para os portais como o que você chegou!";
-        dialogues[2][1] = "Agora foco meu querido, sua aventura te espera!";
+        dialogues[0][2] = "Como você é um mago pode soltar magias/npressione Q para testar!";
+        dialogues[0][3] = "No seu inventário você pode verificar/nseus poderes e seus itens! *Pressione/nI para ver seu inventário.";
+        dialogues[0][4] = "Para ir para os outros mapa apenas/nvá para os portais, há um ao outro lado da/nilha!";
+        dialogues[0][5] = "Agora foco meu querido, sua irmãzinha está/nprecisando de você!";
     }
 
     public void setAction(){
@@ -58,10 +54,6 @@ public class NPC_Cavaleiro extends Entity{
             }
             actionLookCounter = 0;
         }
-    }
-
-    public void setItems(){
-        Inventory.add(new Obj_AmuletoLua(gp));
     }
 
     public void speak(){

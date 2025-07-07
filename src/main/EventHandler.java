@@ -40,7 +40,7 @@ public class EventHandler {
             int tileY = gp.player.worldY / gp.tileSize;
 
             if (tileX == 23 && tileY == 22) {
-                teleportPlayer(2, 38, 25);
+                teleportPlayer(2, 39, 25);
             }
         }
 
@@ -69,7 +69,7 @@ public class EventHandler {
             int tileX = gp.player.worldX / gp.tileSize;
             int tileY = gp.player.worldY / gp.tileSize;
 
-            if (tileX == 9 && tileY == 16 && gp.RainbowQuest) {
+            if (tileX == 25 && tileY == 16 && gp.RainbowQuest) {
                 teleportPlayer(5, 10, 44);
             }
         }
@@ -96,7 +96,7 @@ public class EventHandler {
 
         //FALA MAPA QUARTO
         if (gp.currentMap == 0 && !gp.speakEvent[0]) {
-            if (hit(23, 25, "any")) {
+            if (hit(23, 25, "any") || hit(24, 25, "any") || hit(25, 24, "any")) {
                 gp.ui.currentDialogue = "Bom dia irmãzinha!... Irmã? Será que ela/nestá na loja?/n*Aperte ESPAÇO para continuar";
                 gp.gameState = gp.dialogueState;
                 gp.speakEvent[0] = true;
@@ -106,7 +106,7 @@ public class EventHandler {
         //FALA MAPA LOJA
         if (gp.currentMap == 1 && !gp.speakEvent[1]) {
             if (hit(26, 28, "any")) {
-                gp.ui.currentDialogue = "A loja está intacta... Onde ela está?";
+                gp.ui.currentDialogue = "A loja está intacta... Onde ela está?/n*Pressione ENTER para falar com os/npersonagens e ler placas.";
                 gp.gameState = gp.dialogueState;
                 gp.speakEvent[1] = true;
             }

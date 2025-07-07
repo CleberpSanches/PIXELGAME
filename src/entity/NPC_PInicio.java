@@ -5,6 +5,7 @@ import main.GamePanel;
 public class NPC_PInicio extends Entity {
     public NPC_PInicio(GamePanel gp) {
         super(gp);
+        name = "placainicio";
         direction = "down1";
         speed = 0;
         dialogueSet = -1;
@@ -24,5 +25,10 @@ public class NPC_PInicio extends Entity {
         if (direction.equals("down1")) {
             direction = "down1";
         }
+    }
+
+    public void speak(){
+        super.startDialogue(this, dialogueSet);
+        dialogueSet++;
     }
 }

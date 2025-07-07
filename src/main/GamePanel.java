@@ -81,7 +81,7 @@ public class GamePanel extends JPanel implements Runnable {
     public boolean MorceguitaQuest= false;
     public boolean RainbowQuest= false;
     public boolean questDeserto = false;
-    public boolean[] speakEvent = new boolean[10]; // até 10 mapas por exemplo
+    public boolean[] speakEvent = new boolean[10];
 
     //MUSIC
     int[] mapMusicIndices = new int[8]; // até 10 mapas, por exemplo

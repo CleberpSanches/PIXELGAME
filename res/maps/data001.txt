@@ -481,7 +481,7 @@ false
 240.png
 true
 241.png
-true
+false
 242.png
 true
 243.png
@@ -511,11 +511,11 @@ true
 255.png
 true
 256.png
-true
+false
 257.png
-true
+false
 258.png
-true
+false
 259.png
 true
 260.png

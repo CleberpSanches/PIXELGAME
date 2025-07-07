@@ -25,4 +25,9 @@ public class NPC_PDesertoSombrio extends Entity {
             direction = "down1";
         }
     }
+
+    public void speak(){
+        super.startDialogue(this, dialogueSet);
+        dialogueSet++;
+    }
 }

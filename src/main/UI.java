@@ -525,9 +525,9 @@ public class UI {
 
 
         //CONTROL
-        g2.setFont(dotGothic16.deriveFont(48f));
-        textY += gp.tileSize+64;
-        textX = getXforCenterText(text)-96;
+        g2.setFont(dotGothic16.deriveFont(32f));
+        textY += gp.tileSize+24;
+        textX = getXforCenterText(text)-128;
         g2.drawString("CONTROLES", textX, textY);
         if(gp.ui.commandNum == 0){
             g2.drawImage(menuarrow, textX-48, textY-24, null);
@@ -540,7 +540,7 @@ public class UI {
 
         // SAVE (nova opção)
         textY += gp.tileSize + 32;
-        g2.drawString("SALVAR", textX, textY);
+        g2.drawString("SALVAR E VOLTAR AO JOGO", textX, textY);
         if (gp.ui.commandNum == 1) {
             g2.drawImage(menuarrow, textX - 48, textY - 24, null);
             if (gp.keyH.enterPressed == true) {
@@ -552,9 +552,8 @@ public class UI {
 
         //EXIT
         textY += gp.tileSize+32;
-        textX = getXforCenterText(text)-96;
         g2.drawString("SAIR", textX, textY);
-        if(gp.ui.commandNum == 3){
+        if(gp.ui.commandNum == 2){
             g2.drawImage(menuarrow, textX-48, textY-24 , null);
         }
 
@@ -564,7 +563,7 @@ public class UI {
         textX = getXforCenterText(text1);
         textY = gp.tileSize*9;
         g2.drawString(text1, textX, textY);
-        if(gp.ui.commandNum == 2){
+        if(gp.ui.commandNum == 3){
             g2.drawImage(menuarrow, textX-48, textY-24 , null);
             if(gp.keyH.enterPressed == true){
                 subState = 0;
@@ -604,12 +603,12 @@ public class UI {
         g2.drawString("Correr", textX, textY+=gp.tileSize);
         g2.drawString("Inventário", textX, textY+=gp.tileSize);
         g2.drawString("Tela de Personagem", textX, textY+=gp.tileSize);
-        g2.drawString("Menu", textX, textY+=gp.tileSize);
+        g2.drawString("Pausar/Menu", textX, textY+=gp.tileSize);
 
         textX = frameX + gp.tileSize*6;
         textY = frameY + gp.tileSize*2;
         g2.drawString("WASD", textX, textY); textY += gp.tileSize;
-        g2.drawString("ESPAÇO", textX, textY); textY += gp.tileSize;
+        g2.drawString("Q", textX, textY); textY += gp.tileSize;
         g2.drawString("SHIFT+WASD", textX, textY); textY += gp.tileSize;
         g2.drawString("I", textX, textY); textY += gp.tileSize;
         g2.drawString("C", textX, textY); textY += gp.tileSize;
@@ -617,6 +616,7 @@ public class UI {
 
         //VOLTAR
         g2.setFont(dotGothic16.deriveFont(48f));
+        g2.setColor(Color.white);
         textX = frameX + gp.tileSize*3;
         textY = frameY + gp.tileSize*9;
         g2.drawString("VOLTAR", textX, textY);
