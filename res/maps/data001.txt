@@ -511,11 +511,11 @@ true
 255.png
 true
 256.png
-false
+true
 257.png
 false
 258.png
-false
+true
 259.png
 true
 260.png
