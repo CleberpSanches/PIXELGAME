@@ -316,7 +316,10 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldY = 5 * gp.tileSize;
         i++;
 
-
+        gp.npc[mapNum][i] = new NPC_Gatita(gp);
+        gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 4 * gp.tileSize;
+        i++;
 
     }
 
