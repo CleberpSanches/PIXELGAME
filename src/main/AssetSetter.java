@@ -3,6 +3,7 @@ package main;
 import Tile_Items.TI_ArvoreSeiva;
 import Objects.*;
 import Tile_Items.TI_PLua;
+import Tile_Items.TI_Porta;
 import entity.*;
 import monster.Enemy_SlimedeFogo;
 import monster.Monster_Lagarta;
@@ -315,12 +316,23 @@ public class AssetSetter {
         gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
         gp.npc[mapNum][i].worldY = 5 * gp.tileSize;
         i++;
-
+        mapNum = 7;
         gp.npc[mapNum][i] = new NPC_Gatita(gp);
         gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
-        gp.npc[mapNum][i].worldY = 4 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = (int) (4.7 * gp.tileSize);
         i++;
-
+        gp.npc[mapNum][i] = new NPC_PLabirinto(gp);
+        gp.npc[mapNum][i].worldX = 23 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 40 * gp.tileSize;
+        i++;
+        gp.npc[mapNum][i] = new NPC_PortaFinal2(gp);
+        gp.npc[mapNum][i].worldX = 26 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 30 * gp.tileSize;
+        i++;
+        gp.npc[mapNum][i] = new NPC_PortaFinal(gp);
+        gp.npc[mapNum][i].worldX = 25 * gp.tileSize;
+        gp.npc[mapNum][i].worldY = 11 * gp.tileSize;
+        i++;
     }
 
     public void setTItens(){
@@ -336,6 +348,11 @@ public class AssetSetter {
         gp.tItens[mapNum][i] = new TI_ArvoreSeiva(gp);
         gp.tItens[mapNum][i].worldX = 39 * gp.tileSize;
         gp.tItens[mapNum][i].worldY = 13 * gp.tileSize;
+        i++;
+        mapNum = 7;
+        gp.tItens[mapNum][i] = new TI_Porta(gp);
+        gp.tItens[mapNum][i].worldX = 14 * gp.tileSize;
+        gp.tItens[mapNum][i].worldY = 27 * gp.tileSize;
         i++;
     }
 
@@ -361,6 +378,18 @@ public class AssetSetter {
         gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
         gp.monster[mapNum][i].worldX = 9 * gp.tileSize;
         gp.monster[mapNum][i].worldY = 41 * gp.tileSize;
+        i++;
+        gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
+        gp.monster[mapNum][i].worldX = 27 * gp.tileSize;
+        gp.monster[mapNum][i].worldY = 46 * gp.tileSize;
+        i++;
+        gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
+        gp.monster[mapNum][i].worldX = 39* gp.tileSize;
+        gp.monster[mapNum][i].worldY = 16 * gp.tileSize;
+        i++;
+        gp.monster[mapNum][i] = new Enemy_SlimedeFogo(gp);
+        gp.monster[mapNum][i].worldX = 7 * gp.tileSize;
+        gp.monster[mapNum][i].worldY = 28 * gp.tileSize;
         i++;
     }
 }

@@ -60,7 +60,6 @@ public class Player extends Entity {
     public void setItems() {
         Inventory.add(currentMagicatk);
         Inventory.add(new Obj_AtkToxina2(gp));
-
     }
 
     public void getPlayerImage() {
@@ -195,7 +194,7 @@ public class Player extends Entity {
             solidArea.height = attackArea.height;
             //para o futuro monstro
             int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
-            //int monsterIndex = gp.cChecker.checkEntity(this,gp.tItens);
+
             int tItemsIndex = gp.cChecker.checkEntity(this, gp.tItens);
             damagetItems(tItemsIndex);
             //de volta para o original

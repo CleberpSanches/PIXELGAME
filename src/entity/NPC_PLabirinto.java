@@ -18,6 +18,9 @@ public class NPC_PLabirinto extends Entity {
 
     public void setDialogue() {
         dialogues[0][0] = "Exploque o labirinto e encontre sua irmã!";
+        dialogues[0][1] = "Para a primeira porta se você ter o/ncalice de vento a porta se abrirá";
+        dialogues[0][2] = "Para a segunda porta você deve usar/nseu poder principal";
+        dialogues[0][3] = "Para a terceira porta se você ter a/nchave cipestre a porta se abrirá";
     }
 
     public void setAction() {

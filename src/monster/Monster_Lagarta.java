@@ -15,9 +15,6 @@ public class Monster_Lagarta extends Entity {
         super(gp);
         name = "Lagarta";
         speed = 1;
-        maxLife = 2;
-
-        life  = maxLife;
         solidArea.x = 3;
         solidArea.y = 18;
         solidArea.width = 42;

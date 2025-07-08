@@ -11,6 +11,7 @@ public class Obj_AmuletoNevoa extends Entity {
     {
         super(gp);
         name = "amuletonevoa";
+        description = "Amuleto da névoa";
         down1 = setup("/objects/amuletonevoa", gp.tileSize, gp.tileSize);
         stackable = true;
     }

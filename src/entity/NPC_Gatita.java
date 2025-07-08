@@ -76,6 +76,7 @@ public class NPC_Gatita extends Entity{
                 gone = true;
             }
             else {
+                gp.player.Inventory.removeAll(itemsToRemove);
                 dialogues[0][0] = "*Sua irmã foi embora para uma nova/naventura*";
                 for (int i = 1; dialogues[0][i] != null ; i++) {
                     dialogues[0][i] = null;

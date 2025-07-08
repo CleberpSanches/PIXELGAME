@@ -38,10 +38,18 @@ public class NPC_TotemCorreto extends Entity{
     }
 
     public void speak(){
+        Set<String> requiredItems = Set.of("pedramagmeria");
+        List<Entity> itemsToRemove = new ArrayList<>();
+
+        for (Entity obj : gp.player.Inventory) {
+            if (requiredItems.contains(obj.name)) {
+                itemsToRemove.add(obj);
+            }
+        }
         if (!totemCorreto) {
             gp.player.Inventory.add(new Obj_EssenciadeFogo(gp)); // entrega o item
             totemCorreto = true;
-
+            gp.player.Inventory.removeAll(itemsToRemove);
             dialogues[0][0] = "Peso correto, a balança está equilibrada!";
             dialogues[0][1] = "Você recebeu Essencia de Fogo!";
 

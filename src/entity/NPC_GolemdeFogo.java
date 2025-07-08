@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class NPC_GolemdeFogo extends Entity{
+    Entity npc;
     public NPC_GolemdeFogo(GamePanel gp) {
         super(gp);
         direction = "down1";

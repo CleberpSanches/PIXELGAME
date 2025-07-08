@@ -11,6 +11,7 @@ public class Obj_AmuletoLua extends Entity {
     {
         super(gp);
         name = "amuletoluaverde";
+        description = "Amuleto da lua verde";
         down1 = setup("/objects/amuletoluaverde", gp.tileSize, gp.tileSize);
     }
 }
