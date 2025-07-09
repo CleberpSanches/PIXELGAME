@@ -1,6 +1,10 @@
 package data;
 
 import Objects.*;
+import Tile_Items.TI_ArvoreSeiva;
+import Tile_Items.TI_PLua;
+import Tile_Items.TI_Porta;
+import Tile_Items.TileItems;
 import entity.Entity;
 import main.GamePanel;
 
@@ -47,6 +51,19 @@ public class SaveLoad {
         return obj;
     }
 
+    public TileItems getTileItem(String name) {
+        TileItems item = null;
+
+        switch (name) {
+            case "plua": item = new TI_PLua(gp); break;
+            case "aseiva": item = new TI_ArvoreSeiva(gp); break;
+            case "portafinalTI": item = new TI_Porta(gp); break;
+        }
+
+        return item;
+    }
+
+
     public void save(){
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("save.dat")));
@@ -73,6 +90,23 @@ public class SaveLoad {
                     }
                 }
             }
+
+            ds.mapTileItemNames = new String[gp.maxMap][gp.tItens[1].length];
+            ds.mapTileItemWorldX = new int[gp.maxMap][gp.tItens[1].length];
+            ds.mapTileItemWorldY = new int[gp.maxMap][gp.tItens[1].length];
+
+            for (int mapNum = 0; mapNum < gp.maxMap; mapNum++) {
+                for (int i = 0; i < gp.tItens[1].length; i++) {
+                    if (gp.tItens[mapNum][i] == null) {
+                        ds.mapTileItemNames[mapNum][i] = "NA";
+                    } else {
+                        ds.mapTileItemNames[mapNum][i] = gp.tItens[mapNum][i].name;
+                        ds.mapTileItemWorldX[mapNum][i] = gp.tItens[mapNum][i].worldX;
+                        ds.mapTileItemWorldY[mapNum][i] = gp.tItens[mapNum][i].worldY;
+                    }
+                }
+            }
+
             ds.currentMap = gp.currentMap;
 
             ds.playerWorldX = gp.player.worldX;
@@ -113,6 +147,19 @@ public class SaveLoad {
 
                 }
             }
+
+            for (int mapNum = 0; mapNum < gp.maxMap; mapNum++) {
+                for (int i = 0; i < gp.tItens[1].length; i++) {
+                    if (ds.mapTileItemNames[mapNum][i].equals("NA")) {
+                        gp.tItens[mapNum][i] = null;
+                    } else {
+                        gp.tItens[mapNum][i] = getTileItem(ds.mapTileItemNames[mapNum][i]);
+                        gp.tItens[mapNum][i].worldX = ds.mapTileItemWorldX[mapNum][i];
+                        gp.tItens[mapNum][i].worldY = ds.mapTileItemWorldY[mapNum][i];
+                    }
+                }
+            }
+
 
             gp.currentMap = ds.currentMap;
 

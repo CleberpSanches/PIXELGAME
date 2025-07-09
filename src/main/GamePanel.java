@@ -3,6 +3,8 @@ package main;
 import Adapter.KeyHandlerAdapter;
 import Interface.PlayerInput;
 import Tile_Items.TileItems;
+import data.Load;
+import data.Save;
 import data.SaveLoad;
 import entity.Entity;
 import entity.Player;
@@ -51,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player;
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
-    SaveLoad saveload = new SaveLoad(this);
+    public SaveLoad saveload = new SaveLoad(this);
     //miniMap
     Map map = new Map(this);
     Thread gameThread;
@@ -98,6 +100,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(this.keyH);
         this.setFocusable(true);
         setPlayerSpawn();
+
+        this.saveload = new SaveLoad(this);
+        this.keyH.setCommands(new Save(saveload), new Load(saveload));
 
         mapMusicIndices[0] = 1;
         mapMusicIndices[1] = 1;

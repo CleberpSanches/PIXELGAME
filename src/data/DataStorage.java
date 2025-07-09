@@ -12,6 +12,10 @@ public class DataStorage implements Serializable {
     int mapObjectWorldX[][];
     int mapObjectWorldY[][];
 
+    public String[][] mapTileItemNames;
+    public int[][] mapTileItemWorldX;
+    public int[][] mapTileItemWorldY;
+
     public int currentMap;
 
     public int playerWorldX;

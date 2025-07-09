@@ -33,7 +33,7 @@ public class Player extends Entity {
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
-        solidArea = new Rectangle(8, 55,40,20);
+        solidArea = new Rectangle(8, 55,35,35);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 

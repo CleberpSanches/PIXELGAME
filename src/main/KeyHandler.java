@@ -1,5 +1,7 @@
 package main;
 
+import data.*;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -16,10 +18,17 @@ public class KeyHandler implements KeyListener {
     public boolean sPressed;
     boolean checkDrawTime;
     GamePanel gp;
+    Data commandSave;
+    Data commandLoad;
+    Saving savingInvoker;
 
 
     public KeyHandler(GamePanel gp){
         this.gp = gp;
+    }
+    public void setCommands(Data save, Data load) {
+        this.commandSave = save;
+        this.commandLoad = load;
     }
 
     public void keyTyped(KeyEvent e) {
@@ -89,7 +98,9 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.playState;
             }
             if (gp.ui.commandNum == 1){
-                gp.saveload.load();
+                //CARREGAR O JOGO
+                savingInvoker = new Saving(commandLoad);
+                savingInvoker.saving();
                 gp.gameState = gp.playState;
             }
             if (gp.ui.commandNum == 2){
@@ -193,7 +204,8 @@ public class KeyHandler implements KeyListener {
 
             //SALVAR E VOLTAR O JOGO
             if (gp.ui.commandNum == 1){
-                gp.saveload.save();
+                savingInvoker = new Saving(commandSave);
+                savingInvoker.saving();
                 gp.gameState = gp.titleState;
             }
 
